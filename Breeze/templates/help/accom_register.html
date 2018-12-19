@@ -1,0 +1,158 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accomodation Registration</title>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'assets/css/register_login_form.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/form.js' %}"></script>
+</head>
+<body style="background-color:#A0E19F;">
+  <div class="container">
+    <div id="logo" class="img-responsive"></div>
+    <div class="row">
+      <div class="col-sm-8 col-centered" id="form" style="background-color:#FFF0D9; padding-right:40px; padding-top: 1px;">
+        <legend><h1 style="font-size: 20px; letter-spacing: 5px;"><center>REGISTRATION FORM</center></h1></legend>
+        <div class="form-group">
+          <label class="control-label">NAME</label>
+          <div class="inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+              </span>
+              <input name="name" value="{{ user.profile.name }}" class="form-control" type="text" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">E-MAIL</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input name="email" value="{{ user.email }}" class="form-control" type="text" readonly>
+              </div>
+            </div>
+          </div>
+          <form class="form" action="/accommodation/register2/?next=/me/#error" method="post" id="accform">
+          <div class="form-group">
+            <label class="control-label">SELECT A PACKAGE</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                <select class="form-control" name="package" id="package" required>
+                  <option id="0">Please Select</option>
+                  {% for p in packages %}
+                  <option value="{{ p.id }}" id="{{ p.fee }}">{{ p.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">NUMBER OF PERSONS</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-list"></i>
+                </span>
+                <input name="number" id="number" value="1" min="1" max="99" class="form-control" type="number" onchange="updatePayable(this.value);" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">NUMBER OF DAYS</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-list"></i>
+                </span>
+                <input name="days" id="days" value="1" min="1" max="4" class="form-control" type="number" onchange="updatePayable2(this.value);" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">AMOUNT PAYABLE</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                <input  name="payable" id="payable" value="0.00" class="form-control" type="text" readonly>
+              </div>
+            </div>
+          </div>
+
+              <div class="form-group">
+                <label class="control-label">COLLEGE OR UNIVERSITY</label>
+                <div class="inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="glyphicon glyphicon-education"></i>
+                    </span>
+                    <input name="college" placeholder="Please Enter College Name" class="form-control" type="text" required>
+                  </div>
+                </div>
+              </div>
+              <input type="button" class="btn" style="margin-top: 25px;" name="confirm" value="Confirm" onclick="validateAndSubmit();">
+              {% csrf_token %}
+            </form>
+            <button type="button" onclick="location.href='/'" class="btn" style="margin-top: 25px;">Cancel</button>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function updatePayable(number) {
+    //console.log(number);
+    var fees = $('#package').children(":selected").attr("id");
+    var days = $("#days").val();
+    if($('#package').children(":selected").val()==2 || $('#package').children(":selected").val()==4) {
+      var pay = fees*number;
+    }
+    else {
+      var pay = fees*number*days;
+    }
+    document.getElementById('payable').value = pay.toString();
+  }
+  function updatePayable2(days) {
+    //console.log(number);
+    var fees = $('#package').children(":selected").attr("id");
+    var num = $("#number").val();
+    //console.log(fees);
+    var pay = fees*num*days
+    document.getElementById('payable').value = pay.toString();
+  }
+
+  $('select').change( function() {
+    var n = 0;
+    var optionSelected = $("option:selected", this);
+    var fee = optionSelected.attr("id");
+    if(optionSelected.val()=="2" || optionSelected.val()=="4") {
+      $("#days").val("3");
+      $("#days").attr("readonly", true);
+    }
+    if(optionSelected.val()=="1" || optionSelected.val()=="3") {
+      $("#days").attr("readonly", false);
+    }
+    n = $('#number').val();
+    var payable = fee*n;
+    //console.log(payable);
+    document.getElementById('payable').value = payable.toString();
+  })
+
+function validateAndSubmit() {
+  if($('#package').children(":selected").attr("id") == 0) {
+    alert("Please Select a Package")
+  }
+  else {
+    $("#accform").submit();
+  }
+}
+</script>
+</body>
+</html>

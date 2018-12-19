@@ -1,0 +1,132 @@
+#logo{
+	width: 100%;
+	height: 300px;
+	background-image: url('../images/logos/Logo2.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.col-centered{
+float: none;
+margin: 0 auto;
+}
+
+#form{
+	height: 100%;
+	padding-bottom: 50px;
+	margin-bottom:10px;
+}
+
+.form-group{
+	margin-top:30px;
+	margin-left:20px;
+}
+label,legend{
+	font-family:'Montserrat';
+	font-weight:bold;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+
+.form-group{
+	margin-top:10px;
+	margin-left:10px;
+}
+}
+
+@media only screen and (max-width: 425px){
+	#logo{
+		height: 150px;
+		background-image: url('../images/logos/Logo.png');
+		background-size: cover;
+		background-position: center;
+	}
+
+	.container{
+		padding: 0px;
+	}
+
+	.row{
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+}
+
+a {
+	color: #E46E24;
+}
+
+a:hover {
+	color: #E46E24;
+}
+
+a:visited {
+	color: #E46E24;
+}
+
+a.active {
+	color: #E46E24;
+}
+
+
+
+.btn {
+	border: 0;
+	font-family:'Montserrat';
+	border-radius: 5px;
+	text-transform: uppercase;
+	padding: 10px 25px;
+	color: white;
+	letter-spacing: 1px;
+	font-size: 13px;
+	background-color: #E46E24;
+	box-shadow: 0px 7px 0px #BE5B1D;
+	-webkit-transition: all 0.4s ease;
+}
+
+.btn:hover {
+	color: white;
+	transform: translateY(4px);
+	box-shadow: 0px 4px 0px #BE5B1D;
+}
+
+.btn:active {
+	color: white;
+	border: none;
+}
+
+.input-group-addon{
+	background-color: #E46E24;
+}
+
+.glyphicon{
+	color: white;
+}
+
+input[type=text]{
+	height: 40px !important;
+	-webkit-transition: all 0.3s ease;
+}
+
+input[type=password] {
+	height: 40px !important;
+	-webkit-transition: all 0.3s ease;
+}
+
+input::-webkit-input-placeholder{
+	font-family: "Montserrat";
+	font-weight: bold;
+	font-size: 14px;
+}
+
+input[type=text]:focus{
+	border:1px solid #E46E24;
+	box-shadow: none;
+}
+
+input[type=password]:focus{
+	border:1px solid #E46E24;
+	box-shadow: none;
+}

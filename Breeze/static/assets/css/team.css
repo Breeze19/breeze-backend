@@ -1,0 +1,210 @@
+@font-face {
+    font-family: "Graphique";
+    src: url(graphique.otf);
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url(Montserrat-Light.otf);
+}
+
+@font-face {
+    font-family: "Montserrat Regular";
+    src: url(Montserrat-Regular.otf);
+}
+
+	.slideanim {visibility:hidden;}
+	.slide {
+	    animation-name: slide;
+	    -webkit-animation-name: slide;
+	    animation-duration: 1s;
+	    -webkit-animation-duration: 1s;
+	    visibility: visible;
+	}
+
+	@keyframes slide {
+	  0% {
+	    opacity: 0;
+	    transform: translateY(70%);
+	  }
+	  100% {
+	    opacity: 1;
+	    transform: translateY(0%);
+	  }
+	}
+	@-webkit-keyframes slide {
+	  0% {
+	    opacity: 0;
+	    -webkit-transform: translateY(70%);
+	  }
+	  100% {
+	    opacity: 1;
+	    -webkit-transform: translateY(0%);
+	  }
+	}
+
+.events{
+	 background-color:#FFF0D9;
+	 padding: 50px;
+}
+
+#cult{
+	margin-top:100px;
+}
+
+h1{
+	font-family:'Montserrat';
+	letter-spacing:40px;
+	color:white;
+	width: 100%;
+	font-size:55px;
+	font-weight:20px;
+}
+
+.image{
+	float:left;
+}
+
+.title{
+	font-size:28px;
+	color:black;
+	text-align: left;
+	font-family:'Montserrat';
+	/*text-indent:40px;*/
+}
+
+.about{
+	font-size:16px;
+	color:black;
+	font-family:'Montserrat';
+	
+}
+
+.row{
+	margin-bottom: 50px;
+	position: relative;
+}
+
+.btn {
+	border: 0;
+	position: absolute;
+	bottom: 0px;
+	font-family:'Montserrat';
+	right: 0px;
+	border-radius: 5px;
+	padding: 10px 25px;
+	color: white;
+	letter-spacing: 1px;
+	font-size: 13px;
+	background-color: #E46E24;
+	box-shadow: 0px 7px 0px #BE5B1D;
+	-webkit-transition: all 0.4s ease;
+}
+
+.btn:hover {
+	color: white;
+	transform: translateY(4px);
+	box-shadow: 0px 4px 0px #BE5B1D;
+}
+
+.btn:active {
+	color: white;
+	border: none;
+}
+
+body {
+	background-color:#96c9c4;
+}
+
+
+.ribbon{
+  margin:auto; 
+  width: 40%; 
+  margin-top: 50px;
+}
+
+#contactimg{
+	width: 40%;
+}
+
+.ribbonheading{
+  margin-top: -95px;
+  font-size: 50px;
+  color: #313131;
+  font-family: "Graphique";
+  color: white;
+  font-weight: 100;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+#cult{
+	margin-top: 50px;
+}
+
+h1 {
+	font-family: 'Montserrat';
+	letter-spacing: 10px;
+	color: white;
+	width: 100%;
+	font-size: 30px;
+	font-weight: 20px;
+}
+
+.ribbonheading{
+  margin-top: -90px;
+  font-size: 55px;
+}
+
+#contactimg{
+  width: 53%;
+}
+
+.heading-sports {
+	padding-top: 60px;
+	height: 150px;
+}
+
+.heading-cultural {
+	padding-top:60px;
+	height: 150px;
+}
+
+.heading-technical {
+	padding-top: 60px;
+	height: 150px;
+}
+}
+
+@media only screen and (max-width: 426px) {
+	/* For mobile phones: */
+	.title{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+.ribbonheading{
+  margin-top: -80px;
+  font-size: 50px;
+}
+
+#contactimg{
+  width: 85%;
+}
+
+	.about{
+		text-align: center;
+	}
+
+	.btn{
+		position: relative;
+		margin-top: 20px;
+	}
+
+	.footer{
+		text-align: center;
+	}
+}

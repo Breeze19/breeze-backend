@@ -1,0 +1,152 @@
+<!Doctype html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events - Breeze'18</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static "assets/css/specificevent.css" %}">
+</head>
+<body style="background-color:#A0E19F">
+	<nav class="navbar navbar-inverse">
+  <div class="container" style="margin-bottom:-15px;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="color:white;" href="/">BREEZE'18</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+		<li><a href="/">Home</a></li>
+		<li><a data-toggle="modal" href="#modalEvent">Events</a></li>
+		<li><a href="/pronights/">Pro Nights</a></li>
+		<li><a href="/accommodation/">Accommodation</a></li>
+		<li><a href="/team">Team</a></li>
+    <li><a href="/partners">Partners</a></li>
+		{% if user.is_authenticated %}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.profile.name }}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/me/">My Purchases</a></li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+		</li>
+		{% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div id="modalEvent" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content" style="background-color:#FFF0D9;">
+               <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><center>
+                   <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Please Select Event Category</h4></center>
+               </div>
+            <div class="modal-body">
+               <div class="col-md-4">
+                 <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Sports</h3>
+                 <a href="/events/sports/"><img src="{% static 'assets/images/cat/sports.jpg' %}" class="img-responsive event-cat" alt="Sports Category"></a>
+               </div>
+               <div class="col-md-4">
+                 <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Cultural</h3>
+                 <a href="/events/cultural/"><img src="{% static 'assets/images/cat/cultural.jpg' %}" class="img-responsive event-cat" alt="Cultural Category"></a>
+               </div>
+               <div class="col-md-4">
+                 <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Technical</h3>
+                 <a href="/events/technical/"><img src="{% static 'assets/images/cat/technical.jpg' %}" class="img-responsive event-cat" alt="Cultural Category"></a>
+               </div>
+                <div class="clearfix"></div>
+            </div>
+           </div>
+       </div>
+   </div>
+   
+	<div class="logo-container">
+		<div class="container">
+			<div id="logo" class="img-responsive"></div>
+		</div>
+	</div>
+	<div class="container" id="top" style="background-color:#FFF0D9;">
+	<legend><h1 style="font-size: 20px; letter-spacing: 5px; text-transform: uppercase;"><center>{{ events.0.subCategoryName }} EVENTS</center></h1></legend>
+		{% if events|length == 0 %}
+		<center>
+			<h1>TBA</h1>
+		</center>
+		{% endif %}
+		<ul class="nav nav-tabs nav-justified" style="background-color: #dacdba;font-family:'Montserrat'; border-radius: 0px;">
+			{% for event in events %}
+			{% if forloop.first %}
+			<li class="active"><a data-toggle="tab" href="#{{ event.id }}">{{ event.name }}</a>
+			</li>
+			{% else %}
+			<li><a data-toggle="tab" href="#{{ event.id }}">{{ event.name }}</a></li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+		<div class="container">
+			<div class="tab-content">
+				 {% for event in events %}
+				 {% if forloop.first %}
+				<div class="tab-pane fade in active" id="{{ event.id }}">
+				 {% else %}
+				<div class="tab-pane fade" id="{{ event.id }}">
+				 {% endif %}
+					<div class="row">
+						<h2 class="event-heading"><b>{{ event.name }}</b></h2>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Description</b></h3>
+						<p>{{ event.description }}</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Rules</b></h3>
+						{% autoescape off %}{{ event.rules }}{% endautoescape %}
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Prize</b></h3>
+						<p><b>Prize Worth: {{ event.prize }}</b><br/>
+						</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Details</b></h3>
+						<p><b>Date: {{ event.date }}</b><br/>
+						<b>Venue: {{ event.venue }}</b><br/>
+<b>Registration Fees: {% if event.fee != 0 %} {{ event.fee }} {% if event.fee_type == "team" %} Per Team {% else %} Per Head
+	{% endif %} {% else %} FREE {% endif %}</b>
+						</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Contact</b></h3>
+						<p><b>{{ event.contact_market }} - <a href="tel:{{ event.phone_market }}">{{ event.phone_market }}</b></a><br/>
+						</p>
+						<br><br>
+					</div>
+					<div class="row">
+						<form class="" action="{% url 'event_register' %}" method="post">
+							{% csrf_token %}
+							<input type="hidden" name="event_id" value="{{ event.id }}">
+							<input type="submit" name="" value="Register" class="btn btn-block" style="text-transform: uppercase;">
+						</form>
+							<br>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<br><br><br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static "assets/js/event.js" %}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

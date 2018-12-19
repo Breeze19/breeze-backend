@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="142px" viewBox="0 0 600 142" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>RibbonHeading</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-661.000000, -3689.000000)">
+            <g id="RibbonHeading" transform="translate(661.000000, 3689.000000)">
+                <rect id="Rectangle-8-Copy-2" fill="#B04E38" x="388" y="24" width="139" height="100"></rect>
+                <rect id="Rectangle-8-Copy-3" fill="#B04F39" transform="translate(141.500000, 72.000000) scale(-1, -1) translate(-141.500000, -72.000000) " x="72" y="22" width="139" height="100"></rect>
+                <rect id="Rectangle-8" fill="#E46346" x="172.5" y="0" width="253" height="100"></rect>
+                <rect id="Rectangle-8-Copy" fill="#96C9C4" transform="translate(528.710678, 70.710678) rotate(-45.000000) translate(-528.710678, -70.710678) " x="478.710678" y="20.7106781" width="100" height="100"></rect>
+                <rect id="Rectangle-8-Copy-4" fill="#96C9C4" transform="translate(70.710678, 70.710678) scale(-1, -1) rotate(-45.000000) translate(-70.710678, -70.710678) " x="20.7106781" y="20.7106781" width="100" height="100"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

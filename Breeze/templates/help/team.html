@@ -1,0 +1,119 @@
+<!Doctype html>
+{% load static %}
+
+<head>
+    <title>
+        Team
+    </title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/team.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	.image{
+		padding-top:20px;
+	}
+	.series{
+		margin-bottom:0px !important
+	}
+	
+	</style>
+</head>
+
+<body>
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark justify-content-between">
+    <div class="container">
+        <a class="navbar-brand" href="/">BREEZE'18</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#modalEvent" data-toggle="modal">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pronights/">Pro Nights</a></li>
+            <li class="nav-item"><a class="nav-link" href="/accommodation/">Accommodation</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/team">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="/partners">Partners</a></li>
+             {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">{{ user.profile.name }}
+                    <i class="ion-android-arrow-dropdown icon-ion"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/me/">My Purchases</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/logout/">Logout</a>
+                    </li>
+                </ul>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<div id="modalEvent" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                <center>
+                    <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Please Select Event Category</h4>
+                </center>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Sports</h3>
+                        <a href="/events/sports">
+                            <img src="{% static 'assets/images/cat/sports.jpg' %}" class="img-fluid event-cat" alt="Sports Category">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Cultural</h3>
+                        <a href="/events/cultural">
+                            <img src="{% static 'assets/images/cat/cultural.jpg' %}" class="img-fluid event-cat" alt="Cultural Category">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Technical</h3>
+                        <a href="/events/technical">
+                            <img src="{% static 'assets/images/cat/technical.jpg' %}" class="img-fluid event-cat" alt="Cultural Category">
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	<div class="container" style="padding-right: 0px; padding-left: 0px;">
+		<div class="headingimg text-center">
+			<img class="img-responsive ribbon" id="contactimg" src="{% static 'assets/images/partners/contactimg.svg' %}">
+			<h3 class="text-center ribbonheading">TEAM</h3>
+        </div>
+		<center><h1 style="margin-top:100px;">Coming Soon</h1></center>
+	</div>
+</body>
+</html>
+
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        $(".slideanim").each(function(){
+          var pos = $(this).offset().top;
+
+          var winTop = $(window).scrollTop();
+            if (pos < winTop + 600) {
+              $(this).addClass("slide");
+            }
+        });
+    });
+});
+</script>

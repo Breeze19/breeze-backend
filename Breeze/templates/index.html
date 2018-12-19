@@ -1,0 +1,519 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="modal fade" id="invalidlogin" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Wrong Username or Password. Please Try Again.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="invalidemail" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Email or/and Phone Number is not Valid.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="userexists" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">A user with this email already exists.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="authrequired" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">You need to be logged in for event or accommodation registration.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="authreq2" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">You need to be logged in to see your purchases.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="success" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Registration Successful. Now You can register for events.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="passwordreseterror" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">We could not find your email in our database.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="invalidsignup" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">The Data you provided is not valid. Please Try Again.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="passwordresetsuccess" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Password Reset Successful.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mailsent" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Password Reset Mail Sent Successfully. Please check your email.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="404" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color:#FFF0D9;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">The page you requested could not be found.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content" style="background-color:#FFF0D9;">
+               <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><center>
+                   <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Welcome to Breeze'18</h4></center>
+               </div>
+
+               <div class="modal-body">
+               <div class="col-md-6 col-sm-6 no-padng">
+                   <div class="model-l">
+                    <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                        <center>
+                            <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Login</h4>
+                        </center>
+                    </div>
+                     <form method="post" id="logFrm" class="log-frm" name="logFrm"  action="/login/?next=/" style="margin-top:15px;">
+                                       {% csrf_token %}
+                                       <ul>
+                                         <li>Email</li>
+                                         <li> <input type="text" placeholder="Email" id="userName" name="username" class="form-control" required></li>
+                                         <li>Password</li>
+                                         <li><input type="password" placeholder="Password" id="password" name="password" class="form-control" required></li>
+                                         <li><br/><button type="submit" onclick="userLogin();" id="logBtn" class="btn btn-default">Login</button></li>
+                                         <div style="display:none;" id="loginFail" class="sign">
+                                           <li> <font color="red">  Username or password is incorrect.</font></li>
+                                         </div>
+                                       </ul>
+                                     </form>
+                                    <div class="clearfix"></div>
+
+                <form method="post" id="logFrm1" class="log-frm" name="logFrm1" action="{% url 'forgotmail' %}">
+                    {% csrf_token %}
+                    <ul>
+                        <li>
+                        <a class="for-got" onclick="ayantoggle();" href="javascript:;">Forgot your password?</a>
+                        <div class="forgot">
+                        <ul>
+                        <li><p>Enter your Email Address here to receive a link to change password.</p></li>
+                        <li>Email Id</li>
+                        <li><input type="email" placeholder="Your email id" id="forgetemailId" class="form-control" name="email" required></li>
+                        <li><button type="submit" class="btn btn-default">Send Mail</button></li>
+                        </ul>
+                        </div>
+                        </li>
+                    </ul>
+                </form>
+                   </div>
+                   </div>
+                   <div class="col-md-6 col-sm-6 no-padng">
+                       <div class="model-r">
+                       <div class="o-r hidden-xs">
+                       <span class="hidden-xs">OR</span>
+                       </div>
+                    <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                        <center>
+                            <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Register</h4>
+                        </center>
+                    </div>
+                       <form method="post" id="userRegisterFrm" class="log-frm" name="userRegisterFrm" action="/register/?next=/#success"  style="margin-top:15px;">
+                                         {% csrf_token %}
+                                         <!-- {{ form.as_p }} -->
+                                         <ul>
+                                           <li>Name</li>
+                                           <li><input type="text" placeholder="Name" name="name" class="form-control" required></li>
+                                           <li>Email</li>
+                                           <li><input type="text" placeholder="Email Id" id="signupemail" name="email" class="form-control" required></li>
+                                           <li>Contact</li>
+                                           <li><input type="text" placeholder="Contact" id="signupcontact" name="contact" class="form-control" required></li>
+                                           <li>Password</li>
+                                           <li><input type="password" placeholder="Password" name="password" class="form-control" required></li>
+                                           <li>Confirm Password</li>
+                                           <li><input type="password" placeholder="Confirm Password" name="confirmpass" class="form-control" required></li>
+                                           <br> <li><button onclick="validateAndSignUp();"  type="button" name="userRegBtn" class="btn btn-default">Sign Up</button></li>
+                                           <div style="display:none;" class="sign greenglow">
+                                             <li>   <i class="icon-check"></i><br>
+                                               <font color="red">
+                                                 User registration successful.<br>
+                                               </font></li>
+                                             </div>
+                                             <div style="display:none;" id="regnSuc11" class="sign redglow">
+                                               <li>   <i class="icon-mail"></i><br>
+                                                 <font color="red">    Email Exist.</font></li>
+                                               </div>
+                                             </ul>
+                                             <!-- <input type="submit" value="Register Now"> -->
+                                           </form>                       
+                                        </div>
+                                    </div>
+
+                       <div class="clearfix"></div>
+                   </div>
+           </div>
+       </div>
+   </div>
+
+    <header id="site-header" class="site-header valign-center">
+        <div class="intro">
+            <a class="btn btn-learn-more" href="#modalEvent" data-toggle="modal" style="margin-top: 450px;text-transform: uppercase;">Events</a>
+        </div>
+    </header>
+    <!-- Modal HTML -->
+   <div id="modalEvent" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content" style="background-color:#FFF0D9;">
+               <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><center>
+                   <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Please Select Event Category</h4></center>
+               </div>
+            <div class="modal-body">
+               <div class="col-md-4">
+                 <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Sports</h3>
+                 <a href="/events/sports/"><img src="{% static 'assets/images/cat/sports.jpg' %}" class="img-responsive event-cat" alt="Sports Category"></a>
+               </div>
+               <div class="col-md-4">
+                 <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Cultural</h3>
+                 <a href="/events/cultural/"><img src="{% static 'assets/images/cat/cultural.jpg' %}" class="img-responsive event-cat" alt="Cultural Category"></a>
+               </div>
+               <div class="col-md-4">
+                 <h3 lass="modal-title" style="text-align:center; font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Technical</h3>
+                 <a href="/events/technical/"><img src="{% static 'assets/images/cat/technical.jpg' %}" class="img-responsive event-cat" alt="Cultural Category"></a>
+               </div>
+                <div class="clearfix"></div>
+            </div>
+           </div>
+       </div>
+   </div>
+
+    <section id="about" class="section about">
+        <div class="container">
+        <div class="headingimg slideanim">
+        <img class="img-responsive ribbon" src="{% static 'assets/images/aboutheading.svg' %}">
+        <h3 class="text-center ribbonheading">About</h3>
+        </div>
+        <br>
+            <div class="row slideanim">
+                <div class="col-sm-4">
+                  <img alt="" class="img-responsive" id="aboutimg" width="auto" src="{% static 'assets/images/about.png' %}">
+                </div><!-- /.col-sm-6 -->
+
+                <div class="col-sm-7 col-sm-offset-1">
+
+                    <h2>About Breeze</h2>
+
+                    <p>Breeze is the annual techno-cultural & sports fest of Shiv Nadar University with events ranging from a myriad of genres that
+                    include music, art, photography, dance, dramatics, quizzing and literary events. The fest is an all-encompassing hub of cultural,
+                    technical and sports events that bring together youth from various colleges and universities. Breeze has been a huge success
+                    year after year with a cumulative footfall of more than 17,000 people from over 80+ colleges across the country.
+                        <br>
+                        <br>We’ve had the pleasure of hosting a plethora of star performers - DJ Anish Sood , Javed Ali and Raghuram in 2014; Neha Kakkar
+                        and Band Astitva perform in 2015 and Kanan Gill, Zaeden, Hriday Gattani, Paradigm Shift and DJ Sin in 2016. Breeze has also
+                        successfully managed to offer an endless list of real time takeaways in sports, cultural and technical arenas for the participants.
+                        <br>
+                        <br>Breeze 2018 is geared to be bigger, better and much grander than any of its previous editions. With ‘A Trip to the 90s’ as
+                        our chosen theme, we are bringing three day treat filled with frolic to capture the mood of a weekend getaway to THE decade
+                        that was.
+                    </p>
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+            <!-- <div class="text-center slideanim">
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase; margin-top: 30px; margin-bottom: 30px;">Learn More</a>
+            </div> -->
+        </div><!-- /.container -->
+    </section>
+
+    <section id="past" class="section bg-image-1 facts text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-aftermovie">
+                    <h3 class="aftermovie-title">Breeze'16</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/SNeeRbHCaXs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+    
+                <div class="col-sm-6 col-aftermovie">
+                    <h3 class="aftermovie-title">Breeze'15</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zsHv5E0SpZU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+    </section>
+
+    <section style="background-color:black;">
+        <div class="container">
+            <img class="img-responsive" src="{% static 'assets/images/thelocaltrain.jpg' %}" style="display: block; margin-left:auto; margin-right:auto;">
+        </div>
+    </section>
+
+    <section id="performers" class="section" style="background-color: #A0E19F;">
+        <div class="container">
+            <div class="headingimg slideanim">
+                <img class="img-responsive ribbon" id="galleryimg" src="{% static 'assets/images/galleryimg.svg' %}">
+                <h3 class="text-center ribbonheading">Previous Artists</h3>
+                <h5 class="text-center" style="margin-top: 30px;">Artists in Pervious Editions of Breeze.</h5>
+            </div>
+            <br>
+            <br>
+            <div class="row slideanim">
+                <div id="myCarousel" class="slide" data-ride="carousel">
+                    <!-- <ol class="carousel-indicators my-slider">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol> -->
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" style="height: auto;">
+                        <div class="item active">
+                            <img alt="" class="img-responsive center-block" src="{% static 'assets/images/performers/1.jpg' %}">
+                        </div>
+    
+                        <div class="item">
+                            <img alt="" class="img-responsive center-block" src="{% static 'assets/images/performers/2.jpg' %}">
+                        </div>
+    
+                        <div class="item">
+                            <img alt="" class="img-responsive center-block" src="{% static 'assets/images/performers/3.jpg' %}">
+                        </div>
+    
+                        <div class="item">
+                            <img alt="" class="img-responsive center-block" src="{% static 'assets/images/performers/4.jpg' %}">
+                        </div>
+                    </div>
+    
+                    <!-- Left and right controls -->
+                    <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section" style="background-color: #A0E19F;">
+    <div class="container">
+<div class="headingimg slideanim">
+        <img class="img-responsive ribbon" id="galleryimg" src="{% static 'assets/images/galleryimg.svg' %}">
+        <h3 class="text-center ribbonheading">Gallery</h3>
+        </div>
+<br><br>
+        <div class="row slideanim">
+              <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators my-slider">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    <li data-target="#myCarousel" data-slide-to="5"></li>
+                    <li data-target="#myCarousel" data-slide-to="6"></li>
+                    <li data-target="#myCarousel" data-slide-to="7"></li>
+                    <li data-target="#myCarousel" data-slide-to="8"></li>
+                    <li data-target="#myCarousel" data-slide-to="9"></li>
+                    <li data-target="#myCarousel" data-slide-to="10"></li>
+                    <li data-target="#myCarousel" data-slide-to="11"></li>
+                    <li data-target="#myCarousel" data-slide-to="12"></li>
+                  </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner"  style="width: auto;height: 500px;">
+                  <div class="item active">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-8.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-12.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-9.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-10.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-13.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-11.jpg' %}">
+                  </div>
+                  
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-4.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-6.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-7.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-1.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-3.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-2.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-5.jpg' %}">
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel-2" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel-2" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+    </div>
+    </section>
+
+    <section id="brochure" class="section bg-image-1 contribution">
+        <div class="container slideanim">
+            <div class="row">
+                <div class="col-md-6" style="border-right: 1px solid white; height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Accommodations</h3>
+
+                    <p>Enjoy all three days in the campus.</p>
+            <a class="btn btn-learn-more" href="/accommodation/" style="text-transform: uppercase;">Learn More</a>
+
+                </div>
+                <!-- <div class="col-md-4" style="border-right: 1px solid white;height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Hospitality</h3>
+
+                    <p>Hospitality</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">Hospitality</a> -->
+                <div class="col-md-6" style="height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Transportation</h3>
+
+                    <p>Enjoy the fest, with Free Transportation Service.</p>
+            <a class="btn btn-learn-more" href="/transport/" style="text-transform: uppercase;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="section location">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 text-center">
+                    <h3 class="location-section-title">Event Location</h3>
+                    <address>
+                        <p>Shiv Nadar University
+                            <br> NH91, Tehsil Dadri
+                            <br> Gautam Buddha Nagar
+                            <br> Greater Noida, Uttar Pradesh 201314
+                    </address>
+                </div>
+                <div class="col-sm-9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1752.7575377794187!2d77.57285340813102!3d28.524233995615173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb4eaaaaaaab%3A0x321412756718874c!2sShiv+Nadar+University!5e0!3m2!1sen!2sin!4v1507474422350"
+                        width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

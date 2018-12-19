@@ -1,0 +1,411 @@
+@font-face {
+    font-family: "Graphique";
+    src: url(graphique.otf);
+}
+
+@font-face {
+    font-family: "Montserrat Light";
+    src: url(Montserrat-Light.otf);
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url(Montserrat-Regular.otf);
+}
+
+label,legend{
+  font-family:'Montserrat';
+  font-weight:bold;
+}
+
+input[type=text],input[type=password]{
+  height: auto !important;
+  border-radius: 5px !important;
+  padding: auto !important;
+  -webkit-transition:all 0.3s ease;
+}
+
+input::-webkit-input-placeholder{
+  font-size: 14px !important;
+  font-family: "Montserrat Light"
+}
+
+input[type=text]:focus{
+  background-color: white;
+  border:1px solid #E46E24 !important;
+}
+
+input[type=password]:focus{
+  background-color: white;
+  border:1px solid #E46E24;
+}
+
+.modal-title{
+  font-family: "Montserrat Light" !important;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+
+.section-title {
+  color: #313131;
+  letter-spacing: 1px;
+  margin: 0 0 20px;
+  font-family: "Graphique";
+  color: white;
+  font-weight: 100;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.location-section-title {
+  color: #313131;
+  letter-spacing: 1px;
+  margin: 0 0 60px;
+  font-family: "Graphique";
+  font-weight: 100;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btn {
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 25px;
+  color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: #E46E24;
+  box-shadow: 0px 7px 0px #BE5B1D;
+  font-weight: normal;
+  -webkit-transition:all 0.4s ease;
+}
+
+.btn:hover{
+  color: white;
+  background-color: #E46E24;
+  transform: translateY(4px);
+  box-shadow: 0px 4px 0px #BE5B1D;
+}
+
+.btn:active,.btn:visited {
+    color: white;
+}
+
+.btn-login{
+  background-color: #E46E24;
+  padding: 10px 10px !important;
+}
+
+.btn-login:hover{
+  background-color: #E46E24 !important;
+}
+
+.btn-login:active{
+  background-color: #E46E24 !important;
+}
+
+.btn-login:visited{
+  background-color: #E46E24 !important;
+}
+
+.col-aftermovie {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.aftermovie-title {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.ribbon{
+  margin:auto; 
+  width: 40%; 
+  margin-top: -50px;
+}
+
+.ribbonheading{
+  margin-top: -85px;
+  font-size: 50px;
+  color: #313131;
+  font-family: "Graphique";
+  color: white;
+  font-weight: 100;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.speaker{
+  background-color: #F3E4C7;
+  padding: 10px;
+}
+
+.speaker h4{
+  font-family: "Montserrat Light";
+  font-weight: lighter;
+}
+
+.headingimg{
+  margin-bottom: 50px;
+}
+
+#performers h3{
+  margin-top: -85px;
+}
+
+#perfribbon{
+  width: 55%;
+}
+
+#contact-us h3{
+  font-size: 45px;
+  margin-top: -90px;
+}
+
+#gallery h3{
+  margin-top: -90px;
+}
+
+h2{
+  font-family: "Montserrat"
+}
+
+p{
+  font-family: "Montserrat Light";
+}
+
+@media only screen and (max-device-width: 768px) {
+      .ribbon{
+  margin:auto; 
+  width: 45%; 
+  margin-top: -50px;
+}
+
+.ribbonheading{
+  margin-top: -60px;
+  font-size: 35px;
+}
+
+.headingimg{
+  margin-bottom: 50px;
+   }
+
+   #performers h3{
+  margin-top: -60px;
+}
+
+#perfribbon{
+  width: 60%;
+}
+
+#gallery h3{
+  margin-top: -65px;
+}
+
+#contact-us h3{
+  font-size: 43px;
+  margin-top: -90px;
+}
+
+#contactimg{
+  width: 60%;
+}
+    }
+
+@media only screen and (max-device-width: 425px) {
+      .ribbon{
+  margin:auto; 
+  width: 80%; 
+  margin-top: -20px;
+}
+
+#about p{
+  width: 90%;
+  margin: auto;
+  font-size: 14px;
+}
+
+#about h2{
+  text-align: center;
+  font-size: 25px;
+}
+
+#aboutimg{
+  margin: auto;
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.ribbonheading{
+  margin-top: -60px;
+  font-size: 35px;
+}
+
+.headingimg{
+  margin-bottom: 50px;
+   }
+
+   #performers h3{
+    font-size: 30px;
+  margin-top: -55px;
+}
+
+#perfribbon{
+  width: 100%;
+}
+
+#perfribbon2 {
+  width: 125%;
+}
+
+#gallery h3{
+  margin-top: -60px;
+}
+
+#galleryimg{
+  width: 70%;
+}
+
+#contact-us h3{
+  font-size: 35px;
+  margin-top: -70px;
+}
+
+#contactimg{
+  width: 90%;
+}
+    }
+
+
+@media only screen and (max-device-width: 375px) {
+      .ribbon{
+  margin:auto; 
+  width: 80%; 
+  margin-top: -50px;
+}
+
+.ribbonheading{
+  margin-top: -53px;
+  font-size: 30px;
+}
+
+.headingimg{
+  margin-bottom: 50px;
+   }
+
+   #performers h3{
+  margin-top: -50px;
+}
+
+#perfribbon{
+  width: 100%;
+}
+
+#gallery h3{
+  margin-top: -50px;
+}
+#galleryimg{
+  width: 70%;
+}
+
+#contact-us h3{
+  font-size: 35px;
+  margin-top: -70px;
+}
+
+#contactimg{
+  width: 100%;
+}
+    }    
+
+
+
+.slideanim {visibility:hidden;}
+.slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(70%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }
+}
+
+.preloader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*change these sizes to fit into your project*/
+  width: 100px;
+  height: 100px;
+  z-index: 99999;
+}
+
+.preloader hr {
+  border: 0;
+  margin: 0;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  border-radius: 50%;
+  animation: spin 2s ease infinite
+}
+
+.preloader :first-child {
+  background: #19A68C;
+  animation-delay: -1.5s
+}
+
+.preloader :nth-child(2) {
+  background: #F63D3A;
+  animation-delay: -1s
+}
+
+.preloader :nth-child(3) {
+  background: #FDA543;
+  animation-delay: -0.5s
+}
+
+.preloader :last-child {
+  background: #193B48
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    transform: translate(0)
+  }
+  25% {
+    transform: translate(160%)
+  }
+  50% {
+    transform: translate(160%, 160%)
+  }
+  75% {
+    transform: translate(0, 160%)
+  }
+}
