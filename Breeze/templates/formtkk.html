@@ -11,6 +11,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>Breeze'19</title>
+    {% load static %}
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -20,26 +21,26 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base2.css">
-    <link rel="stylesheet" href="css/vendor2.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
     <!-- ---- Include the above in your HEAD tag ---------->
 
-<script src="js/jquery-3.2.1.min.js"></script>
+<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
 
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
-    <script src="index.js"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style media="screen">
     @font-face {
         font-family: AR;
@@ -187,9 +188,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript">
 
     $('#carouselExample').on('slide.bs.carousel', function (e) {
