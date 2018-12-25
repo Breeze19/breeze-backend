@@ -1,40 +1,6 @@
-<!DOCTYPE html>
-<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+{% extends 'base1.html' %}
 
-<head>
-
-<!--- basic page needs
-    ================================================== -->
-<meta charset="utf-8">
-<title>Breeze'19</title>
-{% load static %}
-<meta name="description" content="">
-<meta name="author" content="">
-
-<!-- mobile specific metas
-    ================================================== -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- CSS
-    ================================================== -->
-<link rel="stylesheet" href="{% static 'assets/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/vendor.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/events.css' %}">
-
-<!-- script
-    ================================================== -->
-    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'assets/js/modernizr.js' %}"></script>
-<script src="{% static 'assets/js/pace.min.js' %}"></script>
-
-<!-- favicons
-    ================================================== -->
-<link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
+{% block extra %}
 <style media="screen">
 @font-face {
     font-family: AR;
@@ -53,11 +19,9 @@
     src: url(ProximaNova-Bold.ttf);
 }
 </style>
+{% endblock %}
 
-</head>
-
-<body id="top">
-
+{% block content %}
 <!-- header
     ================================================== -->
 <header class="s-header">
@@ -468,10 +432,4 @@
     </div>
   </div>
 </div>
-
-<!-- Java Script
-    ================================================== -->
-<script src="{% static 'assets/js/plugins.js' %}"></script>
-<script src="{% static 'assets/js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}

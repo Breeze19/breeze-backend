@@ -1,46 +1,6 @@
-<!DOCTYPE html>
-<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+{% extends 'base1.html' %}
 
-<head>
-
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Breeze'19</title>
-    {% load static %}
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
-    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
-    <!-- ---- Include the above in your HEAD tag ---------->
-
-<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-
-
-    <!-- script
-    ================================================== -->
-    <script src="{% static 'assets/js/modernizr.js' %}"></script>
-    <script src="{% static 'assets/js/pace.min.js' %}"></script>
-    <script src="{% static 'assets/js/index.js' %}"></script>
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
+{% block extra %}
     <style media="screen">
     @font-face {
         font-family: AR;
@@ -59,11 +19,8 @@
         src: url(ProximaNova-Bold.ttf);
     }
     </style>
-
-</head>
-
-<body id="top">
-
+{% endblock %}
+{% block content %}
     <!-- header
     ================================================== -->
     <header class="s-header">
@@ -185,55 +142,4 @@
       </div>
     </div>
 
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugins.js' %}"></script>
-    <script src="{% static 'assets/js/main.js' %}"></script>
-    <script type="text/javascript">
-
-    $('#carouselExample').on('slide.bs.carousel', function (e) {
-
-
-        var $e = $(e.relatedTarget);
-        var idx = $e.index();
-        var itemsPerSlide = 3;
-        var totalItems = $('.carousel-item').length;
-
-        if (idx >= totalItems-(itemsPerSlide-1)) {
-            var it = itemsPerSlide - (totalItems - idx);
-            for (var i=0; i<it; i++) {
-                // append slides to end
-                if (e.direction=="left") {
-                    $('.carousel-item').eq(i).appendTo('.carousel-inner');
-                }
-                else {
-                    $('.carousel-item').eq(0).appendTo('.carousel-inner');
-                }
-            }
-        }
-    });
-
-
-
-
-
-      $(document).ready(function() {
-    /* show lightbox when clicking a thumbnail */
-        $('a.thumb').click(function(event){
-          event.preventDefault();
-          var content = $('.modal-body');
-          content.empty();
-            var title = $(this).attr("title");
-            $('.modal-title').html(title);
-            content.html($(this).html());
-            $(".modal-profile").modal({show:true});
-        });
-
-      });
-    </script>
-
-</body>
-
-</html>
+{% endblock %}
