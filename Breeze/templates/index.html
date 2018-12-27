@@ -11,6 +11,7 @@
     ================================================== -->
 <meta charset="utf-8">
 <title>Breeze'19</title>
+{% load static %}
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -20,36 +21,36 @@
 
 <!-- CSS
     ================================================== -->
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/vendor.css">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/events.css">
+<link rel="stylesheet" href="{% static 'assets/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/vendor.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/events.css' %}">
 
 <!-- script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/pace.min.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'assets/js/modernizr.js' %}"></script>
+<script src="{% static 'assets/js/pace.min.js' %}"></script>
 
 <!-- favicons
     ================================================== -->
-<link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+<link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
 <style media="screen">
 @font-face {
     font-family: AR;
-    src: url(Atami-Regular.otf);
+    src: url(../static/assets/fonts/Atami-Regular.otf);
 }
 @font-face {
     font-family: ADR;
-    src: url(Atami-Display-Regular.otf);
+    src: url(../static/assets/fonts/Atami-Display-Regular.otf);
 }
 @font-face {
     font-family: PN;
-    src: url(ProximaNova-Regular.ttf);
+    src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
 }
 @font-face {
     font-family: PNB;
-    src: url(ProximaNova-Bold.ttf);
+    src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
 }
 </style>
 
@@ -60,7 +61,7 @@
 <!-- header
     ================================================== -->
 <header class="s-header">
-  <div class="header-logo"> <a class="site-logo" href="index.html"> <img src="images/breeze/WhiteLogo-02.png" style="margin-top:5%;"alt="Homepage"> </a> </div>
+  <div class="header-logo"> <a class="site-logo" href="index.html"> <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" style="margin-top:5%;"alt="Homepage"> </a> </div>
   <nav class="header-nav"> <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
     <div class="header-nav__content">
       <h3 style="font-family:ADR">Navigation</h3>
@@ -99,7 +100,7 @@
 
 <!-- home
     ================================================== -->
-<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/breeze/bkgrd.jpeg" data-natural-width="3000" data-natural-height="2000" data-position-y="center">
+<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{% static 'assets/images/breeze/bkgrd.jpeg' %}" data-natural-width="3000" data-natural-height="2000" data-position-y="center">
   <div class="overlay"></div>
   <div class="shadow-overlay"></div>
   <div class="home-content">
@@ -159,7 +160,7 @@
   <div class="row about-desc" data-aos="fade-up">
     <div class="col-full" id="face-img">
       <div class="container">
-        <img src="images/breeze/1.png" style="width:1000%;">
+        <img src="{% static 'assets/images/breeze/1.png' %}" style="width:1000%;">
         <div class="centered"><p style="text-align: center;font-family:PN"> It's Breeze Time!
           Shiv Nadar University's 3 day sports - techno - cultural event that's amassed more than 25000 people, more than a hundred colleges, and a reach of a whopping 50000 on Social Media is back - Breeze'19 promises to be bigger and better in every way! We've got events organised by over 40 clubs, ranging from literary to technical, dance to programming, debating to cooking, just to mention a few. The Breeze Hall of Fame is adorned with outstanding artist lineups that includes Biswa Kalyan Rath, Kanan Gill,The Local Train etc with the promise of many more great artists to come. We look forward to welcoming you at Shiv Nadar University for our Annual Fest, where we give you the chance to do it all. </p><br><br></div>
       </div>
@@ -216,7 +217,7 @@
   <div class="row about-desc bti" data-aos="fade-up">
     <div class="col-full" id="face-img">
       <div class="container bti-container">
-        <img src="images/breeze/2.png" style="width:200%;">
+        <img src="{% static 'assets/images/breeze/2.png' %}" style="width:200%;">
         <div class="centered bti-centered"><p style="text-align: justify;font-family:PN"> With Breeze'19 the hype is real. We will bring you experiences that'll make your heart fly as fast as Nyan cat. You won't get enough of our Kikis and Jhonnies, you'll be drawn to our fest like moth(s) (memes) to a flame. This year we will have bigger events, better stalls and more poeple than most SoundCloud rappers have plays. The internet has been here a long time, each generation of users have experienced and continue to experience it in different ways, it is the complexity of the internet that makes it such a wonderful resource, that it has integrated into our daily lives. This year there will be something for everyone from gaming to BuzzFeed, your most loved Vines (RIP) and even Tumblr. There's no need to ask Kowalski for an analysis, just come to Breeze.</p></div>
       </div>
     </div>
@@ -333,14 +334,14 @@
   <div class="row footer-main ">
     <div class="contactus">
       <div style="width:100px;" class="card" >
-		  <img style="width:100px;height: 100px;" class="card-img-top" src="images/core/DSC_0859.JPG" alt="Card image">
+		  <img style="width:100px;height: 100px;" class="card-img-top" src="{% static 'assets/images/core/DSC_0859.JPG' %}" alt="Card image">
         <div class="card-body">
 			<p class="yellow_names"><b><span style="font-family:PN">Chairperson</span></b></p>
           <p style="font-family:PN">Nandini Kaushik <br><a href="tel:9599810757">(9599810757)</a></p>
           </div>
       </div>
 		<div style="width:100px;" class="card" >
-  <img style="width:100px;height: 100px;" class="card-img-top" src="images/core/DSC_0713.JPG" alt="Card image">
+  <img style="width:100px;height: 100px;" class="card-img-top" src="{% static 'assets/images/core/DSC_0713.JPG' %}" alt="Card image">
   <div class="card-body">
      <p class="yellow_names" style="font-family:PN"><b><span style="font-family:PN">Co-Chairperson</span></b><br></p>
     <p style="font-family:PN">Isha Tiwari <br> <a href="tel:9527062756">(9527062756)</a></p>
@@ -348,7 +349,7 @@
   </div>
 </div>
 		<div style="width:100px;" class="card" >
-  <img style="width:100px;height: 100px;" class="card-img-top" src="images/core/5ab00158-6d57-4336-98a1-ee99a23eea20.jpg" alt="Card image">
+  <img style="width:100px;height: 100px;" class="card-img-top" src="{% static 'assets/images/core/5ab00158-6d57-4336-98a1-ee99a23eea20.jpg' %}" alt="Card image">
   <div class="card-body">
      <p class="yellow_names" style="font-family:PN"><b><span style="font-family:PN">Public Relations</span></b><br></p>
     <p style="font-family:PN"><span style="font-family:PN">Vignesh Sridhar </span><br> <a href="tel:9677030542">(9677030542)</a></p>
@@ -356,7 +357,7 @@
   </div>
 </div>
 		<div style="width:110px;" class="card" >
-  <img style="width:100px;height: 100px;" class="card-img-top" src="images/core/DSC_0748.JPG" alt="Card image">
+  <img style="width:100px;height: 100px;" class="card-img-top" src="{% static 'assets/images/core/DSC_0748.JPG' %}" alt="Card image">
   <div class="card-body">
   <p class="yellow_names" style="font-family:PN"><b><span style="font-family:PN">Partnerships</span></b><br></p>
     <p style="font-family:PN"><span style="font-family:PN">Anirudh Madhusudhanan</span><br><a href="tel:8130777904">(8130777904)</a></p>
@@ -458,7 +459,7 @@
 <div id="preloader">
   <div id="loader">
     <div class="line-scale-pulse-out">
-      <img src="images/breeze/cat.gif" id="cat" alt="">
+      <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat" alt="">
       <!--<div></div>
       <div></div>
       <div></div>
@@ -470,7 +471,7 @@
 
 <!-- Java Script
     ================================================== -->
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 </html>

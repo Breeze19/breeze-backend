@@ -22,4 +22,3 @@ urlpatterns = [
     url(r'', include('Breeze.urls')),
     # url(r'', include('registration.backends.default.urls')),
 ]
-urlpatterns += staticfiles_urlpatterns()
