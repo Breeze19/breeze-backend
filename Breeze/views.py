@@ -14,6 +14,9 @@ import random, string
 def home(request):
     return render(request, 'index.html')
 
+def get_events(request):
+    return render(request, 'events.html')
+
 def clubdashboard(request):
     if request.method == 'GET':
         events = Event.objects.all()
@@ -67,11 +70,11 @@ def profile(request):
             return HttpResponseRedirect('/#authreq2')
 
 def technical(request):
-    return render(request, 'events/technical.html')
+    return render(request, 'eventstech.html')
 
 
 def cultural(request):
-    return render(request, 'events/cultural.html')
+    return render(request, 'eventscul.html')
 
 
 def sports(request):

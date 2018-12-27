@@ -4,13 +4,14 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^events/$',views.get_events,name='register'),
+    url(r'^events/technical/$',views.technical, name='technical'),
+    url(r'^events/cultural/$',views.cultural, name='cultural'),
     url(r'^partners/$', views.partners, name='partners'),
     url(r'^team/$', views.team, name='team'),
     url(r'^transport/$', views.transport, name='transport'),
     url(r'^accommodation/$', views.accomodation, name='accomodation'),
-    url(r'^events/technical/$',views.technical, name='technical'),
     url(r'^events/sports/$',views.sports, name='sports'),
-    url(r'^events/cultural/$',views.cultural, name='cultural'),
     url(r'^events/register/$',views.event_register, name='event_register'),
     url(r'^accommodation/register/$', views.accom_register, name='accom_register'),
     url(r'^events/register2/$',views.event_register2, name='event_register2'),

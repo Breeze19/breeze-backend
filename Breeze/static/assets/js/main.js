@@ -5,7 +5,7 @@
 
  $(document).ready(function(){
    $("#register").on('click',function(){
-     window.location='events.html'
+     window.location='/events/'
    });
  });
 
