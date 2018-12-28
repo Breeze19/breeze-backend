@@ -288,13 +288,11 @@ def register(request):
         password =request.POST['password']
         confirm = request.POST['confirmpass']
         contact = request.POST['contact']
-        #print("Username and password and confirmpassword is as follows:- ", username,password,confirm,"\n\n\n\n")
         if(password==confirm):
-            subject = "Welcome to Breeze'18"
-            message = "Welcome to Breeze 18 by SNU. "
+            subject = "Welcome to Breeze'19"
+            message = "Welcome to Breeze 19 by SNU. "
             from_email = settings.EMAIL_HOST_USER
             to_list = [email]
-            #print(os.getcwd())
             html_message = loader.render_to_string(
                 os.getcwd()+'/Breeze/templates/mails/SigningupMail.html',
                 {
@@ -307,13 +305,13 @@ def register(request):
             )
             if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
                 User.objects.create_user(username, email, password)
-                x=User.objects.last()
+                x = User.objects.last()
                 Profile_obj = Profile.objects.create(user=x, name=name, contact=contact)
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 #print("User created Successfully")
                 try:
-                    send_mail(subject, message, "Breeze'18 "+from_email, to_list, fail_silently=False, html_message=html_message)
+                    send_mail(subject, message, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
                 except Exception as e:
                     print("Mail not sent")
                     print (e.message, e.args)
