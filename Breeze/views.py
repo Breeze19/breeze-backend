@@ -18,20 +18,18 @@ def get_events(request):
     return render(request, 'events.html')
     
 def technical(request):
-    return render(request, 'eventsdetailtech.html')
+    return render(request, 'eventstechcat.html')
 
 def cultural(request):
-    return render(request, 'eventsdetailcul.html')
+    return render(request, 'eventsculcat.html')
 
 def sports(request):
     return render(request, 'events/sports.html')
     
 def specificEventView(request,category,subcategory):
-    #return all events listed under a category and subcategory
-    #see "sample.html" for usage
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
     context  = {'events': events, 'subcategory': subcategory}
-    return render(request, 'events/specific_event.html', context=context)
+    return render(request, 'eventsculsubcat.html', context=context)
 
 def clubdashboard(request):
     if request.method == 'GET':
