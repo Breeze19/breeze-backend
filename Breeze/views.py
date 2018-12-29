@@ -18,13 +18,20 @@ def get_events(request):
     return render(request, 'events.html')
     
 def technical(request):
-    return render(request, 'eventstech.html')
+    return render(request, 'eventsdetailtech.html')
 
 def cultural(request):
-    return render(request, 'eventscul.html')
+    return render(request, 'eventsdetailcul.html')
 
 def sports(request):
     return render(request, 'events/sports.html')
+    
+def specificEventView(request,category,subcategory):
+    #return all events listed under a category and subcategory
+    #see "sample.html" for usage
+    events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
+    context  = {'events': events, 'subcategory': subcategory}
+    return render(request, 'events/specific_event.html', context=context)
 
 def clubdashboard(request):
     if request.method == 'GET':
@@ -57,13 +64,6 @@ def updateremarks(request):
         reg.remarks = remarks
         reg.save()
         return HttpResponseRedirect('/clubdashboard')
-
-def specificEventView(request, category, subcategory):
-    #return all events listed under a category and subcategory
-    #see "sample.html" for usage
-    events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
-    context  = {'events': events, 'subcategory': subcategory}
-    return render(request, 'events/specific_event.html', context=context)
 
 def partners(request):
     return render(request, 'help/partners.html')
