@@ -16,6 +16,15 @@ def home(request):
 
 def get_events(request):
     return render(request, 'events.html')
+    
+def technical(request):
+    return render(request, 'eventstech.html')
+
+def cultural(request):
+    return render(request, 'eventscul.html')
+
+def sports(request):
+    return render(request, 'events/sports.html')
 
 def clubdashboard(request):
     if request.method == 'GET':
@@ -68,17 +77,6 @@ def profile(request):
             return render(request,'user.html',context=context)
         else:
             return HttpResponseRedirect('/#authreq2')
-
-def technical(request):
-    return render(request, 'eventstech.html')
-
-
-def cultural(request):
-    return render(request, 'eventscul.html')
-
-
-def sports(request):
-    return render(request, 'events/sports.html')
 
 def accomodation(request):
     return render(request, 'help/accomodation.html')
