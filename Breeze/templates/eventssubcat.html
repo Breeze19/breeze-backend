@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'assets/js/email.js' %}"></script>
+    <script src="{% static 'assets/js/eventscul.js' %}"></script>
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <!-- ---- Include the above in your HEAD tag ---------->
@@ -124,26 +124,26 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card" style="border:1px solid #fafafa; margin:5% 10%;">
-            <h5 class="card-header text-center" style="background-color:#fafafa;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">Technical</h5>
+        <div class="col-md-2">
+          <div class="card" style="border:1px solid #e25c7f; margin:5% 10%;">
+            <h5 class="card-header text-center" style="background-color:#e25c7f;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">{{ events.0.subCategoryName }}</h5>
             <div class="card-body" style="padding-bottom: 5%;padding-top: 5%;">
-              <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Event details and registration will be live soon<br><br>Help us notify you : </p>
-              <h2 style="color:white;margin-left:-60%;font-family:AR;">Email:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <a id="submit" class="btn btn-primary" style="border:1px solid white;background-color:#111111;color:#fafafa;font-family:AR">Register</a>-->
-              <button class="btn btn-primary events-tech-list" onclick="btnClicked('rb&auto')" >Robotics & Automation</button>
-              <button class="btn btn-primary events-tech-list" onclick="btnClicked('bes&bui')" >Design & Build</button>
-              <button class="btn btn-primary events-tech-list" onclick="btnClicked('coding')" >Coding</button>
-              <button class="btn btn-primary events-tech-list" onclick="btnClicked('whizgam')" >Whiz Games</button>
+              <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Event details and registration will be live soon<br><br>Help us notify you :</p>-->
+              <!--<h2 style="color:white;margin-left:-60%;font-family:AR;">Email:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">-->
+              <!--<a id="submit" class="btn btn-primary" id="register-culter"style="border:1px solid white;background-color:#111111;color:#e25c7f;font-family:AR" >Submit</a>-->
+              {% if events|length == 0 %}
+              <center>
+                <h1>TBA</h1>
+              </center>
+              {% endif %}
+              {% for event in events %}
+              <button class="btn btn-primary events-cul-list" onclick="btnClicked('music')" >{{ event.name }}</button>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script>
-    function btnClicked(val){
-      window.location = '/events/technical/' + val
-    }
-    </script>
 
             </div> <!-- end col-full -->
         </div> <!-- end client-testimonials -->
@@ -158,7 +158,7 @@
     <div id="preloader">
       <div id="loader">
         <div class="line-scale-pulse-out">
-          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat" alt="">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat"alt="">
           <!--<div></div>
           <div></div>
           <div></div>

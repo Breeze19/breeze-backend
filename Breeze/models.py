@@ -31,6 +31,7 @@ class Event(models.Model):
     parentClub = models.CharField(max_length=50, help_text='eg Snuphoria,TEDx,')
     prize = models.DecimalField(help_text='Prize Money for the event',decimal_places=2, max_digits=8, null=True)
     fee = models.DecimalField(help_text='Registration fee for the event',decimal_places=2, max_digits=8, null=True)
+    fee_snu = models.DecimalField(help_text='Registration fee for the event(SNU Students)',decimal_places=2,max_digits=8,null=True)
     FEE_TYPE = (
         ('head', 'Per Head'),
         ('team', 'Per Team'),

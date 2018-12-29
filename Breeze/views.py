@@ -29,7 +29,7 @@ def sports(request):
 def specificEventView(request,category,subcategory):
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
     context  = {'events': events, 'subcategory': subcategory}
-    return render(request, 'eventsculsubcat.html', context=context)
+    return render(request, 'eventssubcat.html', context=context)
 
 def clubdashboard(request):
     if request.method == 'GET':
