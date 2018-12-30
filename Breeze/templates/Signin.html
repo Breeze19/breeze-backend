@@ -21,39 +21,38 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base2.css">
-    <link rel="stylesheet" href="css/vendor2.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="email.js"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <!-- ---- Include the above in your HEAD tag ---------->
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(Atami-Regular.otf);
+        src: url(../static/assets/fonts/Atami-Regular.otf);
     }
     @font-face {
         font-family: ADR;
-        src: url(Atami-Display-Regular.otf);
+        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
     }
     @font-face {
         font-family: PN;
-        src: url(ProximaNova-Regular.ttf);
+        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
     }
     @font-face {
         font-family: PNB;
-        src: url(ProximaNova-Bold.ttf);
+        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
     }
     </style>
 </head>
@@ -65,8 +64,8 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
-                <img src="images/breeze/WhiteLogo-02.png" alt="Homepage">
+            <a class="site-logo" href="/">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
             </a>
         </div>
 
@@ -78,10 +77,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
-                  <li ><a href="index.html" title="home" style="font-family:PN">Home</a></li>
-                  <li class="current"><a href="events.html" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li class="current"><a href="/signin/" title="works" style="font-family:PN">SignIn</a></li>
+                  <li><a href="/signup/" title="works" style="font-family:PN">SignUp</a></li>
+                  <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
+                  <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="gallery.html" title="works" style="font-family:PN">Gallery</a></li>
-                  <li class="current"><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
                 </ul>
 
                 <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
@@ -152,7 +153,7 @@
     <div id="preloader">
       <div id="loader">
         <div class="line-scale-pulse-out">
-          <img src="images/breeze/cat.gif" id="cat"alt="">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat"alt="">
           <!--<div></div>
           <div></div>
           <div></div>
@@ -165,9 +166,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript">
 
     $('#carouselExample').on('slide.bs.carousel', function (e) {
