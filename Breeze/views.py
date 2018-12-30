@@ -26,6 +26,9 @@ def cultural(request):
 def sports(request):
     return render(request, 'form.html')
     
+def gallery(request):
+    return render(request,'gallery.html')
+    
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
     if category == "technical":

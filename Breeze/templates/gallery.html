@@ -11,6 +11,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>Breeze'19</title>
+    {% load static %}
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -20,34 +21,34 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{% static 'assets/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(Atami-Regular.otf);
+        src: url(../static/assets/fonts/Atami-Regular.otf);
     }
     @font-face {
         font-family: ADR;
-        src: url(Atami-Display-Regular.otf);
+        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
     }
     @font-face {
         font-family: PN;
-        src: url(ProximaNova-Regular.ttf);
+        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
     }
     @font-face {
         font-family: PNB;
-        src: url(ProximaNova-Bold.ttf);
+        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
     }
     </style>
 
@@ -61,7 +62,7 @@
 
         <div class="header-logo">
             <a class="site-logo" href="index.html">
-                <img src="images/breeze/WhiteLogo-02.png" alt="Homepage">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
             </a>
         </div>
 
@@ -75,9 +76,9 @@
                 <ul class="header-nav__list">
                   <li><a href="/signin/" title="works" style="font-family:PN">SignIn</a></li>
                   <li><a href="/signup/" title="works" style="font-family:PN">SignUp</a></li>
-                    <li ><a href="index.html" title="home" style="font-family:PN">Home</a></li>
-                    <li><a href="events.html" title="clients" style="font-family:PN">Events & Registration</a></li>
-                    <li class="current"><a href="gallery.html" title="works" style="font-family:PN">Gallery</a></li>
+                    <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
+                    <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                    <li class="current"><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
                     <li><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
                 </ul>
 
@@ -135,9 +136,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/IMG_3184.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/IMG_3184.jpg"
-                                         srcset="images/breeze/IMG_3184.jpg 2x, images/breeze/IMG_3184.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/IMG_3184.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/IMG_3184.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/IMG_3184.jpg' %} 2x, {% static 'assets/images/breeze/IMG_3184.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -164,9 +165,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg"
-                                         srcset="images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg 2x, images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg' %} 2x, {% static 'assets/images/breeze/27747711_1588621324546980_6126557206134358954_o.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -193,9 +194,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg"
-                                         srcset="images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg 2x, images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg' %} 2x, {% static 'assets/images/breeze/27797920_1590197637722682_8529524780225609714_o.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -222,9 +223,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg"
-                                         srcset="images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg 2x, images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg' %} 2x, {% static 'assets/images/breeze/27912641_1588620854547027_2246391428295618393_o.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -251,9 +252,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/Event/IMG_8393.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/Event/IMG_8393.jpg"
-                                         srcset="images/breeze/Event/IMG_8393.jpg 2x, images/breeze/Event/IMG_8393.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/Event/IMG_8393.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/Event/IMG_8393.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/Event/IMG_8393.jpg' %} 2x, {% static 'assets/images/breeze/Event/IMG_8393.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -280,9 +281,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/Event/IMG_8370-2.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/Event/IMG_8370-2.jpg"
-                                         srcset="images/breeze/Event/IMG_8370-2.jpg 2x, images/breeze/Event/IMG_8370-2.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/Event/IMG_8370-2.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/Event/IMG_8370-2.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/Event/IMG_8370-2.jpg' %} 2x, {% static 'assets/images/breeze/Event/IMG_8370-2.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -309,9 +310,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/Event/IMG_8228.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/Event/IMG_8228.jpg"
-                                         srcset="images/breeze/Event/IMG_8228.jpg 2x, images/breeze/Event/IMG_8228.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/Event/IMG_8228.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/Event/IMG_8228.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/Event/IMG_8228.jpg' %} 2x, {% static 'assets/images/breeze/Event/IMG_8228.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -338,9 +339,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/Event/IMG_5838.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/Event/IMG_5838.jpg"
-                                         srcset="images/breeze/Event/IMG_5838.jpg 2x, images/breeze/Event/IMG_5838.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/Event/IMG_5838.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/Event/IMG_5838.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/Event/IMG_5838.jpg' %} 2x, {% static 'assets/images/breeze/Event/IMG_5838.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 
@@ -367,9 +368,9 @@
                         <div class="item-folio">
 
                             <div class="item-folio__thumb">
-                                <a href="images/breeze/Event/IMG_1050.jpg" class="thumb-link" data-size="1024x683">
-                                    <img src="images/breeze/Event/IMG_1050.jpg"
-                                         srcset="images/breeze/Event/IMG_1050.jpg 2x, images/breeze/Event/IMG_1050.jpg 2x" alt="">
+                                <a href="{% static 'assets/images/breeze/Event/IMG_1050.jpg' %}" class="thumb-link" data-size="1024x683">
+                                    <img src="{% static 'assets/images/breeze/Event/IMG_1050.jpg' %}"
+                                         srcset="{% static 'assets/images/breeze/Event/IMG_1050.jpg' %} 2x, {% static 'assets/images/breeze/Event/IMG_1050.jpg' %} 2x" alt="">
                                 </a>
                             </div>
 							</div>
@@ -714,7 +715,7 @@
     <div id="preloader">
       <div id="loader">
         <div class="line-scale-pulse-out">
-          <img src="images/breeze/cat.gif" id="cat" alt="">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat" alt="">
           <!--<div></div>
           <div></div>
           <div></div>
@@ -727,9 +728,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
 </body>
 

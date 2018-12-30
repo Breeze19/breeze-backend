@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^events/(?P<category>\w+)/(?P<subcategory>\w+)$',views.specificEventView, name='events'),
     url(r'^signin/', views.login1, name='login'),
     url(r'^signup/', views.register, name='register'),
+    url(r'^gallery/$', views.gallery,name='gallery'),
     url(r'^partners/$', views.partners, name='partners'),
     url(r'^team/$', views.team, name='team'),
     url(r'^transport/$', views.transport, name='transport'),
