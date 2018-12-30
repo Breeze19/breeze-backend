@@ -24,11 +24,12 @@ def cultural(request):
     return render(request, 'eventsculcat.html')
 
 def sports(request):
-    return render(request, 'events/sports.html')
+    return render(request, 'form.html')
     
 def specificEventView(request,category,subcategory):
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
     context  = {'events': events, 'subcategory': subcategory}
+    print(events[0].id)
     return render(request, 'eventssubcat.html', context=context)
 
 def clubdashboard(request):
