@@ -157,10 +157,10 @@
         if(response["message"] == "success"){
           var prev = '{{prev}}'
           if(prev.length == 0){
-            window.location.pathname = "/"
+            window.location.href = "/"
           }
           else{
-            window.location.pathname = prev
+            window.location.href = window.location.origin + prev
           }
         }
         else if(response["message"] == "#userExists"){
