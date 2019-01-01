@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^19/$', views.nineteen, name='nineteen'),
     url(r'^events/$',views.get_events,name='register'),
     url(r'^events/sports/$',views.sports, name='sports'),
     url(r'^events/technical/$',views.technical, name='technical'),
@@ -13,6 +14,7 @@ urlpatterns = [
     url(r'^signup/', views.register, name='register'),
     url(r'^login/$',views.login1,name='login'),
     url(r'^createaccount/$',views.createaccount,name='createaccount'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}),
     url(r'^gallery/$', views.gallery,name='gallery'),
     url(r'^sponsors/$',views.sponsors,name='gallery'),
     url(r'^partners/$', views.partners, name='partners'),
@@ -30,7 +32,5 @@ urlpatterns = [
     url(r'^clubdashboard/', views.clubdashboard, name='clubdashboard'),
     url(r'^updateremarks/', views.updateremarks, name='updateremarks'),
     url(r'^me/', views.profile, name='profile'),
-    url(r'^18/$', views.eighteen, name='eighteen'),
-    url(r'^18/Breeze_2018_Brochure.pdf/', views.pdf_redirect, name='pdf_redirect'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}),
+    url(r'^18/Breeze_2018_Brochure.pdf/', views.pdf_redirect, name='pdf_redirect')
 ]

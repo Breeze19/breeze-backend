@@ -14,6 +14,9 @@ import random, string
 
 def home(request):
     return render(request, 'index.html')
+    
+def nineteen(request):
+    return redirect('/')
 
 def get_events(request):
     return render(request, 'events.html')
@@ -175,9 +178,6 @@ def pronights(request):
 
 def team(request):
     return render(request, 'help/team.html')
-
-def eighteen(request):
-    return redirect('/')
 
 def pdf_redirect(request):
     return redirect('/static/Breeze_2018_Sponsorship_Brochure.pdf')
