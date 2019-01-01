@@ -41,19 +41,19 @@
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(../static/assets/fonts/Atami-Regular.otf);
+        src: url(../../static/assets/fonts/Atami-Regular.otf);
     }
     @font-face {
         font-family: ADR;
-        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
+        src: url(../../static/assets/fonts/Atami-Display-Regular.otf);
     }
     @font-face {
         font-family: PN;
-        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
+        src: url(../../static/assets/fonts/ProximaNova-Regular.ttf);
     }
     @font-face {
         font-family: PNB;
-        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
+        src: url(../../static/assets/fonts/ProximaNova-Bold.ttf);
     }
     </style>
 </head>
@@ -78,13 +78,20 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
-                  <li><a href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignIn</a></li>
-                  <li><a href="/signup/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignUp</a></li>
+                  <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignIn</a></li>
+                  <li><a id="signup" href="/signup/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignUp</a></li>
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
                   <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
                 </ul>
+                <script>
+                $(document).ready(function(){
+                  var prev = "?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                  $("#singin").attr("href","/signin/" + prev)
+                  $("#signup").attr("href","/signup/" + prev)
+                })
+                </script>
 
                 <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
 

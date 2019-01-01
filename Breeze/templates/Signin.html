@@ -144,7 +144,6 @@
     </div>
     <script>
     $("#submit").on('click', function() {
-      console.log(window.location)
       $.post('/login/',{
         'csrfmiddlewaretoken': '{{csrf_token}}',
         'username': $("#email").val(),
@@ -153,7 +152,7 @@
         var prev = '{{prev}}'
         if(response["message"] == "success"){
           if(prev.length == 0){
-            window.location.href = "/"
+            window.location.href = window.location.origin + "/"
           } 
           else{
             window.location.href = window.location.origin + prev

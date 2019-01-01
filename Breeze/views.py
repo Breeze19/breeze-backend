@@ -62,7 +62,7 @@ def login1(request):
 
 def signin(request):
     try:
-        val = requet.GET['prev']
+        val = request.GET['prev']
     except Exception as exception:
         val = ""    
     context = {'prev': val}
