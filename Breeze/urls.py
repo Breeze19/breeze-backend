@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^login/$',views.login1,name='login'),
     url(r'^createaccount/$',views.createaccount,name='createaccount'),
     url(r'^gallery/$', views.gallery,name='gallery'),
+    url(r'^sponsors/$',views.sponsors,name='gallery'),
     url(r'^partners/$', views.partners, name='partners'),
     url(r'^team/$', views.team, name='team'),
     url(r'^transport/$', views.transport, name='transport'),

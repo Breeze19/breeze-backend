@@ -30,12 +30,15 @@ def sports(request):
 def gallery(request):
     return render(request,'gallery.html')
     
+def sponsors(request):
+    return render(request,'sponsors.html')
+    
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
     if category == "technical":
         color = "#fafafa"
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
-    context  = {'events': events, 'subcategory': subcategory,"color": color}
+    context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category}
     print(events[0].id)
     return render(request, 'eventssubcat.html', context=context)
 
