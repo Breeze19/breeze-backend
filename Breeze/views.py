@@ -10,8 +10,6 @@ from django.template import loader
 import os
 import random, string
 
-# Create your views here.
-
 def home(request):
     return render(request, 'index.html')
     
@@ -45,6 +43,22 @@ def specificEventView(request,category,subcategory):
     print(events[0].id)
     return render(request, 'eventssubcat.html', context=context)
 
+def signin(request):
+    try:
+        val = request.GET['prev']
+    except Exception as exception:
+        val = ""    
+    context = {'prev': val}
+    return render(request,'Signin.html',context=context)
+    
+def register(request):
+    try:
+        val = requet.GET['prev']
+    except Exception as exception:
+        val = ""    
+    context = {'prev': val}
+    return render(request,'Signup.html',context=context)
+
 def login1(request):
     if request.method == 'POST':
          print(request.POST)
@@ -62,14 +76,6 @@ def login1(request):
          return JsonResponse({
          "message": "success"
          })
-
-def signin(request):
-    try:
-        val = request.GET['prev']
-    except Exception as exception:
-        val = ""    
-    context = {'prev': val}
-    return render(request,'Signin.html',context=context)
     
 def createaccount(request):
     if request.method == 'POST':
@@ -113,14 +119,6 @@ def createaccount(request):
         return JsonResponse({
         "message": "#invalidSignup"
         })         
-    
-def register(request):
-    try:
-        val = requet.GET['prev']
-    except Exception as exception:
-        val = ""    
-    context = {'prev': val}
-    return render(request,'Signup.html',context=context)
     
 def clubdashboard(request):
     if request.method == 'GET':

@@ -25,7 +25,6 @@ urlpatterns = [
     url(r'^accommodation/register/$', views.accom_register, name='accom_register'),
     url(r'^events/register2/$',views.event_register2, name='event_register2'),
     url(r'^accommodation/register2/$',views.accom_register2, name='accom_register2'),
-    url(r'^events/(?P<category>\w+)/$', views.specificEventView, name='specificView'),
     url(r'^pronights/', views.pronights, name='pronights'),
     url(r'^forgotPassMail/', views.forgotmail, name='forgotmail'),
     url(r'^forgotPassword/(?P<hashkey>\w+)', views.forgot, name='forgot'),
