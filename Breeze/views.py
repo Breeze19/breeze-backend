@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
@@ -13,6 +14,9 @@ import random, string
 
 def home(request):
     return render(request, 'index.html')
+    
+def nineteen(request):
+    return redirect('/')
 
 def get_events(request):
     return render(request, 'events.html')
@@ -29,89 +33,95 @@ def sports(request):
 def gallery(request):
     return render(request,'gallery.html')
     
+def sponsors(request):
+    return render(request,'sponsors.html')
+    
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
     if category == "technical":
         color = "#fafafa"
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
-    context  = {'events': events, 'subcategory': subcategory,"color": color}
+    context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category}
     print(events[0].id)
     return render(request, 'eventssubcat.html', context=context)
 
 def login1(request):
-    return render(request,'Signin.html')
-    #next = ""
-    #if request.GET:
-    #    next = request.GET['next']
+    if request.method == 'POST':
+         print(request.POST)
+         user = authenticate(username=request.POST['username'], password = request.POST['password'])
+         if not user or not user.is_active:
+                 return JsonResponse({
+                 "message": '#invalidUser'
+                 })
+         try:
+             login(request,user)
+         except Exception as exception:
+             return JsonResponse({
+             "message": '#couldNotLogin'
+             })
+         return JsonResponse({
+         "message": "success"
+         })
 
-    #if request.method=="POST":
-    #    user = authenticate(username=request.POST['username'], password = request.POST['password'])
-    #    if not user or not user.is_active:
-    #        return HttpResponseRedirect('/#invalidlogin')
-        
-        #print("user===",user)
-        #print(user.username)
-    #    print(request)
-    #    try:
-    #        login(request,user)
-    #    except Exception as e:
-    #        raise forms.ValidationError("Could Not Login")
-            # print (e.message, e.args)
-        #print(request.user.username)
-    #    return HttpResponseRedirect(next)
-
+def signin(request):
+    try:
+        val = request.GET['prev']
+    except Exception as exception:
+        val = ""    
+    context = {'prev': val}
+    return render(request,'Signin.html',context=context)
+    
+def createaccount(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email =  request.POST['email']
+        username = email
+        password =request.POST['password']
+        confirm = request.POST['confirmpass']
+        contact = request.POST['contact']
+        subject = "Welcome to Breeze'19"
+        message = "Welcome to Breeze 19 by SNU. "
+        #from_email = settings.EMAIL_HOST_USER
+        #to_list = [email]
+        #html_message = loader.render_to_string(
+        #os.getcwd()+'/Breeze/templates/mails/SigningupMail.html',
+        # {
+         #'name' : name,
+        # 'email' : email,
+         #'user_name': username,
+        # 'subject': 'Thank you for registering with us '+username+' \n You will now be recieving Notifications for howabouts at SNU in an all new Way. Goodbye to the spam mails. \n Thanks for registering. Have a nice day!!',
+        #'linkTosite': 'www.google.com',
+         #}
+         #)
+        if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
+             User.objects.create_user(username, email, password)
+             x = User.objects.last()
+             Profile_obj = Profile.objects.create(user=x, name=name, contact=contact)
+             user = authenticate(username=username, password=password)
+             login(request, user)
+              #try:
+              #     send_mail(subject, message, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
+              #     except Exception as e:
+             return JsonResponse({
+              "message": "success"
+             })
+        else:
+            return JsonResponse({
+            "message": "#userExists"
+            })
+    else:
+        return JsonResponse({
+        "message": "#invalidSignup"
+        })         
+    
 def register(request):
-    return render(request,'Signup.html')
-    # redirect_to = request.REQUEST.get('next')
-    # print(redirect_to)
-    #next = ""
-
-    #if request.GET:
-    #    next = request.GET['next']
-
-    #if request.method=="POST":
-    #    name = request.POST['name']
-    #    email =  request.POST['email']
-    #    username = email
-    #    password =request.POST['password']
-    #    confirm = request.POST['confirmpass']
-    #    contact = request.POST['contact']
-    #    if(password==confirm):
-    #        subject = "Welcome to Breeze'19"
-    #        message = "Welcome to Breeze 19 by SNU. "
-    #        from_email = settings.EMAIL_HOST_USER
-    #        to_list = [email]
-    #        html_message = loader.render_to_string(
-    #            os.getcwd()+'/Breeze/templates/mails/SigningupMail.html',
-    #            {
-    #                'name' : name,
-    #                'email' : email
-                    # 'user_name': username,
-                    # 'subject': 'Thank you for registering with us '+username+' \n You will now be recieving Notifications for howabouts at SNU in an all new Way. Goodbye to the spam mails. \n Thanks for registering. Have a nice day!!',
-                    # 'linkTosite': 'www.google.com',
-    #            }
-    #        )
-    #        if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
-    #            User.objects.create_user(username, email, password)
-    #            x = User.objects.last()
-    #            Profile_obj = Profile.objects.create(user=x, name=name, contact=contact)
-    #            user = authenticate(username=username, password=password)
-    #            login(request, user)
-                #print("User created Successfully")
-    #            try:
-    #                send_mail(subject, message, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
-    #            except Exception as e:
-    #                print("Mail not sent")
-    #                print (e.message, e.args)
-    #            return HttpResponseRedirect(next)
-    #        else:
-                #raise forms.ValidationError('Looks like a username with that email or password already exists')
-    #            return HttpResponseRedirect("/#userexists")
-    #    else:
-            #raise forms.ValidationError('Password not confirmed.')
-    #        return HttpResponseRedirect("/#invalidsignup")
-
-
+    try:
+        val = requet.GET['prev']
+    except Exception as exception:
+        val = ""    
+    context = {'prev': val}
+    return render(request,'Signup.html',context=context)
+    
 def clubdashboard(request):
     if request.method == 'GET':
         events = Event.objects.all()
@@ -168,9 +178,6 @@ def pronights(request):
 
 def team(request):
     return render(request, 'help/team.html')
-
-def eighteen(request):
-    return redirect('/')
 
 def pdf_redirect(request):
     return redirect('/static/Breeze_2018_Sponsorship_Brochure.pdf')

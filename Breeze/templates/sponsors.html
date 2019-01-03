@@ -11,6 +11,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>Breeze'19</title>
+    {% load static %}
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -20,34 +21,34 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{% static 'assets/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(Atami-Regular.otf);
+        src: url(../static/assets/fonts/Atami-Regular.otf);
     }
     @font-face {
         font-family: ADR;
-        src: url(Atami-Display-Regular.otf);
+        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
     }
     @font-face {
         font-family: PN;
-        src: url(ProximaNova-Regular.ttf);
+        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
     }
     @font-face {
         font-family: PNB;
-        src: url(ProximaNova-Bold.ttf);
+        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
     }
     </style>
 
@@ -60,8 +61,8 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
-                <img src="images/breeze/darklogo.png" alt="Homepage">
+            <a class="site-logo" href="/">
+                <img src="{% static 'assets/images/breeze/darklogo.png' %}" alt="Homepage">
             </a>
         </div>
 
@@ -73,10 +74,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
-                  <li ><a href="index.html" title="home" style="font-family:PN">Home</a></li>
-                  <li><a href="events.html" title="clients" style="font-family:PN">Events & Registration</a></li>
-                  <li ><a href="gallery.html" title="works" style="font-family:PN">Gallery</a></li>
-                  <li class="current"><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li><a href="/signin/?prev=/sponsors" title="works" style="font-family:PN">SignIn</a></li>
+                  <li><a href="/signup/?prev=/sponsors" title="works" style="font-family:PN">SignUp</a></li>
+                  <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
+                  <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
+                  <li class="/sponsors/"><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
                 </ul>
 
                 <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
@@ -138,36 +141,36 @@
         <div class="container-fluid">
             <div class="row justify-content-md-center">
                 <div class="col-md-2 text-center vcenter">
-                    <img  src="images/breeze/Sponsors/24f76ab6-9355-4091-9e35-6b18d1441a29.png" class="img-responsive " style="width:200px;">
+                    <img  src="{% static 'assets/images/breeze/Sponsors/24f76ab6-9355-4091-9e35-6b18d1441a29.png' %}" class="img-responsive " style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/1200px-Reliance_Jio_Logo_(October_2015).svg.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/1200px-Reliance_Jio_Logo_(October_2015).svg.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/Bank of baroda.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/Bank of baroda.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/bank-of-india.jpg" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/bank-of-india.jpg' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/Canara-banks new.gif" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/Canara-banks new.gif' %}" class="img-responsive" style="width:200px;">
                 </div>
             </div><br>
             <div class="row justify-content-md-center">
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/HDFC logo.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/HDFC logo.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/HORIZONTAL_yellow_BG.jpg" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/HORIZONTAL_yellow_BG.jpg' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/logoloading.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/logoloading.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/msgOriginalsvg.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/msgOriginalsvg.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/My SUN.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/My SUN.png' %}" class="img-responsive" style="width:200px;">
                 </div>
             </div>
             <div class="row justify-content-md-center">
@@ -175,13 +178,13 @@
                     <img src="" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/REGULAR.jpg" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/REGULAR.jpg' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/savartLogo.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/savartLogo.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
-                    <img src="images/breeze/Sponsors/PNB Logo.png" class="img-responsive" style="width:200px;">
+                    <img src="{% static 'assets/images/breeze/Sponsors/PNB Logo.png' %}" class="img-responsive" style="width:200px;">
                 </div>
                 <div class="col-md-2 text-center vcenter">
                     <img src="" class="img-responsive" style="width:200px;">
@@ -215,70 +218,70 @@
             <div class="container-fluid">
                 <div class="row justify-content-md-center">
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/24f76ab6-9355-4091-9e35-6b18d1441a29.png" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/24f76ab6-9355-4091-9e35-6b18d1441a29.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/91.1FM.png" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/91.1FM.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/1200px-Reliance_Jio_Logo_(October_2015).svg.png" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/1200px-Reliance_Jio_Logo_(October_2015).svg.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/ATKT-eng (3).png" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/ATKT-eng (3).png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/BME_LOGO_PROF(1).jpg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/BME_LOGO_PROF(1).jpg' %}" class="img-responsive" style="width:200px;">
                     </div>
                 </div><br>
                 <div class="row justify-content-md-center">
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/Canvas laugh club logo.jpg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/Canvas laugh club logo.jpg' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/CollegeDesk Logo (1).jpg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/CollegeDesk Logo (1).jpg' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/collegemedia.svg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/collegemedia.svg' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/dubeat.JPG" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/dubeat.JPG' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/DUExpress_logo.png" class="img-responsive" style="width:200px;">
-                    </div>
-                </div>
-                <div class="row justify-content-md-center">
-                    <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/festPav Logo_HD.png" class="img-responsive" style="width:200px;">
-                    </div>
-                    <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/fests.info.png" class="img-responsive" style="width:200px;">
-                    </div>
-                    <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/frapp.png" class="img-responsive" style="width:200px;">
-                    </div>
-                    <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/furballstory.png" class="img-responsive" style="width:200px;">
-                    </div>
-                    <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/Logix City Center logo.jpg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/DUExpress_logo.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/logoloading.png" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/festPav Logo_HD.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/mycaptain.png" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/fests.info.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/OhCampus Logo.jpg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/frapp.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/socultures.jpg" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/furballstory.png' %}" class="img-responsive" style="width:200px;">
                     </div>
                     <div class="col-md-2 text-center vcenter">
-                        <img src="images/breeze/Partners logo/tornado.PNG" class="img-responsive" style="width:200px;">
+                        <img src="{% static 'assets/images/breeze/Partners logo/Logix City Center logo.jpg' %}" class="img-responsive" style="width:200px;">
+                    </div>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-2 text-center vcenter">
+                        <img src="{% static 'assets/images/breeze/Partners logo/logoloading.png' %}" class="img-responsive" style="width:200px;">
+                    </div>
+                    <div class="col-md-2 text-center vcenter">
+                        <img src="{% static 'assets/images/breeze/Partners logo/mycaptain.png' %}" class="img-responsive" style="width:200px;">
+                    </div>
+                    <div class="col-md-2 text-center vcenter">
+                        <img src="{% static 'assets/images/breeze/Partners logo/OhCampus Logo.jpg' %}" class="img-responsive" style="width:200px;">
+                    </div>
+                    <div class="col-md-2 text-center vcenter">
+                        <img src="{% static 'assets/images/breeze/Partners logo/socultures.jpg' %}" class="img-responsive" style="width:200px;">
+                    </div>
+                    <div class="col-md-2 text-center vcenter">
+                        <img src="{% static 'assets/images/breeze/Partners logo/tornado.PNG' %}" class="img-responsive" style="width:200px;">
                     </div>
                 </div>
 
@@ -342,7 +345,7 @@
     <div id="preloader">
       <div id="loader">
         <div class="line-scale-pulse-out">
-          <img src="images/breeze/cat.gif" id="cat"alt="">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat"alt="">
           <!--<div></div>
           <div></div>
           <div></div>
@@ -355,9 +358,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
 </body>
 
