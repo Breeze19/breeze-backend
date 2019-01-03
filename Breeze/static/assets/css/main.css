@@ -3691,6 +3691,16 @@ footer .row {
     display: inline-block;
     vertical-align: middle;
 }
+.events-list{
+    border:1px solid white;
+    background-color:#111111;
+    font-family:AR;
+    width: 30%;
+    margin: 2%;
+    padding: 1%;
+    font-size: 1.5rem;
+    border-radius: 25px;
+}
 /*# sourceMappingURL=main.css.map */
 
 .tech-slideshow {
@@ -3739,4 +3749,47 @@ footer .row {
   #cat{
     padding-left:30%;padding-right:30%;
   }
+}
+
+.btn {
+    white-space: normal;
+}
+.events-cul-list{
+    border:1px solid white;
+    background-color:#111111;
+    color:#e25c7f;
+    font-family:AR;
+    width: 30%;
+    margin: 2%;
+    padding: 1%;
+    font-size: 1.5rem;
+    border-radius: 25px;
+}
+
+.events-tech-list{
+    border:1px solid white;
+    background-color:#111111;
+    color:#fafafa;
+    font-family:AR;
+    width: 30%;
+    margin: 5%;
+}
+
+@media only screen and (max-width: 500px){
+    .events-cul-list{
+        border:1px solid white;
+        background-color:#111111;
+        color:#e25c7f;
+        font-family:AR;
+        width: 80%;
+        margin: 3%;
+    }
+    .events-tech-list{
+        border:1px solid white;
+        background-color:#111111;
+        color:#fafafa;
+        font-family:AR;
+        width: 80%;
+        margin: 3%;
+    }
 }
