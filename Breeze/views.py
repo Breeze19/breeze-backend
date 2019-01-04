@@ -40,8 +40,8 @@ def specificEventView(request,category,subcategory):
         color = "#fafafa"
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
     context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category}
-    print(events[0].id)
-    return render(request, 'eventssubcat.html', context=context)
+    #print(events[0].id)
+    return render(request, 'eventssubcat.html')
 
 def signin(request):
     try:
