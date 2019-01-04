@@ -90,8 +90,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
+                  {% if user.is_authenticated %}
+                  <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+                  {% else %}
                   <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignIn</a></li>
                   <li><a id="signup" href="/signup/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignUp</a></li>
+                  {% endif %}
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>

@@ -74,8 +74,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
+                  {% if user.is_authenticated %}
+                  <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+                  {% else %}
                   <li><a href="/signin/?prev=/gallery" title="works" style="font-family:PN">SignIn</a></li>
                   <li><a href="/signup/?prev=/gallery" title="works" style="font-family:PN">SignUp</a></li>
+                  {% endif %}
                     <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                     <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                     <li class="current"><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
