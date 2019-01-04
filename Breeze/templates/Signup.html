@@ -37,6 +37,16 @@
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
+    <style>
+            #top{
+                background-image: linear-gradient(to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)), url("{% static 'assets/images/breeze/Theme Reveal-01.jpg' %}");
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-position:center;
+                background-attachment: fixed;
+                height: 100%;
+            }
+            </style>
     <style media="screen">
     @font-face {
         font-family: AR;
@@ -126,9 +136,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <div class="card" style="border:1px solid #e25c7f; margin:5% 10%;">
-            <h5 class="card-header text-center" style="background-color:#e25c7f;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">Sign U</h5>
-            <div class="card-body">
+          <div class="card" style="border:1px solid #e25c7f;border-radius: 25px 25px; margin:5% 10%;">
+            <h5 class="card-header text-center" style="background-color:#e25c7f;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 0% 0;font-size:2.5rem;font-family:AR">Sign Up</h5>
+            <div class="card-body" style="background-color: #000000;border-radius:0px 0px 25px 25px;padding-top: 5.1rem;padding-bottom: 5.1rem;">
               <form>
                 {% csrf_token %}
               <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Signup :</p>-->
@@ -138,7 +148,7 @@
               <h2 style="color:white;margin-left:-60%;font-family:AR;">Password:</h2><input id="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <h2 style="color:white;margin-left:-60%;font-family:AR;">Re-enter Password:</h2><input id="confirmpassword" type="password" required placeholder="Re-enter Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <p hidden id="errormessage" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
-              <a id="submit" class="btn btn-primary" id="register-culter"style="border:1px solid white;background-color:#111111;color:#e25c7f;font-family:AR" >Sign Up</a>
+              <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#e25c7f;font-family:AR" >Sign Up</a>
             </form>
             </div>
           </div>

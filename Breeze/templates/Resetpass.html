@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Breeze'19</title>
+    {% load static %}
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+    <!-- ---- Include the above in your HEAD tag ---------->
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
+    <style>
+    #top{
+        background-image: linear-gradient(to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)), url("{% static 'assets/images/breeze/Theme Reveal-01.jpg' %}");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position:center;
+        background-attachment: fixed;
+        height: 100%;
+    }
+    </style>
+    <style media="screen">
+    @font-face {
+        font-family: AR;
+        src: url(../static/assets/fonts/Atami-Regular.otf);
+    }
+    @font-face {
+        font-family: ADR;
+        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
+    }
+    @font-face {
+        font-family: PN;
+        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
+    }
+    @font-face {
+        font-family: PNB;
+        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
+    }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="/">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
+            </a>
+        </div>
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3 style="font-family:ADR">Navigation</h3>
+
+                <ul class="header-nav__list">
+                  <li class="current"><a href="/signin/" title="works" style="font-family:PN">SignIn</a></li>
+                  <li><a href="/signup/" title="works" style="font-family:PN">SignUp</a></li>
+                  <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
+                  <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
+                  <li><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
+                </ul>
+
+                <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
+
+                <ul class="header-nav__social">
+                  <li>
+                      <a href="https://www.facebook.com/snu.breeze/"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <!--<li>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>-->
+                  <li>
+                      <a href="https://www.instagram.com/breeze.snu/"><i class="fa fa-instagram"></i></a>
+                  </li>
+                    <!--<li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </li>-->
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav>  <!-- end header-nav -->
+
+        <a style="background-color: black;" class="header-menu-toggle" href="#0">
+            <span style="background-color:black; " class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+    <style media="screen">
+        @media only screen and (max-width: 500px) {#heading{padding-left: 0%!important;}}
+    </style>
+    <div class="row section-header" data-aos="fade-up">
+      <div class="col-full">
+        <h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:5%;padding-bottom:0;padding-left: 75%;margin-bottom:0;font-family:ADR">Reset password</h1>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="border:1px solid #e25c7f;border-radius: 25px 25px; margin:5% 10%;">
+            <h5 class="card-header text-center" style="background-color:#e25c7f;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 0% 0;font-size:2.5rem;font-family:AR">Reset password</h5>
+            <div class="card-body" style="background-color: #000000;border-radius:0px 0px 25px 25px;padding-top: 5.1rem;padding-bottom: 5.1rem;">
+              <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Signup :</p>-->
+              <form>
+              {% csrf_token %}
+              <h2 style="color:white;margin-left:-60%;font-family:AR;margin-top: 0;">Email:</h2><input id="email" name="username" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-60%;font-family:AR;">Password:</h2><input id="password" name="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-60%;font-family:AR;">Re-Password:</h2><input id="password2" name="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <p hidden id="errormessage" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
+              <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#e25c7f;font-family:AR" >Sign In</a>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    $("#submit").on('click', function() {
+      $.post('/login/',{
+        'csrfmiddlewaretoken': '{{csrf_token}}',
+        'username': $("#email").val(),
+        'password': $("#password").val()
+      },function(response){
+        var prev = '{{prev}}'
+        if(response["message"] == "success"){
+          if(prev.length == 0){
+            window.location.href = window.location.origin + "/"
+          } 
+          else{
+            window.location.href = window.location.origin + prev
+          }
+        }
+        else if(response["message"] == "#invalidUser"){
+          $("#errormessage").removeAttr('hidden')
+          $("#errormessage").text("Invalid User")
+        } 
+        else{
+          $("#errormessage").removeAttr('hidden')
+          $("#errormessage").text("Unable to Login, Try again.")
+        }
+      })
+   });
+    </script>
+
+            </div> <!-- end col-full -->
+        </div> <!-- end client-testimonials -->
+
+    </section> <!-- end s-clients -->
+
+
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="loader">
+        <div class="line-scale-pulse-out">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat"alt="">
+          <!--<div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>-->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script type="text/javascript">
+
+    $('#carouselExample').on('slide.bs.carousel', function (e) {
+
+
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 3;
+        var totalItems = $('.carousel-item').length;
+
+        if (idx >= totalItems-(itemsPerSlide-1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+            for (var i=0; i<it; i++) {
+                // append slides to end
+                if (e.direction=="left") {
+                    $('.carousel-item').eq(i).appendTo('.carousel-inner');
+                }
+                else {
+                    $('.carousel-item').eq(0).appendTo('.carousel-inner');
+                }
+            }
+        }
+    });
+
+
+
+
+
+      $(document).ready(function() {
+    /* show lightbox when clicking a thumbnail */
+        $('a.thumb').click(function(event){
+          event.preventDefault();
+          var content = $('.modal-body');
+          content.empty();
+            var title = $(this).attr("title");
+            $('.modal-title').html(title);
+            content.html($(this).html());
+            $(".modal-profile").modal({show:true});
+        });
+
+      });
+    </script>
+
+</body>
+
+</html>
