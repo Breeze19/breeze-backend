@@ -2934,7 +2934,7 @@ html.no-csstransitions .home-content__main {
 
 .clients-testimonials .testimonials .slick-prev {
     left: -130px;
-    background-image: url("../images/left-arrow.png");
+    background-image: url("{% static 'assets/images/left-arrow.png' %}");
 }
 
 .clients-testimonials .testimonials .slick-next {

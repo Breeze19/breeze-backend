@@ -38,10 +38,9 @@ def specificEventView(request,category,subcategory):
     color = "#e25c7f"
     if category == "technical":
         color = "#fafafa"
-    events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
+    events = Events.objects.filter(category=category[0]).filter(subCategory=subcategory)
     context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category}
-    #print(events[0].id)
-    return render(request, 'eventssubcat.html')
+    return render(request, 'eventssubcat.html',context=context)
 
 def signin(request):
     try:
@@ -122,7 +121,7 @@ def createaccount(request):
     
 def clubdashboard(request):
     if request.method == 'GET':
-        events = Event.objects.all()
+        events = Events.objects.all()
         registrations = Registration.objects.all()
         context = {
             'events' : events,
@@ -134,7 +133,7 @@ def clubdashboard(request):
         id = request.POST['event']
         name = request.POST['event_name']
         registrations = Registration.objects.filter(eventId=id)
-        events = Event.objects.all()
+        events = Events.objects.all()
         context = {
             'registrations' : registrations,
             'events' : events,
@@ -182,7 +181,7 @@ def pdf_redirect(request):
 
 def event_register(request):
     if request.method == 'POST' and request.user.id is not None:
-        event = Event.objects.get(id=request.POST['event_id'])
+        event = Events.objects.get(id=request.POST['event_id'])
         profile = request.user
         context = {
         'user': profile,
@@ -212,7 +211,7 @@ def event_register2(request):
         e = int(request.POST['event'])
         college = request.POST['college']
         print(college)
-        event = Event.objects.get(id=e)
+        event = Events.objects.get(id=e)
         uid = 'EV18{:02}{:04}'.format(event.id, request.user.id)
         if event.fee_type == 'head':
             number = int(request.POST['number'])

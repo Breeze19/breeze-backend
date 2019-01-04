@@ -10,7 +10,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.email
     
-class Event(models.Model):
+class Events(models.Model):
     """
     Model representing an event.
     """
@@ -70,7 +70,7 @@ class AccPackage(models.Model):
         return self.name
 
 class Registration(models.Model):
-    eventId = models.ForeignKey(Event, on_delete=models.CASCADE, null=False)
+    eventId = models.ForeignKey(Events, on_delete=models.CASCADE, null=False)
     userId = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     payable = models.DecimalField(decimal_places=2, max_digits=8, null=True)
     college = models.CharField(max_length=200, null=False, default='')
