@@ -50,19 +50,19 @@
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(../static/assets/fonts/Atami-Regular.otf);
+        src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
     }
     @font-face {
         font-family: ADR;
-        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
+        src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
     }
     @font-face {
         font-family: PN;
-        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
+        src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
     }
     @font-face {
         font-family: PNB;
-        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
+        src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
     }
     </style>
 </head>
@@ -87,8 +87,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
+                  {% if user.is_authenticated %}
+                  <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+                  {% else %}
                   <li><a href="/signin/?prev=/events" title="works" style="font-family:PN">SignIn</a></li>
                   <li><a href="/signup/?prev=/events" title="works" style="font-family:PN">SignUp</a></li>
+                  {% endif %}
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>

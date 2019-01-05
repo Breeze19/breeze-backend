@@ -38,19 +38,19 @@
 <style media="screen">
 @font-face {
     font-family: AR;
-    src: url(../static/assets/fonts/Atami-Regular.otf);
+    src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
 }
 @font-face {
     font-family: ADR;
-    src: url(../static/assets/fonts/Atami-Display-Regular.otf);
+    src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
 }
 @font-face {
     font-family: PN;
-    src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
+    src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
 }
 @font-face {
     font-family: PNB;
-    src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
+    src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
 }
 @media only screen and (max-width: 500px) {
   #logo-gif{
@@ -76,8 +76,12 @@
     <div class="header-nav__content">
       <h3 style="font-family:ADR">Navigation</h3>
       <ul class="header-nav__list">
+        {% if user.is_authenticated %}
+        <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+        {% else %}
         <li><a id="signin" href="/signin/?prev=/" title="works" style="font-family:PN">SignIn</a></li>
         <li><a href="/signup/?prev=/" title="works" style="font-family:PN">SignUp</a></li>
+        {% endif %}
         <li class="current"><a class="smoothscroll"  href="/" title="home" style="font-family:PN">Home</a></li>
         <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
         <li><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
@@ -121,7 +125,7 @@
       <h1 style="font-family:AR"> <span style="color:#e25c7f;font-family:ADR">Breeze</span> is <br>
         Shiv Nadar University's <br>
         Cultural-Techno-Sports Fest </h1>-->
-      <h1 style="text-align: center;" id="h-logo-img"><img src="../static/assets/images/breeze/imageedit_1_5629984017.gif" id="logo-gif" style="width: 60%;text-align: center;text-shadow: 200px 200px red;" class="img-fluid" alt="Responsive image"></h1>
+      <h1 style="text-align: center;" id="h-logo-img"><img src="{% static 'assets/images/breeze/imageedit_1_5629984017.gif' %}" id="logo-gif" style="width: 60%;text-align: center;text-shadow: 200px 200px red;" class="img-fluid" alt="Responsive image"></h1>
       <h1 style="text-align: center;margin-top:-15%;">8, 9, 10 Feb</h1>
       <a href="/events/"><div class="home-content__buttons"><a class="smoothscroll btn btn--stroke" id="register" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;"> R<span style="text-transform: lowercase;">egister</span> </a> </div></a>
         <!--<a href="#contact" class="smoothscroll btn btn--stroke">

@@ -53,19 +53,19 @@
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(../../static/assets/fonts/Atami-Regular.otf);
+        src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
     }
     @font-face {
         font-family: ADR;
-        src: url(../../static/assets/fonts/Atami-Display-Regular.otf);
+        src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
     }
     @font-face {
         font-family: PN;
-        src: url(../../static/assets/fonts/ProximaNova-Regular.ttf);
+        src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
     }
     @font-face {
         font-family: PNB;
-        src: url(../../static/assets/fonts/ProximaNova-Bold.ttf);
+        src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
     }
     </style>
 </head>
@@ -90,8 +90,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
+                  {% if user.is_authenticated %}
+                  <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+                  {% else %}
                   <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignIn</a></li>
                   <li><a id="signup" href="/signup/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignUp</a></li>
+                  {% endif %}
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
@@ -158,7 +162,7 @@
               </center>
               {% endif %}
               {% for event in events %}
-              <button class="btn btn-primary events-cul-list" onclick="document.getElementById('id01').style.display='block'" >{{ event.name }}</button>
+              <button id="btn" class="btn btn-primary events-cul-list" onclick="onClick('{{event.id}}','{{event.description}}','{{event.rules}}','{{event.prize}}')">{{ event.name }}</button>
               {% endfor %}
             </div>
           </div>
@@ -173,11 +177,11 @@
             </div>
             <div class="container" style="text-align: center;">
                 <h2>Description</h1>
-                <p>dsfg</p>
+                <p id="description">dsfg</p>
                 <h2>Rules</h1>
-                <p>dsfg</p>
+                <p id="rules">dsfg</p>
                 <h2>Prizes</h1>
-                <p>dsfg</p>
+                <p id="prizes">dsfg</p>
                 <!--<label for="uname"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="uname" required>
         
@@ -223,14 +227,19 @@
       </div>
     </div>
 
-
     <!-- Java Script
     ================================================== -->
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript">
-
+    function onClick(id,description,rules,prizes){
+      document.getElementById('id01').style.display='block'
+      $("#description").text(description)
+      $("#rules").text(rules)
+      $("#prizes").text(prizes)
+    }
+    
     $('#carouselExample').on('slide.bs.carousel', function (e) {
 
 

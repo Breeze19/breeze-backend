@@ -11,6 +11,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>Breeze'19</title>
+    {% load static %}
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -20,21 +21,21 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base2.css">
-    <link rel="stylesheet" href="css/vendor2.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %]">
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
     <!-- ---- Include the above in your HEAD tag ---------->
 
-<script src="js/jquery-3.2.1.min.js"></script>
+<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
 
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
     <script src="index.js"></script>
 
     <!-- favicons
@@ -43,19 +44,19 @@
     <style media="screen">
     @font-face {
         font-family: AR;
-        src: url(Atami-Regular.otf);
+        src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
     }
     @font-face {
         font-family: ADR;
-        src: url(Atami-Display-Regular.otf);
+        src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
     }
     @font-face {
         font-family: PN;
-        src: url(ProximaNova-Regular.ttf);
+        src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
     }
     @font-face {
         font-family: PNB;
-        src: url(ProximaNova-Bold.ttf);
+        src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
     }
     </style>
 

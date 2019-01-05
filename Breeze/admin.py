@@ -50,6 +50,6 @@ class ProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Registration,RegistrationAdmin)
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Event)
+admin.site.register(Events)
 admin.site.register(ForgetPass)
 admin.site.register(AccomRegistration, AccomRegistrationAdmin)

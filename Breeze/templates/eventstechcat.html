@@ -48,24 +48,24 @@
                 height: 100%;
             }
             </style>
-    <style media="screen">
-    @font-face {
-        font-family: AR;
-        src: url(../static/assets/fonts/Atami-Regular.otf);
-    }
-    @font-face {
-        font-family: ADR;
-        src: url(../static/assets/fonts/Atami-Display-Regular.otf);
-    }
-    @font-face {
-        font-family: PN;
-        src: url(../static/assets/fonts/ProximaNova-Regular.ttf);
-    }
-    @font-face {
-        font-family: PNB;
-        src: url(../static/assets/fonts/ProximaNova-Bold.ttf);
-    }
-    </style>
+            <style media="screen">
+            @font-face {
+                font-family: AR;
+                src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
+            }
+            @font-face {
+                font-family: ADR;
+                src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
+            }
+            @font-face {
+                font-family: PN;
+                src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
+            }
+            @font-face {
+                font-family: PNB;
+                src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
+            }
+            </style>
 </head>
 
 <body id="top">
@@ -88,8 +88,12 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
+                  {% if user.authenticated %}
+                  <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+                  {% else %}
                   <li><a href="/signin/?prev=/events/technical" title="works" style="font-family:PN">SignIn</a></li>
                   <li><a href="/signup/?prev=/events/technical" title="works" style="font-family:PN">SignUp</a></li>
+                  {% endif %}
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
@@ -146,7 +150,7 @@
               <button class="btn btn-primary events-tech-list" onclick="btnClicked('rbauto')" >Robotics & Automation</button>
               <button class="btn btn-primary events-tech-list" onclick="btnClicked('desbui')" >Design & Build</button>
               <button class="btn btn-primary events-tech-list" onclick="btnClicked('coding')" >Coding</button>
-              <button class="btn btn-primary events-tech-list" onclick="btnClicked('whizgam')" >Whiz Games</button>
+              <button class="btn btn-primary events-tech-list" onclick="btnClicked('whizgames')" >Whiz Games</button>
           </div>
         </div>
       </div>
