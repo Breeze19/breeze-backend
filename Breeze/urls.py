@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}),
     url(r'^gallery/$', views.gallery,name='gallery'),
     url(r'^sponsors/$',views.sponsors,name='gallery'),
+    url(r'^forgotpassmail',views.forgotpassmail,name='forgotpassmail'),
     url(r'^partners/$', views.partners, name='partners'),
     url(r'^team/$', views.team, name='team'),
     url(r'^transport/$', views.transport, name='transport'),

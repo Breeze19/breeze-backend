@@ -34,6 +34,9 @@ def gallery(request):
 def sponsors(request):
     return render(request,'sponsors.html')
     
+def forgotpassmail(request):
+    return render(request,'Resetpass.html')
+    
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
     if category == "technical":
