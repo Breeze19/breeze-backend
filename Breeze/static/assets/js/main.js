@@ -5,8 +5,14 @@
 
  $(document).ready(function(){
    $("#register").on('click',function(){
-     window.location='/events/'
+     window.location='/signup/?prev=/'
    });
+   $("#signoutbut").on('click',function(){
+       window.location = '/logout'
+   })
+   $("#signinbut").on('click',function(){
+       window.location = "/signin/?prev=/"
+   })
  });
 
 (function($) {
