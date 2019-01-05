@@ -88,7 +88,6 @@
 
                 <ul class="header-nav__list">
                   <li class="current"><a href="/signin/" title="works" style="font-family:PN">SignIn</a></li>
-                  <li><a href="/signup/" title="works" style="font-family:PN">SignUp</a></li>
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
@@ -142,7 +141,6 @@
               <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Signup :</p>-->
               <form>
               {% csrf_token %}
-              <h2 style="color:white;margin-left:-60%;font-family:AR;margin-top: 0;">Email:</h2><input id="email" name="username" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <h2 style="color:white;margin-left:-60%;font-family:AR;">Password:</h2><input id="password" name="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <h2 style="color:white;margin-left:-60%;font-family:AR;">Re-Password:</h2><input id="password2" name="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <p hidden id="errormessage" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
