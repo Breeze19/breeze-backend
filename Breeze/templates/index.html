@@ -52,6 +52,9 @@
     font-family: PNB;
     src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
 }
+#buttons-reg{
+  margin-left: 31%;
+}
 @media only screen and (max-width: 500px) {
   #logo-gif{
   width: 120% !important;
@@ -59,17 +62,25 @@
   margin-left: -10% !important;
 }
 #home{
-  background-image: url("{% static 'assets/images/breeze/ezgif.com-video-to-gif (2).gif' %}");
+  background-image: url("{% static 'assets/images/breeze/ezgif.com-video-to-gif (2).gif' %}") !important;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 #h-logo-img{
+  margin-top: 9%;
+}
+#date-breeze{
+  margin-top:-25% !important;
+  margin-bottom:5% !important;
+}
+#h-logo-img{
   text-align: center !important;
 }
 #buttons-reg{
   margin-left: 0;
+  padding-top: 5% !important;
 }
 }
 </style>
@@ -90,7 +101,6 @@
         <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
         {% else %}
         <li><a id="signin" href="/signin/?prev=/" title="works" style="font-family:PN">SignIn</a></li>
-        <li><a href="/signup/?prev=/" title="works" style="font-family:PN">SignUp</a></li>
         {% endif %}
         <li class="current"><a class="smoothscroll"  href="/" title="home" style="font-family:PN">Home</a></li>
         <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
@@ -137,12 +147,12 @@
         Shiv Nadar University's <br>
         Cultural-Techno-Sports Fest </h1>-->
       <h1 style="text-align: center;" id="h-logo-img"><img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" id="logo-gif" style="width: 60%;text-align: center;text-shadow: 200px 200px red;" class="img-fluid" alt="Responsive image"></h1>
-      <h1 style="text-align: center;margin-top:-15%;font-size: 2.5rem;font-family:AR;">8<sup>th</sup>, 9<sup>th</sup>, 10<sup>th</sup> Feburary</h1>
-      <div id="" style="margin-left:30%;">
+      <h1  id="date-breeze"style="text-align: center;margin-top:-15%;font-size: 2.5rem;font-family:AR;">8<sup>th</sup>, 9<sup>th</sup>, 10<sup>th</sup> Feburary</h1>
+      <div id="buttons-reg">
         {% if user.is_authenticated %}
         <a href="/logout"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="signoutbut" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Sign out</span> </a> </div></a>
         {% else %}
-        <a href="/signup/?prev=/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="register" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Register</span> </a> </div></a>
+        <a href="/signup/?prev=/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="register" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;margin-top: 5% !important;"> Register</span> </a> </div></a>
         <a href="/signin/?prev=/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="signinbut" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Sign In</span> </a> </div></a>
         {% endif %}
       </div>
@@ -244,7 +254,7 @@
   <!-- row -->
   <!--</div>-->
 
-<div style="background-color: #272557;;padding-top:5%;">
+<div style="background-color: #272557;padding-top:1%;">
   <div class="row section-header has-bottom-sep" data-aos="fade-up">
     <div class="col-full">
       <h1 class="display-1 display-1--light" style="font-family:ADR">Break The Internet</h1>
@@ -253,7 +263,7 @@
   <div class="row about-desc bti" data-aos="fade-up">
     <div class="col-full" id="face-img">
       <div class="container">
-        <img src="{% static 'assets/images/breeze/2.png' %}" style="width:80%;margin-top: 30%;">
+        <img src="{% static 'assets/images/breeze/2.png' %}" style="width:80%;margin-top: 20%;">
         <div class="centered"><p style="text-align: center;font-family:PN"> With Breeze'19 the hype is real. We will bring you experiences that'll make your heart fly as fast as Nyan cat. You won't get enough of our Kikis and Jhonnies, you'll be drawn to our fest like moth(s) (memes) to a flame. This year we will have bigger events, better stalls and more poeple than most SoundCloud rappers have plays. The internet has been here a long time, each generation of users have experienced and continue to experience it in different ways, it is the complexity of the internet that makes it such a wonderful resource, that it has integrated into our daily lives. This year there will be something for everyone from gaming to BuzzFeed, your most loved Vines (RIP) and even Tumblr. There's no need to ask Kowalski for an analysis, just come to Breeze.</p></div>
       </div>
     </div>
