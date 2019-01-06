@@ -11,6 +11,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>Breeze'19</title>
+    {% load static %}
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -20,26 +21,26 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base2.css">
-    <link rel="stylesheet" href="css/vendor2.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
     <!-- ---- Include the above in your HEAD tag ---------->
 
-<script src="js/jquery-3.2.1.min.js"></script>
+<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
 
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
-    <script src="index.js"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style media="screen">
     <style media="screen">
     @font-face {
@@ -71,7 +72,7 @@
 
         <div class="header-logo">
             <a class="site-logo" href="index.html">
-                <img src="images/breeze/WhiteLogo-02.png" alt="Homepage">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
             </a>
         </div>
 
@@ -84,11 +85,10 @@
 
                 <ul class="header-nav__list">
                         <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
-                  <li><a href="/signin/" title="works" style="font-family:PN">Sign in</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
-                  <li><a href="/19/Accomodation.pdf/" title="acco" style="font-family:PN">Accommodation</a></li>
+                  <li><a href="/19/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
-                  <li class="current"><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
                   <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
                 </ul>
 
@@ -180,7 +180,7 @@
     <div id="preloader">
       <div id="loader">
         <div class="line-scale-pulse-out">
-          <img src="images/breeze/cat.gif" id="cat" alt="">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat" alt="">
           <!--<div></div>
           <div></div>
           <div></div>
@@ -193,9 +193,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript">
 
     $('#carouselExample').on('slide.bs.carousel', function (e) {
