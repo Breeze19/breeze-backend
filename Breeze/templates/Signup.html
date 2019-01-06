@@ -87,11 +87,13 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
-                  <li><a href="/signin/" title="works" style="font-family:PN">SignIn</a></li>
-                  <li><a href="/" title="home" style="font-family:PN">Home</a></li>
+                    <li><a href="/" title="home" style="font-family:PN">Home</a></li>
+                  <li><a href="/signin/" title="works" style="font-family:PN">Sign in</a></li>
                   <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li><a href="/19/Accomodation.pdf/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
                   <li><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
                 </ul>
 
                 <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
@@ -129,25 +131,26 @@
     </style>
     <div class="row section-header" data-aos="fade-up">
       <div class="col-full">
-        <h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:5%;padding-bottom:0;padding-left: 75%;margin-bottom:0;font-family:ADR">Sign Up</h1>
+        <h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:5%;padding-bottom:0;padding-left: 75%;margin-bottom:0;font-family:ADR;visibility: hidden;">Sign Up</h1>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <div class="card" style="border:1px solid #e25c7f;border-radius: 25px 25px; margin:5% 10%;">
-            <h5 class="card-header text-center" style="background-color:#e25c7f;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 0% 0;font-size:2.5rem;font-family:AR">Sign Up</h5>
+          <div class="card" style="border:1px solid #46c1ac;border-radius: 25px 25px; margin:5% 10%;">
+            <h5 class="card-header text-center" style="background-color:#46c1ac;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 0% 0;font-size:2.5rem;font-family:AR">Sign Up</h5>
             <div class="card-body" style="background-color: #000000;border-radius:0px 0px 25px 25px;padding-top: 5.1rem;padding-bottom: 5.1rem;">
               <form>
                 {% csrf_token %}
               <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Signup :</p>-->
-              <h2 style="color:white;margin-left:-60%;font-family:AR;">Name:</h2><input id="name" type="text" required placeholder="Name" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <h2 style="color:white;margin-left:-45%;font-family:AR;">Context no.:</h2><input id="phno" type="text" required placeholder="Contact no." style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <h2 style="color:white;margin-left:-60%;font-family:AR;">Email:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <h2 style="color:white;margin-left:-50%;font-family:AR;">Password:</h2><input id="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <h2 style="color:white;margin-left:-400%;font-family:AR;">Re-enter Password:</h2><input id="confirmpassword" type="password" required placeholder="Re-enter Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <p hidden id="errormessage" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
-              <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#e25c7f;font-family:AR" >Sign Up</a>
+              <h2 style="color:white;margin-left:-60%;font-family:AR;">Name<sup>*</sup></sup>:</h2><input id="name" type="text" required placeholder="Name" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-45%;font-family:AR;">Mobile no.<sup>*</sup>:</h2><input id="phno" type="text" required placeholder="Contact no." style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-60%;font-family:AR;">Email<sup>*</sup>:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-60%;font-family:AR;">College<sup>*</sup>:</h2><input id="clg" type="text" required placeholder="College name" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-50%;font-family:AR;">Password<sup>*</sup>:</h2><input id="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <h2 style="color:white;margin-left:-10%;font-family:AR;">Re-enter Password<sup>*</sup>:</h2><input id="confirmpassword" type="password" required placeholder="Re-enter Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+              <p hidden id="errormessage" style="padding-top:3%;font-size:1.75rem;font-family:PN;"><span style="padding-left:3%;"></p>
+              <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#46c1ac;font-family:AR;border-radius:25px;font-weight:bold" >Sign Up</a>
             </form>
             </div>
           </div>
