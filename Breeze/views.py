@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
+from django.http import FileResponse, Http404
 from django.template import loader
 import os
 import random, string
@@ -39,6 +40,12 @@ def forgotpassmail(request):
     
 def team(request):
     return render(request,'team.html')
+    
+def pdf_redirect(request):
+    try:
+        return FileResponse(open('/static/assets/Breeze19 - Accommodation.pdf', 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
     
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
