@@ -93,6 +93,7 @@ def createaccount(request):
         password =request.POST['password']
         confirm = request.POST['confirmpass']
         contact = request.POST['contact']
+        college = request.POST['college']
         subject = "Welcome to Breeze'19"
         message = "Welcome to Breeze 19 by SNU. "
         from_email = settings.DEFAULT_FROM_EMAIL
@@ -110,7 +111,7 @@ def createaccount(request):
         if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
              User.objects.create_user(username, email, password)
              x = User.objects.last()
-             Profile_obj = Profile.objects.create(user=x, name=name, contact=contact)
+             Profile_obj = Profile.objects.create(user=x, name=name, contact=contact,college=college)
              user = authenticate(username=username, password=password)
              login(request, user)
              try:
@@ -128,6 +129,78 @@ def createaccount(request):
         return JsonResponse({
         "message": "#invalidSignup"
         })         
+
+
+def forgotmail(request):
+    print(request.POST['email'], "\n\n")
+    if request.method == "POST" :
+        form=ForgotPassMailForm(request.POST)
+        print(form)
+        if form.is_valid():    
+            print("Form Validation Successful")
+            subject = "Reset Password | Breeze'18"
+            message = "You can change your password here:-  "
+            from_email = settings.DEFAULT_FROM_EMAIL
+            print(request.POST['email'])
+            to_list = [request.POST['email']]
+            url_hash= "".join(random.choice(string.ascii_letters + string.digits) for _ in range(64))
+            try:
+                user=User.objects.filter(username=request.POST['email'].strip())
+                if(user.exists()):
+                    ForgetPass.objects.create(token=url_hash,user=user[0])                
+            except Exception as exception:
+                print(exception)
+                return JsonResponse({
+                "message": "Password reset error"
+                })
+            print(os.getcwd())
+            html_message = loader.render_to_string(
+                os.getcwd()+'/Breeze/templates/forgot_pass.html',
+                    {
+                    'link' : 'https://snu-breeze/forgotPassword/' + url_hash,
+                    'subject': 'Password reset email'
+                }
+            )
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False, html_message=html_message)                
+            except Exception as e:
+                print("Mail not sent")
+                print (e.message, e.args)
+            return JsonResponse({
+            "message": "success"
+            })
+        else:
+            raise forms.ValidationError("Form can not be Validated.")
+
+def forgot(request,hashkey):
+    if request.method == "POST":
+        password = request.POST['password']
+        confirm = request.POST['repassword']
+        if(password==confirm):
+            try:
+                user = ForgetPass.objects.filter(token=hashkey)[0]
+                print(user)
+                user = user.user
+                user.set_password(password)
+                user.save()
+                ForgetPass.objects.filter(token=hashkey).delete()
+                print("Password Changed Successfully")
+                return JsonResponse({
+                "message": "success"
+                })
+            except:
+                raise forms.ValidationError("Unable to Change Password")
+        else:
+            return JsonResponse({
+            "message": "You had one job; Type the same password"
+            })
+    else:
+        if(len(hashkey)!=64):
+            return HttpResponseRedirect('/')
+        forget_pass_object = ForgetPass.objects.filter(token=hashkey)
+        if not forget_pass_object:
+            return HttpResponseRedirect('/')
+        return render(request, "Resetpass.html", {"hashkey" : hashkey})
     
 def clubdashboard(request):
     if request.method == 'GET':
@@ -341,75 +414,3 @@ def accom_register2(request):
 #          return HttpResponseRedirect(redirect_to)
 #    #...
 #    return render_to_response('login.html', locals())
-
-def forgotmail(request):
-    #Send mail
-    print(request.POST['email'], "\n\n")
-    if request.method == "POST" :
-        form=ForgotPassMailForm(request.POST)
-        print(form)
-        if form.is_valid():    
-            print("Form Validation Successful")
-            subject = "Reset Password | Breeze'18"
-            message = "You can change your password here:-  "
-            from_email = settings.DEFAULT_FROM_EMAIL
-            print(request.POST['email'])
-            to_list = [request.POST['email']]
-            url_hash= "".join(random.choice(string.ascii_letters + string.digits) for _ in range(64))
-            try:
-                user=User.objects.filter(username=request.POST['email'].strip())
-                if(user.exists()):
-                    ForgetPass.objects.create(token=url_hash,user=user[0])                
-            except Exception as exception:
-                print(exception)
-                return JsonResponse({
-                "message": "Password reset error"
-                })
-            print(os.getcwd())
-            html_message = loader.render_to_string(
-                os.getcwd()+'/Breeze/templates/forgot_pass.html',
-                    {
-                    'link' : 'https://snu-breeze/forgotPassword/' + url_hash,
-                    'subject': 'Password reset email'
-                }
-            )
-            try:
-                send_mail(subject, message, from_email, to_list, fail_silently=False, html_message=html_message)                
-            except Exception as e:
-                print("Mail not sent")
-                print (e.message, e.args)
-            return JsonResponse({
-            "message": "success"
-            })
-        else:
-            raise forms.ValidationError("Form can not be Validated.")
-
-def forgot(request,hashkey):
-    if request.method == "POST":
-        password = request.POST['password']
-        confirm = request.POST['repassword']
-        if(password==confirm):
-            try:
-                user = ForgetPass.objects.filter(token=hashkey)[0]
-                print(user)
-                user = user.user
-                user.set_password(password)
-                user.save()
-                ForgetPass.objects.filter(token=hashkey).delete()
-                print("Password Changed Successfully")
-                return JsonResponse({
-                "message": "success"
-                })
-            except:
-                raise forms.ValidationError("Unable to Change Password")
-        else:
-            return JsonResponse({
-            "message": "You had one job; Type the same password"
-            })
-    else:
-        if(len(hashkey)!=64):
-            return HttpResponseRedirect('/')
-        forget_pass_object = ForgetPass.objects.filter(token=hashkey)
-        if not forget_pass_object:
-            return HttpResponseRedirect('/')
-        return render(request, "Resetpass.html", {"hashkey" : hashkey})
