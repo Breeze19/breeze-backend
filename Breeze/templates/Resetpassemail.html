@@ -142,7 +142,7 @@
               <form>
               {% csrf_token %}
               <h2 style="color:white;margin-left:-60%;font-family:AR;margin-top: 0;">Email:</h2><input id="email" name="username" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-              <p hidden id="errormessage" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
+              <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
               <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#e25c7f;font-family:AR" >Sign In</a>
             </form>
             </div>
@@ -152,27 +152,17 @@
     </div>
     <script>
     $("#submit").on('click', function() {
-      $.post('/login/',{
+      $.post('/forgotpass/',{
         'csrfmiddlewaretoken': '{{csrf_token}}',
-        'username': $("#email").val(),
-        'password': $("#password").val()
+        'email': $("#email").val()
       },function(response){
-        var prev = '{{prev}}'
         if(response["message"] == "success"){
-          if(prev.length == 0){
-            window.location.href = window.location.origin + "/"
-          } 
-          else{
-            window.location.href = window.location.origin + prev
-          }
+          $("#message").removeAttr('hidden')
+          $("message").text("An email has been sent to you.")  
         }
-        else if(response["message"] == "#invalidUser"){
-          $("#errormessage").removeAttr('hidden')
-          $("#errormessage").text("Invalid User")
-        } 
-        else{
-          $("#errormessage").removeAttr('hidden')
-          $("#errormessage").text("Unable to Login, Try again.")
+        else {
+          $("#message").removeAttr('hidden')
+          $("#message").text(response["message"])
         }
       })
    });
