@@ -263,11 +263,11 @@
                             </div>
                             <div id="Date" class="tabcontent">
                                 <h3>Date & Time</h3>
-                                <p id="Date"></p>
+                                <p id="date"></p>
                             </div>
                             <div id="POC" class="tabcontent">
                                 <h3>Event POC</h3>
-                                <p id="POC"></p>
+                                <p id="poc"></p>
                             </div>
                                 
                 </div>
@@ -385,8 +385,11 @@
       })
       document.getElementById('id01').style.display='block'
       $("#description").text(data[id+""]["description"])
-      $("#rules").text(data[id+""]["rules"])
-      $("#prizes").text(data[id+""]["prize"])
+      $("#rules").text(data[id]["rules"])
+      $("#prizes").text(data[id]["prize"])
+      $("#reg").text(data[id]["fee"])
+      $("#date").text(data[id]["date"])
+      $("#poc").text(data[id]["contact_name"])
     }
     
     $('#carouselExample').on('slide.bs.carousel', function (e) {

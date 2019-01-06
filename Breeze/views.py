@@ -41,8 +41,11 @@ def forgotpassmail(request):
 def team(request):
     return render(request,'team.html')
     
-def pdf_redirect(request):
+def accomodation_brochure(request):
     return render(request,'accomodation.html')
+
+def sports_handbook(request):
+    return render(request,'sportshandbook.html')
     
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
