@@ -3,8 +3,13 @@ from .models import *
 # Register your models here.
 
 class RegistrationAdmin(admin.ModelAdmin):
+<<<<<<< HEAD
     list_display = ('registration_id', 'transaction_status', 'get_reg_name', 'get_reg_contact','get_event_name')
     search_fields = ('registration_id', 'transaction_status', 'userId__profile__name', 'eventId__name')
+=======
+    list_display = ('registration_id','transaction_status', 'get_reg_name', 'get_reg_contact','get_event_name')
+    search_fields = ('registration_id','transaction_status', 'userId__profile__name', 'eventId__name')
+>>>>>>> 656a2de4ba31ab1c8e66d0c833418d04ad7a9437
     readonly_fields = ('created_at', 'updated_at')
     def get_reg_name(self, obj):
         return obj.userId.profile.name
