@@ -36,7 +36,6 @@
     ================================================== -->
     <script src="{% static 'assets/js/modernizr.js' %}"></script>
     <script src="{% static 'assets/js/pace.min.js' %}"></script>
-    <script src="index.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -70,7 +69,7 @@
 
         <div class="header-logo">
             <a class="site-logo" href="index.html">
-                <img src="images/breeze/WhiteLogo-02.png" alt="Homepage">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
             </a>
         </div>
 
@@ -86,7 +85,7 @@
                   <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
-                  <li class="current"><a href="sponsors.html" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
                 </ul>
 
                 <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
