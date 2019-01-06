@@ -84,7 +84,7 @@ class Registration(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):
-    	return '{0} {1} {2} {3}'.format(self.registration_id, self.payable, self.transaction_status, self.userId.profile.name)
+    	return '{0} {1} {2}'.format(self.registration_id, self.transaction_status, self.userId.profile.name)
 
 class AccomRegistration(models.Model):
     packageId = models.ForeignKey(AccPackage, on_delete=models.CASCADE, null=False)
