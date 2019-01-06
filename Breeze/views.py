@@ -28,6 +28,12 @@ def cultural(request):
 
 def sports(request):
     return render(request, 'form.html')
+
+def sportstkk(request):
+    return render(request,'formtkk.html')
+    
+def sportstkp(request):
+    return render(request,'formtkp.html')
     
 def gallery(request):
     return render(request,'gallery.html')

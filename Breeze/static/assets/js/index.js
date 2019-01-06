@@ -2,9 +2,9 @@ $(document).ready(function(){
   $("#sportsDropdown").on('change',function(){
     var val = $("#sportsDropdown :selected").val()
     if(val == 'tkk'){
-      window.location = 'formtkk.html'
+      window.location = '/sports/tkk/'
     } else if(val == 'tkp'){
-      window.location = 'formtkp.html'
+      window.location = '/sports/tkp/'
     }
   })
   $("#submit").on('click',function(){
