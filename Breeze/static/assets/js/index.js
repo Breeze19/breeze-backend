@@ -34,7 +34,7 @@ $(document).ready(function(){
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkk",{data},function(response){
       if(response.result == 'OK'){
-        window.location = "events.html"
+        
       }
     })
   })
@@ -51,7 +51,7 @@ $(document).ready(function(){
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkp",{data},function(response){
       if(response.result == 'OK'){
-        window.location = "events.html"
+        
       }
     })
   })

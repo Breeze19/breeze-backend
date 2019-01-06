@@ -18,7 +18,7 @@ class Events(models.Model):
     description = models.CharField(max_length=2000, null=False)
     rules = models.CharField(max_length=4000, null=True)
     venue = models.CharField(max_length=50, null=False, default='B315')
-    date = models.DateField(help_text='Mention (start) date of the event', default='2018-02-09')
+    date = models.CharField(max_length=50,help_text='Mention (start) date of the event', default='2018-02-09')
 
     CAT = (
         ('c', 'cultural'),
