@@ -37,6 +37,9 @@ def sponsors(request):
 def forgotpassmail(request):
     return render(request,'Resetpassemail.html')
     
+def team(request):
+    return render(request,'team.html')
+    
 def specificEventView(request,category,subcategory):
     color = "#e25c7f"
     if category == "technical":
@@ -176,12 +179,6 @@ def transport(request):
 
 def pronights(request):
     return render(request, 'events/pronights.html')
-
-def team(request):
-    return render(request, 'help/team.html')
-
-def pdf_redirect(request):
-    return redirect('/static/Breeze_2018_Sponsorship_Brochure.pdf')
 
 def event_register(request):
     if request.method == 'POST' and request.user.id is not None:

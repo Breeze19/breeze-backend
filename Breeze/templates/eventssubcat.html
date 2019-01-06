@@ -239,17 +239,17 @@
             
                             <div id="Description" class="tabcontent">
                                 <h3>Description</h3>
-                                <p>agdfgdfh</p>
+                                <p id="description"></p>
                             </div>
                             
                             <div id="Rules" class="tabcontent">
                                 <h3>Rules</h3>
-                                <p>adsgdfhsfg</p> 
+                                <p id="rules"></p> 
                             </div>
                             
                             <div id="Prizes" class="tabcontent">
                                 <h3>Prizes</h3>
-                                <p>adsgfghfhn</p>
+                                <p id="prizes"></p>
                             </div>
                 </div>
 
@@ -341,6 +341,7 @@
     </script>
     <script type="text/javascript">
     function onClick(id,description,rules,prizes){
+      console.log(prizes)
       document.getElementById('id01').style.display='block'
       $("#description").text(description)
       $("#rules").text(rules)

@@ -16,10 +16,11 @@ urlpatterns = [
     url(r'^createaccount/$',views.createaccount,name='createaccount'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}),
     url(r'^gallery/$', views.gallery,name='gallery'),
-    url(r'^sponsors/$',views.sponsors,name='gallery'),
+    url(r'^sponsors/$',views.sponsors,name='sponsors'),
+    url(r'^team/$', views.team, name='team'),
+    url(r'^18/Breeze_2018_Brochure.pdf/', views.pdf_redirect, name='pdf_redirect'),
     url(r'^forgotpassmail',views.forgotpassmail,name='forgotpassmail'),
     url(r'^partners/$', views.partners, name='partners'),
-    url(r'^team/$', views.team, name='team'),
     url(r'^transport/$', views.transport, name='transport'),
     url(r'^accommodation/$', views.accomodation, name='accomodation'),
     url(r'^events/register/$',views.event_register, name='event_register'),
@@ -32,5 +33,4 @@ urlpatterns = [
     url(r'^clubdashboard/', views.clubdashboard, name='clubdashboard'),
     url(r'^updateremarks/', views.updateremarks, name='updateremarks'),
     url(r'^me/', views.profile, name='profile'),
-    url(r'^18/Breeze_2018_Brochure.pdf/', views.pdf_redirect, name='pdf_redirect')
 ]
