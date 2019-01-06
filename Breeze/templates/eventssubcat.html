@@ -145,16 +145,18 @@
                 <h3 style="font-family:ADR">Navigation</h3>
 
                 <ul class="header-nav__list">
+                        <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   {% if user.is_authenticated %}
-                  <li><a href="/logout" title="works" style="font-family:PN">SignOut</a></li>
+                  <li><a href="/logout" title="works" style="font-family:PN">Sign out</a></li>
                   {% else %}
-                  <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">SignIn</a></li>
+                  <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">Sign in</a></li>
                   {% endif %}
-                  <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li><a href="/19/Accomodation.pdf/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
                   <li><a href="/19/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
                 </ul>
                 <script>
                 $(document).ready(function(){
@@ -236,6 +238,9 @@
                                 <button class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen" >Description</button>
                                 <button class="tablinks" onclick="openCity(event, 'Rules')" >Rules</button>
                                 <button class="tablinks" onclick="openCity(event, 'Prizes')" >Prizes</button>
+                                <button class="tablinks" onclick="openCity(event, 'reg')" >Reg. amount</button>
+                                <button class="tablinks" onclick="openCity(event, 'Date')" >Date & Time</button>
+                                <button class="tablinks" onclick="openCity(event, 'POC')" >Event POC</button>
                             </div>
             
                             <div id="Description" class="tabcontent">
@@ -252,6 +257,19 @@
                                 <h3>Prizes</h3>
                                 <p id="prizes"></p>
                             </div>
+                            <div id="reg" class="tabcontent">
+                                <h3>Registration amount</h3>
+                                <p id="reg"></p>
+                            </div>
+                            <div id="Date" class="tabcontent">
+                                <h3>Date & Time</h3>
+                                <p id="Date"></p>
+                            </div>
+                            <div id="POC" class="tabcontent">
+                                <h3>Event POC</h3>
+                                <p id="POC"></p>
+                            </div>
+                                
                 </div>
 
 
@@ -288,8 +306,18 @@
         
             <div class="container" style="background-color:white;text-align: center;">
                 <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
+                {% if user.is_authenticated %}
                 <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
+                {% else %}
+                <button type="button" class="cancelbtn" id="signup-button" style="margin-top: 0%;padding-top: 0;">Sign in</button>
+                {% endif %}
             </div>
+            <script>
+                $("#signup-button").on('click',function(){
+                    var prev = "/signin/?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                    window.location.href = window.location.origin + prev;
+                })
+            </script>
             </form>
         </div>
         </div>
