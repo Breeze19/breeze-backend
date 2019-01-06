@@ -61,8 +61,8 @@ def specificEventView(request,category,subcategory):
     data_dict = {}
     for i in range(0,len(events)):
         fee = str(events[i].fee)
-        if(events[i].fee_snu == -1):
-            fee = "For SNU Students: " + str(events[i].fee_snu) + "For others: " + fee 
+        if(events[i].fee_snu != -1):
+            fee = "For SNU Students: " + str(events[i].fee_snu) + " For others: " + fee 
         data_dict[events[i].id] = {
         "name": events[i].name,
         "description": events[i].description,
