@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^events/(?P<category>\w+)/(?P<subcategory>\w+)$',views.specificEventView, name='events'),
     url(r'^sports/tkk/$', views.sportstkk, name='sportstkk'),
     url(r'^sports/tkp/$', views.sportstkp, name='sportstkp'),
+    url(r'^signin/', views.signin, name='register'),
     url(r'^signup/', views.register, name='register'),
     url(r'^login/$',views.login1,name='login'),
     url(r'^createaccount/$',views.createaccount,name='createaccount'),
