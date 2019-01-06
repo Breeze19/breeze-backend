@@ -211,16 +211,12 @@ def accom_register(request):
         return HttpResponseRedirect('/#authrequired')
 
 def event_register2(request):
-    next = ''
-    if request.GET:
-        next = request.GET['next']
-
     if request.method == 'POST' and request.user.id is not None:
         e = int(request.POST['event'])
         college = request.POST['college']
         print(college)
         event = Events.objects.get(id=e)
-        uid = 'EV18{:02}{:04}'.format(event.id, request.user.id)
+        uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
         if event.fee_type == 'head':
             number = int(request.POST['number'])
             payable = event.fee*number
