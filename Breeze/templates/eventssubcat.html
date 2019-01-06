@@ -221,7 +221,7 @@
             </div>
           </div>
           <div id="id01" class="modal">
-            <span onclick="document.getElementById('id01').style.display='none'" 
+            <span onclick="document.getElementById('id01').style.display='none';" 
         class="close" title="Close Modal">&times;</span>
         
             <!-- Modal Content -->
@@ -230,7 +230,7 @@
                 <i class="fa fa-close" style="font-size:36px" onclick="document.getElementById('id01').style.display='none'"></i>
             </div>
             <div class="container" style="text-align: center;">
-                <div id="tabs">
+                <div id="tabs" >
                         <div class="tab">
                                 <button class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen" >Description</button>
                                 <button class="tablinks" onclick="openCity(event, 'Rules')" >Rules</button>
@@ -261,21 +261,33 @@
                 <p id="rules"></p>
                 <h2>Prizes</h1>
                 <p id="prizes">dsfg</p>-->
-                <div id="fill-detail">
-                        <label for="eid"><b>Email ID</b></label>
+                <div id="fill-detail" style="display: none;">
+                        <!--<label for="eid"><b>Email ID</b></label>
                         <input type="text" placeholder="Enter email id" name="uname" required>
                         <label for="uname"><b>University Name</b></label>
                         <input type="text" placeholder="Enter University name" name="uname" required>
-                        <button type="submit-reg" style="margin-top: 0%;padding-top: 0;">Submit</button>
-                </div>
-                <div id="qr">
-                    <img src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" alt="">
+                        <img src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" alt="">
+                        <button type="submit-reg" style="margin-top: 0%;padding-top: 0;">Submit</button>-->
+                        <p><b style="font-weight: bold;color: black;font-size: 2.5rem;">NOTE</b> <br><br>
+
+                            You will receive an automated email (check spam). You are requested to follow the mentioned steps to complete the registration and payment process<br><br>
+                            
+                            <span style="font-weight: bold;color: black;font-size: 1.5rem;">STEP 1</span><br>
+                            Fill the Google Form and includes all the details regarding the event you've registered for.<br><br>
+                            
+                            <span style="font-weight: bold;color: black;font-size: 1.5rem;">STEP 2</span><br>
+                            Scan the QR code displayed in your email and pay the amount. <span style="font-weight: 400;color: black;font-size: 1.5rem;">KINDLY FOLLOW THE INSTRUCTIONS MENTIONED IN THE EMAIL REGARDING THE PAYMENT PROCESS</span><br><br><br>
+                            
+                            
+                            Let's make BREEZE fun together, see you there :)<br>
+                            
+                            </p>
                 </div>
             </div>
         
             <div class="container" style="background-color:white;text-align: center;">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Fill details</button>
+                <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
+                <button type="button" onclick="document.getElementById('tabs').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
             </div>
             </form>
         </div>

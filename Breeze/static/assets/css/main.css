@@ -3715,7 +3715,7 @@ footer .row {
   height: 200px;
   max-width: 80%;
   padding: 5%;
-  margin: 0 auto;
+  margin: 5% auto;
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
@@ -3775,18 +3775,6 @@ footer .row {
     border-radius: 25px;
 }
 
-.events-tech-list{
-    border:2px solid white;
-    background-color: transparent;
-    color:#fafafa;
-    font-family:AR;
-    width: 35%;
-    margin: 3%;
-    font-size: 1.5rem;
-    font-weight: 600;s
-    border-radius: 25px;
-}
-
 @media only screen and (max-width: 500px){
     .events-cul-list{
         border:1px solid white;
@@ -3798,13 +3786,4 @@ footer .row {
         margin: 2%;
         padding: 1%
     }
-    .events-tech-list{
-        border:1px solid white;
-        background-color:transparent;
-        color:#fafafa;
-        font-family:AR;
-        width: 85%;
-        font-weight: 600;
-        margin: 2%;
-        padding: 1%;
 }
