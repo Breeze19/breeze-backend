@@ -1,6 +1,5 @@
 $(document).ready(function(){
   $("#sportsDropdown").on('change',function(){
-    console.log("1")
     var val = $("#sportsDropdown :selected").val()
     if(val == 'tkk'){
       window.location = 'formtkk.html'
@@ -15,12 +14,7 @@ $(document).ready(function(){
       name: $("#name").val(),
       collegeName: $("#collegeName").val(),
       email: $("#email").val(),
-      phno: $("#phno").val(),
-      stream: $("#st").val(),
-      cgx: $("#cgx").val(),
-      cgxii: $("#cgxii").val(),
-      cgg: $("#cgg").val(),
-      lod: $("#lod").val()
+      phno: $("#phno").val()
     }
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
       if(response.result == 'OK'){
@@ -36,12 +30,7 @@ $(document).ready(function(){
       name: $("#name").val(),
       collegeName: $("#collegeName").val(),
       email: $("#email").val(),
-      phno: $("#phno").val(),
-      stream: $("#st").val(),
-      cgx: $("#cgx").val(),
-      cgxii: $("#cgxii").val(),
-      cgg: $("#cgg").val(),
-      lod: $("#lod").val()
+      phno: $("#phno").val()
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkk",{data},function(response){
       if(response.result == 'OK'){
@@ -58,12 +47,7 @@ $(document).ready(function(){
       name: $("#name").val(),
       collegeName: $("#collegeName").val(),
       email: $("#email").val(),
-      phno: $("#phno").val(),
-      stream: $("#st").val(),
-      cgx: $("#cgx").val(),
-      cgxii: $("#cgxii").val(),
-      cgg: $("#cgg").val(),
-      lod: $("#lod").val()
+      phno: $("#phno").val()
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkp",{data},function(response){
       if(response.result == 'OK'){
