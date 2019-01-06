@@ -3764,13 +3764,14 @@ footer .row {
     word-wrap: break-word;
 }
 .events-cul-list{
-    border:2px solid white;
+    border:4px solid white;
     background-color:transparent;
     color:white;
     font-family:AR;
     width: 35%;
     margin: 3%;
     font-size: 1.5rem;
+    font-weight: 600;
     border-radius: 25px;
 }
 
@@ -3782,6 +3783,7 @@ footer .row {
     width: 35%;
     margin: 3%;
     font-size: 1.5rem;
+    font-weight: 600;s
     border-radius: 25px;
 }
 
@@ -3792,6 +3794,7 @@ footer .row {
         color:white;
         font-family:AR;
         width: 85%;
+        font-weight: 600;
         margin: 2%;
         padding: 1%
     }
@@ -3801,6 +3804,7 @@ footer .row {
         color:#fafafa;
         font-family:AR;
         width: 85%;
+        font-weight: 600;
         margin: 2%;
         padding: 1%;
 }

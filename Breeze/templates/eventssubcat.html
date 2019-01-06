@@ -49,6 +49,61 @@
             background-attachment: fixed;
             height: 100%;
     }
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        display: block;
+    }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0%;
+        transition: 0.3s;
+    }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+        background-color: #ddd;
+    }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+        background-color: #ccc;
+    }
+
+        /* Style the tab content */
+        .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+    .tablinks{
+        width: 33%;
+        color: black;
+        margin: 0;
+        font-weight: bold;
+        display: inline-block;
+    }
+    .cancelbtn{
+        font-weight: bold;
+        border-radius: 25px;
+    }
+    @media only screen and (max-width: 500px){
+        .tablinks{
+        width: 100%;
+        margin: 0;
+        color: black;
+        font-weight: bold;
+        display: inline-block;
+        }
+    }
     </style>
     <style media="screen">
     @font-face {
@@ -151,7 +206,7 @@
         <div class="col-md-2">
           <div class="card" style="border:3px solid #fafafa;border-radius: 25px 25px; margin:5% 10%;">
             <h5 class="card-header text-center" style="background-color:#fafafa;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">{{ events.0.subCategoryName }}</h5>
-            <div class="card-body" style="padding-bottom: 5%;padding-top: 5%;">
+            <div class="card-body" style="padding-bottom: 5%;padding-top: 5%;text-align: center;">
               <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Event details and registration will be live soon<br><br>Help us notify you :</p>-->
               <!--<h2 style="color:white;margin-left:-60%;font-family:AR;">Email:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">-->
               <!--<a id="submit" class="btn btn-primary" id="register-culter"style="border:1px solid white;background-color:#111111;color:#e25c7f;font-family:AR" >Submit</a>-->
@@ -171,31 +226,56 @@
         
             <!-- Modal Content -->
             <div class="modal-content animate">
-            <div class="container" style="background-color:#f1f1f1;text-align: right;">
+            <div class="container" style="background-color:white;text-align: right;">
                 <i class="fa fa-close" style="font-size:36px" onclick="document.getElementById('id01').style.display='none'"></i>
             </div>
             <div class="container" style="text-align: center;">
+                <div id="tabs">
+                        <div class="tab">
+                                <button class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen" >Description</button>
+                                <button class="tablinks" onclick="openCity(event, 'Rules')" >Rules</button>
+                                <button class="tablinks" onclick="openCity(event, 'Prizes')" >Prizes</button>
+                            </div>
+            
+                            <div id="Description" class="tabcontent">
+                                <h3>Description</h3>
+                                <p>agdfgdfh</p>
+                            </div>
+                            
+                            <div id="Rules" class="tabcontent">
+                                <h3>Rules</h3>
+                                <p>adsgdfhsfg</p> 
+                            </div>
+                            
+                            <div id="Prizes" class="tabcontent">
+                                <h3>Prizes</h3>
+                                <p>adsgfghfhn</p>
+                            </div>
+                </div>
+
+
+                <!--
                 <h2>Description</h1>
                 <p id="description"></p>
                 <h2>Rules</h1>
                 <p id="rules"></p>
                 <h2>Prizes</h1>
-                <p id="prizes"></p>
-                <!--<label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-        
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-        
-                <button type="submit">Login</button>
-                <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>-->
+                <p id="prizes">dsfg</p>-->
+                <div id="fill-detail">
+                        <label for="eid"><b>Email ID</b></label>
+                        <input type="text" placeholder="Enter email id" name="uname" required>
+                        <label for="uname"><b>University Name</b></label>
+                        <input type="text" placeholder="Enter University name" name="uname" required>
+                        <button type="submit-reg" style="margin-top: 0%;padding-top: 0;">Submit</button>
+                </div>
+                <div id="qr">
+                    <img src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" alt="">
+                </div>
             </div>
         
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Pay Now</button>
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fill details</button>
+            <div class="container" style="background-color:white;text-align: center;">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Fill details</button>
             </div>
             </form>
         </div>
@@ -231,6 +311,22 @@
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
+    <script>
+        document.getElementById("defaultOpen").click();
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
     <script type="text/javascript">
     function onClick(id,description,rules,prizes){
       document.getElementById('id01').style.display='block'
