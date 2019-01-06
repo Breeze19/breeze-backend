@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+{% load static %}
     <head>
-      {% load static %}
 		<!-- NAME: INVITATION BY JON HICKS -->
 		<!--[if gte mso 15]>
 		<xml>
@@ -445,7 +445,7 @@
                                                             <!-- BEGIN HEADER // -->
                                                             <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #EFEFEF;border-top: 0;border-bottom: 0;">
                                                                 <tr>
-                                                                	<td align="left" valign="middle" style="padding-top: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="https://cdn-images.mailchimp.com/template_images/gallery/image_pointer_left_white.png" height="30" width="15" style="border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"></td>
+                                                                	<td align="left" valign="middle" style="padding-top: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="{% static 'assets/images/image_pointer_left_white.png' %}" height="30" width="15" style="border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"></td>
                                                                     <td valign="middle" width="100%" class="headerContainer" style="padding-top: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
     <tbody class="mcnTextBlockOuter">
         <tr>
@@ -501,7 +501,7 @@
                             <td class="mcnImageContent" valign="top" style="padding-right: 0px;padding-left: 0px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                                 
                                     
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/696b47ee03b50641541e250f1/images/14fbe096-25df-44b1-aac1-1ef86a038863.png" width="600" style="max-width: 714px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+                                        <img align="center" alt="" src="{% static 'assets/images/14fbe096-25df-44b1-aac1-1ef86a038863.png' %}" width="600" style="max-width: 714px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
                                     
                                 
                             </td>
@@ -539,9 +539,11 @@
                         <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                         
                             <span style="font-family:georgia,times,times new roman,serif"><span style="color:#000000">Hey {{name}},<br>
-Thank you for registering for {{event}} event.<br>
+Thank you for registering for {{event_name}} event.<br>
 <br>
-Your unique Registration ID is {{regid}}<br>
+Your unique Registration ID is {{reg_id}}<br>
+<br>
+Fill in your detials here {{form_link}}
 <br>
 Please find the payment details below. In case of any event related queries please write to breeze.events@snu.edu.in or call us at 9677030542.</span><br>
 <br>
@@ -599,7 +601,7 @@ Please find the payment details below. In case of any event related queries plea
         </tr>
     </tbody>
 </table></td>
-                                                                	<td align="left" valign="middle" style="padding-top: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="https://cdn-images.mailchimp.com/template_images/gallery/image_pointer_right_white.1.png" height="30" width="15" style="border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"></td>
+                                                                	<td align="left" valign="middle" style="padding-top: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="{% static 'assets/image_pointer_right_white.1.png' %}" height="30" width="15" style="border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"></td>
                                                                 </tr>
                                                             </table>
                                                             <!-- // END LOWER BODY -->
@@ -643,7 +645,7 @@ Please find the payment details below. In case of any event related queries plea
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                                                                    <a href="http://www.facebook.com/snu.breeze" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""></a>
+                                                                                    <a href="http://www.facebook.com/snu.breeze" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="{% static 'assets/images/color-facebook-48.png' %}" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             
@@ -675,7 +677,7 @@ Please find the payment details below. In case of any event related queries plea
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                                                                    <a href="http://instagram.com/breeze.snu" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-instagram-48.png" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""></a>
+                                                                                    <a href="http://instagram.com/breeze.snu" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="{% static 'assets/images/color-instagram-48.png' %}" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             
@@ -707,7 +709,7 @@ Please find the payment details below. In case of any event related queries plea
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                                                                    <a href="http://www.twitter.com/snu_breeze" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""></a>
+                                                                                    <a href="http://www.twitter.com/snu_breeze" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img src="{% static 'assets/images/color-twitter-48.png' %}" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             

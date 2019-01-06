@@ -6,7 +6,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=18 , null=False)
     contact = models.CharField(max_length=18 , null=False)
-    # college = models.CharField(max_length= 100, null=False)
+    college = models.CharField(max_length= 100, null=False,default="null")
     def __str__(self):
         return self.user.email
     
