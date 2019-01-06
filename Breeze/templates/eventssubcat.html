@@ -219,7 +219,7 @@
               </center>
               {% endif %}
               {% for event in events %}
-              <button id="btn" class="btn btn-primary events-cul-list" onclick="onClick('{{event.id}}','{{event.description}}','{{event.rules}}','{{event.prize}}')">{{ event.name }}</button>
+              <button id="btn" class="btn btn-primary events-cul-list" onclick="onClick('{{event.id}}')">{{ event.name }}</button>
               {% endfor %}
             </div>
           </div>
@@ -307,7 +307,7 @@
             <div class="container" style="background-color:white;text-align: center;">
                 <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
                 {% if user.is_authenticated %}
-                <button type="button" onclick="document.getElementById('tabs').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
+                <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
                 {% else %}
                 <button type="button" class="cancelbtn" id="signup-button" style="margin-top: 0%;padding-top: 0;">Sign in</button>
                 {% endif %}
@@ -353,6 +353,15 @@
     <script src="{% static 'assets/js/plugins.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
+    function register(id){
+      document.getElementById('tabs').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'
+      $.post("/events/register/",{
+        'csrfmiddlewaretoken': '{{csrf_token}}',
+        "event": id
+      },function(response){
+        console.log(response)
+      })
+    }
         document.getElementById("defaultOpen").click();
         function openCity(evt, cityName) {
             var i, tabcontent, tablinks;
@@ -369,12 +378,15 @@
         }
     </script>
     <script type="text/javascript">
-    function onClick(id,description,rules,prizes){
-      console.log(prizes)
+    function onClick(id){
+      var data = {{js_data|safe}}
+      $("#cancelbtn").on('click',function(){
+        register(id)
+      })
       document.getElementById('id01').style.display='block'
-      $("#description").text(description)
-      $("#rules").text(rules)
-      $("#prizes").text(prizes)
+      $("#description").text(data[id+""]["description"])
+      $("#rules").text(data[id+""]["rules"])
+      $("#prizes").text(data[id+""]["prize"])
     }
     
     $('#carouselExample').on('slide.bs.carousel', function (e) {

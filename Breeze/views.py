@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
+import json
 from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
@@ -48,7 +49,22 @@ def specificEventView(request,category,subcategory):
     if category == "technical":
         color = "#fafafa"
     events = Events.objects.filter(category=category[0]).filter(subCategory=subcategory)
-    context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category}
+    data_dict = {}
+    for i in range(0,len(events)):
+        fee = str(events[i].fee)
+        if(events[i].fee_snu == -1):
+            fee = "For SNU Students: " + str(events[i].fee_snu) + "For others: " + fee 
+        data_dict[events[i].id] = {
+        "name": events[i].name,
+        "description": events[i].description,
+        "rules": events[i].rules,
+        "date": str(events[i].date),
+        "prize": str(events[i].prize),
+        "fee": fee,
+        "contact_name": events[i].contact_market
+        }
+    js_data = json.dumps(data_dict)
+    context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data}
     return render(request, 'eventssubcat.html',context=context)
 
 def signin(request):
@@ -130,6 +146,55 @@ def createaccount(request):
         "message": "#invalidSignup"
         })         
 
+def event_register2(request):
+    if request.method == 'POST' and request.user.id is not None:
+        e = int(request.POST['event'])
+        event = Events.objects.get(id=e)
+        uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
+        if event.fee == 0:
+            transaction_status = 'p'
+        else:
+            transaction_status = 'u'
+        register = Registration(eventId=event, userId=request.user,
+                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status)       
+        try:
+            register.save()
+        except Exception as exception:
+            print(exception)
+            return JsonResponse({
+            "message": "Error while recording registration. Please try again."
+            })
+        form_url = ""
+        if(event.form_url != "null") :
+            form_url = event.form_url
+        subject = "Event Registration Successful | Breeze'18"
+        message = "Event Registration Successful."
+        from_email = settings.DEFAULT_FROM_EMAIL
+        to_list = [request.user.email]
+        html_message = loader.render_to_string(
+            os.getcwd()+'/Breeze/templates/reg_mail.html',
+            {
+                'name' : request.user.profile.name,
+                'email' : request.user.email,
+                'reg_id' : uid,
+                'event_name' : event.name,
+                'status': transaction_status,
+                'form_url': form_url,
+            }
+        )        
+        try:
+            send_mail(subject, message, from_email, to_list, fail_silently=False, html_message=html_message)                
+        except Exception as e:
+            print("Mail not sent")
+            print (e.message, e.args)
+
+        return JsonResponse({
+        "message": "success"
+        })
+    else:
+        return JsonResponse({
+        "message": "Please signin first."
+        })
 
 def forgotmail(request):
     print(request.POST['email'], "\n\n")
@@ -278,72 +343,6 @@ def accom_register(request):
         return render(request, 'help/accom_register.html', context=context)
     else:
         return HttpResponseRedirect('/#authrequired')
-
-def event_register2(request):
-    if request.method == 'POST' and request.user.id is not None:
-        e = int(request.POST['event'])
-        college = request.POST['college']
-        print(college)
-        event = Events.objects.get(id=e)
-        uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
-        if event.fee_type == 'head':
-            number = int(request.POST['number'])
-            payable = event.fee*number
-
-        else:
-            payable = event.fee
-            number = int(request.POST['number'])
-
-        if event.fee == 0:
-            transaction_status = 'p'
-
-        else:
-            transaction_status = 'u'
-
-        register = Registration(eventId=event, userId=request.user,
-                                college=college, registration_id=uid, payable=payable, number_of_participants=number, transaction_status=transaction_status)
-       
-        try:
-            register.save()
-        except:
-            return HttpResponseRedirect(next)
-        
-        form_url = ""
-        if(event.form_url != "null") :
-            arr = event.form_url.split("EV12345678")
-            form_url = arr[0]+uid+arr[1]
-
-        subject = "Event Registration Successful | Breeze'18"
-        message = "Event Registration Successful."
-        from_email = settings.EMAIL_HOST_USER
-        to_list = [request.user.email]
-        html_message = loader.render_to_string(
-            os.getcwd()+'/Breeze/templates/mails/EventRegistrationMail.html',
-            {
-                'name' : request.user.profile.name,
-                'email' : request.user.email,
-                'reg_id' : uid,
-                'event_name' : event.name,
-                'payable': payable,
-                'status': transaction_status,
-                'form_url': form_url,
-                'form_text': event.form_text
-                # 'user_name': username,
-                # 'subject': 'Thank you for registering with us '+username+' \n You will now be recieving Notifications for howabouts at SNU in an all new Way. Goodbye to the spam mails. \n Thanks for registering. Have a nice day!!',
-                # 'linkTosite': 'www.google.com',
-            }
-        )
-        
-        try:
-            send_mail(subject, message, "Breeze'18 "+from_email, to_list, fail_silently=False, html_message=html_message)                
-        except Exception as e:
-            print("Mail not sent")
-            print (e.message, e.args)
-
-        return HttpResponseRedirect('/me/#success')
-    
-    else:
-        return HttpResponseRedirect('/')
 
 def accom_register2(request):
     next = ''

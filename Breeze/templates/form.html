@@ -39,7 +39,7 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="images/breeze/darklogo.ico" >
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style media="screen">
     @font-face {
         font-family: AR;
@@ -180,7 +180,7 @@
     <div id="preloader">
       <div id="loader">
         <div class="line-scale-pulse-out">
-          <img src="images/breeze/cat.gif" id="cat" alt="">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat" alt="">
           <!--<div></div>
           <div></div>
           <div></div>
@@ -193,9 +193,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript">
 
     $('#carouselExample').on('slide.bs.carousel', function (e) {
