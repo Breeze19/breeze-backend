@@ -24,7 +24,7 @@ $(document).ready(function(){
     }
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
       if(response.result == 'OK'){
-        window.location = "events.html"
+        
       }
     })
   })
