@@ -160,7 +160,12 @@
         'repassword': $("#password2").val()
       },function(response){
         if(response["message"] == "success"){
-          $("messgae").text("Password reset")  
+          $("#message").removeAttr('hidden')
+          $("#messgae").text("Password reset")  
+        }
+        else{
+          $("#message").removeAttr('hidden')
+          $("#message").text(response["message"])
         }
       })
    });
