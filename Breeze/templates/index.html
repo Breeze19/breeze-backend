@@ -58,8 +58,18 @@
   max-width: 120% !important;
   margin-left: -10% !important;
 }
+#home{
+  background-image: url("{% static 'assets/images/breeze/ezgif.com-video-to-gif (2).gif' %}");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 #h-logo-img{
   text-align: center !important;
+}
+#buttons-reg{
+  margin-left: 0;
 }
 }
 </style>
@@ -85,6 +95,7 @@
         <li class="current"><a class="smoothscroll"  href="/" title="home" style="font-family:PN">Home</a></li>
         <li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
         <li><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
+        <li><a href="{% static 'assets/fonts/Breeze19 - Accommodation.pdf' %}" title="acco" style="font-family:PN">Accommodation</a></li>
         <li><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
       </ul>
 
@@ -127,7 +138,7 @@
         Cultural-Techno-Sports Fest </h1>-->
       <h1 style="text-align: center;" id="h-logo-img"><img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" id="logo-gif" style="width: 60%;text-align: center;text-shadow: 200px 200px red;" class="img-fluid" alt="Responsive image"></h1>
       <h1 style="text-align: center;margin-top:-15%;font-size: 2.5rem;font-family:AR;">8<sup>th</sup>, 9<sup>th</sup>, 10<sup>th</sup> Feburary</h1>
-      <div style="display: inline;text-align: center;">
+      <div id="" style="margin-left:30%;">
         {% if user.is_authenticated %}
         <a href="/logout"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="signoutbut" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Sign out</span> </a> </div></a>
         {% else %}
