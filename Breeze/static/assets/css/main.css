@@ -3784,6 +3784,7 @@ footer .row {
         width: 85%;
         font-weight: 600;
         margin: 2%;
-        padding: 1%
+        padding: 1%;
+        height: auto;
     }
 }
