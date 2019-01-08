@@ -362,7 +362,12 @@
         'csrfmiddlewaretoken': '{{csrf_token}}',
         "event": id
       },function(response){
-        console.log(response)
+        if(response["message"] == "success"){
+          setTimeout(function(){
+            document.getElementById('tabs').style.display='block';
+            document.getElementById('fill-detail').style.display='none';
+          },2000)
+        }
       })
     }
         document.getElementById("defaultOpen").click();
