@@ -60,21 +60,37 @@ def specificEventView(request,category,subcategory):
     events = Events.objects.filter(category=category[0]).filter(subCategory=subcategory)
     data_dict = {}
     for i in range(0,len(events)):
-        fee = str(events[i].fee)
+        fee = transform(str(events[i].fee))
         if(events[i].fee_snu != -1):
-            fee = "For SNU Students: " + str(events[i].fee_snu) + " For others: " + fee 
+            fee = "Outside Participants: " + transform(fee) + " | SNU Participants: " + transform(str(events[i].fee_snu))
         data_dict[events[i].id] = {
         "name": events[i].name,
         "description": events[i].description,
         "rules": events[i].rules,
         "date": str(events[i].date),
-        "prize": str(events[i].prize),
+        "prize": transform(str(events[i].prize)),
         "fee": fee,
         "contact_name": events[i].contact_market
         }
     js_data = json.dumps(data_dict)
     context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data}
     return render(request, 'eventssubcat.html',context=context)
+
+def transform(amount):
+    t_amt = "Rs "
+    try:
+        amt = float(amount)
+    except Exception as exception:
+        print(exception)
+    if amt == 0:
+        return "NO REGISTRATION FEE"
+    if amt > 100000:
+        t_amt += amount[0:1] + "," + amount[1,3] + "," + amount[3:]
+    elif amt > 1000 and amt < 10000:
+        t_amt += amount[0:1] + "," + amount[1:]
+    elif amt > 10000:
+        t_amt += amount[0:2] + "," + amount[2:]
+    return t_amt
 
 def signin(request):
     try:
