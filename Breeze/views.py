@@ -127,12 +127,12 @@ def transform(amount):
         print(exception)
     if amt == 0:
         return "NO REGISTRATION FEE"
-    if amt > 100000:
-        t_amt += amount[0:1] + "," + amount[1,3] + "," + amount[3:]
-    elif amt > 1000 and amt < 10000:
-        t_amt += amount[0:1] + "," + amount[1:]
-    elif amt > 10000:
+    if amt >= 100000:
+        t_amt += amount[0:1] + "," + amount[1:3] + "," + amount[3:]
+    elif amt >= 10000 and amt < 100000:
         t_amt += amount[0:2] + "," + amount[2:]
+    elif amt >= 1000 and amt < 10000:
+        t_amt += amount[0:1] + "," + amount[1:]
     return t_amt
 
 def signin(request):
