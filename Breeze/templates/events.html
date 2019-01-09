@@ -84,7 +84,9 @@
             <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
 
             <div class="header-nav__content">
-                <h3 style="font-family:ADR">Navigation</h3>
+              {% if user.is_authenticated %}
+                  <h3 style="font-family:ADR;font-weight: bold;">Hi <span>{{name}}</span></h3>
+              {% endif %}
 
                 <ul class="header-nav__list">
                         <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
