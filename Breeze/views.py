@@ -180,17 +180,29 @@ def event_register2(request):
         message = "Event Registration Successful."
         from_email = settings.DEFAULT_FROM_EMAIL
         to_list = [request.user.email]
-        html_message = loader.render_to_string(
-            os.getcwd()+'/Breeze/templates/reg_mail.html',
-            {
-                'name' : request.user.profile.name,
-                'email' : request.user.email,
-                'reg_id' : uid,
-                'event_name' : event.name,
-                'status': transaction_status,
-                'form_url': form_url,
-            }
-        )        
+        if(form_url == "null"):
+            html_message = loader.render_to_string(
+                os.getcwd()+'/Breeze/templates/reg_mail.html',
+                {
+                    'name' : request.user.profile.name,
+                    'email' : request.user.email,
+                    'reg_id' : uid,
+                    'event_name' : event.name,
+                    'status': transaction_status,
+                }
+            )  
+        else:
+            html_message = loader.render_to_string(
+                os.getcwd()+'/Breeze/templates/reg_mail1.html',
+                {
+                    'name' : request.user.profile.name,
+                    'email' : request.user.email,
+                    'reg_id' : uid,
+                    'event_name' : event.name,
+                    'status': transaction_status,
+                    'form_url': form_url,
+                }
+            )        
         try:
             send_mail(subject, message, from_email, to_list, fail_silently=False, html_message=html_message)                
         except Exception as e:
