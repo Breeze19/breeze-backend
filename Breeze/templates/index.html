@@ -151,14 +151,14 @@
   <div class="overlay"></div>
   <div class="shadow-overlay"></div>
   <div class="home-content">
-    <div class="row home-content__main">
+    <div class="row home-content__main" style="text-align: left !important;">
       <!--<h3 style="font-weight:bold;font-family:PN">Welcome to Breeze'19</h3>
       <h1 style="font-family:AR"> <span style="color:#e25c7f;font-family:ADR">Breeze</span> is <br>
         Shiv Nadar University's <br>
         Cultural-Techno-Sports Fest </h1>-->
       <h1 style="text-align: center;" id="h-logo-img"><img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" id="logo-gif" style="width: 60%;text-align: center;text-shadow: 200px 200px red;" class="img-fluid" alt="Responsive image"></h1>
       <h1  id="date-breeze"style="text-align: center;margin-top:-15%;font-size: 2.5rem;font-family:AR;">8<sup>th</sup>, 9<sup>th</sup>, 10<sup>th</sup> Feburary</h1>
-      <div id="buttons-reg">
+      <div id="buttons-reg" style="text-align: left;">
         {% if user.is_authenticated %}
         <a href="/logout"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="signoutbut" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Sign out</span> </a> </div></a>
         {% else %}
