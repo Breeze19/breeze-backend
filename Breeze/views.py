@@ -12,10 +12,6 @@ import os
 import random, string
 
 def home(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'index.html',context=context)
     return render(request, 'index.html')
     
 def nineteen(request):
