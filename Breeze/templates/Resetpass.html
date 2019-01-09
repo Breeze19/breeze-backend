@@ -156,11 +156,13 @@
     </div>
     <script>
     $("#submit").on('click', function() {
+      $("#loader").removeAttr('hidden')
       $.post('/forgotPassword/' + '{{hashkey}}',{
         'csrfmiddlewaretoken': '{{csrf_token}}',
         'password': $("#password").val(),
         'repassword': $("#password2").val()
       },function(response){
+        $("#loader").attr('hidden')
         if(response["message"] == "success"){
           $("#message").removeAttr('hidden')
           $("#messgae").text("Password reset")  

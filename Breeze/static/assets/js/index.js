@@ -8,6 +8,7 @@ $(document).ready(function(){
     }
   })
   $("#submit").on('click',function(){
+    $("#loader").removeAttr('hidden')
     const data = {
       sportsName: $("#sportsDropdown :selected").text(),
       noofplayers: $("#noofplayers").val(),
@@ -19,13 +20,19 @@ $(document).ready(function(){
     }
     console.log(data)
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
+      $("#loader").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
+      } 
+      else{
+        $("#message").attr('hidden')
+        $("#message").text("Please try again")
       }
     })
   })
   $("#submittkk").on('click',function(){
+    $("#loader").removeAttr('hidden')
     const data = {
       weightCatBoys: $("#weightCatBoys :selected").text(),
       weightCatGirls: $("#weightCatGirls :selected").text(),
@@ -37,13 +44,19 @@ $(document).ready(function(){
       req_acc:  $('#accyes').attr('checked')?YES:NO
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkk",{data},function(response){
+      $("#loader").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
+      } 
+      else{
+        $("#message").attr('hidden')
+        $("#message").text("Please try again")
       }
     })
   })
   $("#submittkp").on('click',function(){
+    $("#loader").removeAttr('hidden')
     const data = {
       category1: $("#category1 :selected").text(),
       category2:$("category2 :selected").text(),
@@ -56,9 +69,14 @@ $(document).ready(function(){
       req_acc:  $('#accyes').attr('checked')?YES:NO
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkp",{data},function(response){
+      $("#loader").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
+      }
+      else{
+        $("#message").attr('hidden')
+        $("#message").text("Please try again")
       }
     })
   })

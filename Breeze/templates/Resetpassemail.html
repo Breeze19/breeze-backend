@@ -155,10 +155,12 @@
     </div>
     <script>
     $("#submit").on('click', function() {
+      $("#loader").removeAttr('hidden')
       $.post('/forgotpass/',{
         'csrfmiddlewaretoken': '{{csrf_token}}',
         'email': $("#email").val()
       },function(response){
+        $("#loader").attr('hidden')
         if(response["message"] == "success"){
           $("#message").removeAttr('hidden')
           $("#message").text("An email has been sent to you.")  

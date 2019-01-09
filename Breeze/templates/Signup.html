@@ -181,7 +181,7 @@
         "password": $("#password").val(),
         "confirmpass": $("#confirmpassword").val()
       },function(response){
-        $("#loader").removeAttr('hidden')
+        $("#loader").attr('hidden')
         if(response["message"] == "success"){
           var prev = '{{prev}}'
           if(prev.length == 0){
