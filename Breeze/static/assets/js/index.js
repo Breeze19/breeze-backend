@@ -14,7 +14,8 @@ $(document).ready(function(){
       name: $("#name").val(),
       collegeName: $("#collegeName").val(),
       email: $("#email").val(),
-      phno: $("#phno").val()
+      phno: $("#phno").val(),
+      acc_req:  $('#accyes').attr('checked')?YES:NO
     }
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
       if(response.result == 'OK'){
@@ -31,7 +32,8 @@ $(document).ready(function(){
       name: $("#name").val(),
       collegeName: $("#collegeName").val(),
       email: $("#email").val(),
-      phno: $("#phno").val()
+      phno: $("#phno").val(),
+      acc_req:  $('#accyes').attr('checked')?YES:NO
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkk",{data},function(response){
       if(response.result == 'OK'){
@@ -49,7 +51,8 @@ $(document).ready(function(){
       name: $("#name").val(),
       collegeName: $("#collegeName").val(),
       email: $("#email").val(),
-      phno: $("#phno").val()
+      phno: $("#phno").val(),
+      acc_req:  $('#accyes').attr('checked')?YES:NO
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkp",{data},function(response){
       if(response.result == 'OK'){
