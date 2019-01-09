@@ -106,6 +106,15 @@
         font-weight: bold;
         display: inline-block;
         }
+        #note{
+            font-size: 2.5rem !important;
+        }
+        #inst{
+            font-size: 1.5rem !important;
+        }
+        #qr{
+            width:100% !important;
+        }
     }
     </style>
     <style media="screen">
@@ -291,18 +300,12 @@
                         <input type="text" placeholder="Enter University name" name="uname" required>
                         <img src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" alt="">
                         <button type="submit-reg" style="margin-top: 0%;padding-top: 0;">Submit</button>-->
-                        <p><b style="font-weight: bold;color: black;font-size: 2.5rem;">NOTE</b> <br><br>
+                        <p><b id="note" style="font-weight: bold;color: black;font-size: 4.5rem;">NOTE</b> <br><br>
 
-                            You will receive an automated email (check spam). You are requested to follow the mentioned steps to complete the registration and payment process<br><br>
+                            <span id="inst" style="font-size: 2.5rem;">You will receive an automated email (check spam). You are requested to follow the mentioned steps to complete the registration and payment process<br><br>
                             
-                            <span style="font-weight: bold;color: black;font-size: 1.5rem;">STEP 1</span><br>
-                            Fill the Google Form and includes all the details regarding the event you've registered for.<br><br>
-                            
-                            <span style="font-weight: bold;color: black;font-size: 1.5rem;">STEP 2</span><br>
-                            Scan the QR code displayed in your email and pay the amount. <span style="font-weight: 400;color: black;font-size: 1.5rem;">KINDLY FOLLOW THE INSTRUCTIONS MENTIONED IN THE EMAIL REGARDING THE PAYMENT PROCESS</span><br><br><br>
-                            
-                            
-                            Let's make BREEZE fun together, see you there :)<br>
+                            Scan the QR code displayed below and pay the amount. It is also attached to the automated mail.</span><br><br>
+                            <img id="qr" src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" style="width: 50%;" alt="">
                             
                             </p>
                 </div>
