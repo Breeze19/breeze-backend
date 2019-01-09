@@ -46,6 +46,20 @@
         background-attachment: fixed;
         height: 100%;
     }
+    .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
     </style>
     <style media="screen">
     @font-face {
@@ -148,7 +162,7 @@
               <h2 style="color:white;margin-left:-60%;font-family:AR;margin-top: 0;">Email:</h2><input id="email" name="username" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <h2 style="color:white;margin-left:-50%;font-family:AR;">Password:</h2><input id="password" name="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <p hidden id="errormessage" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
-                <img hidden id="loader" src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
+                <img hidden id="loader1" src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
               <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#e25c7f;font-family:AR;border-radius:25px;font-weight:bold" >Sign In</a>
               <a href="/forgotpassmail"><p class="card-text text-center" style="font-size:1.75rem;font-family:PN;padding:1%">Forgot password</p></a>
             </form>
