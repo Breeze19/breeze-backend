@@ -317,6 +317,7 @@
                 <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
                 {% if user.is_authenticated %}
                 <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
+                <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
                 {% else %}
                 <button type="button" class="cancelbtn" id="signup-button" style="margin-top: 0%;padding-top: 0;">Sign in</button>
                 {% endif %}
@@ -369,10 +370,12 @@
         "event": id
       },function(response){
         if(response["message"] == "success"){
-          setTimeout(function(){
-            document.getElementById('tabs').style.display='block';
-            document.getElementById('fill-detail').style.display='none';
-          },2000)
+          $("#message").removeAttr('hidden')
+          $("#message").text("Registration successful")
+        }
+        else{
+          $("#message").removeAttr('hidden')
+          $("#message").text("Already registered")
         }
       })
     }

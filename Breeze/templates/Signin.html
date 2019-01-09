@@ -173,14 +173,14 @@
     </div>
     <script>
     $("#submit").on('click', function() {
-      $("#loader").removeAttr('hidden')
+      $("#loader1").removeAttr('hidden')
       $.post('/login/',{
         'csrfmiddlewaretoken': '{{csrf_token}}',
         'username': $("#email").val(),
         'password': $("#password").val()
       },function(response){
         var prev = '{{prev}}'
-        $("#loader").attr('hidden')
+        $("#loader1").attr('hidden')
         if(response["message"] == "success"){
           if(prev.length == 0){
             window.location.href = window.location.origin + "/"

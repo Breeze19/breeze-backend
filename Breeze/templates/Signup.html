@@ -173,7 +173,7 @@
     </div>
     <script>
     $("#submit").on('click',function(){
-      $("#loader").removeAttr('hidden')
+      $("#loader1").removeAttr('hidden')
       $.post("/createaccount/",{
         'csrfmiddlewaretoken': '{{csrf_token}}',
         "email": $("#email").val(),
@@ -183,7 +183,7 @@
         "password": $("#password").val(),
         "confirmpass": $("#confirmpassword").val()
       },function(response){
-        $("#loader").attr('hidden')
+        $("#loader1").attr('hidden')
         if(response["message"] == "success"){
           var prev = '{{prev}}'
           if(prev.length == 0){
