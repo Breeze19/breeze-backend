@@ -161,7 +161,7 @@
               <h2 id="pas"style="color:white;margin-left:-60%;font-family:AR;">Password<sup>*</sup>:</h2><input id="password" type="password" required placeholder="Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <h2 id="repas" style="color:white;margin-left:-60%;font-family:AR;">Re-enter Password<sup>*</sup>:</h2><input id="confirmpassword" type="password" required placeholder="Re-enter Password" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
               <p hidden id="errormessage" style="padding-top:3%;font-size:1.75rem;font-family:PN;"><span style="padding-left:3%;"></p>
-                <img src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
+                <img hidden id="loader" src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
               <a id="submit" class="btn btn-primary" id="register-culter"style="margin-top:5.1rem;border:1px solid white;background-color:#000000;color:#46c1ac;font-family:AR;border-radius:25px;font-weight:bold" >Sign Up</a>
             </form>
             </div>
@@ -171,6 +171,7 @@
     </div>
     <script>
     $("#submit").on('click',function(){
+      $("#loader").removeAttr('hidden')
       $.post("/createaccount/",{
         'csrfmiddlewaretoken': '{{csrf_token}}',
         "email": $("#email").val(),
@@ -180,6 +181,7 @@
         "password": $("#password").val(),
         "confirmpass": $("#confirmpassword").val()
       },function(response){
+        $("#loader").removeAttr('hidden')
         if(response["message"] == "success"){
           var prev = '{{prev}}'
           if(prev.length == 0){

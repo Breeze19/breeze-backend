@@ -127,10 +127,6 @@ def createaccount(request):
         os.getcwd()+'/Breeze/templates/signup_mail.html',
         {
          'name' : name,
-         'email' : email,
-         'user_name': username,
-         'subject': 'Thank you for registering with us '+username+' \n You will now be recieving Notifications for howabouts at SNU in an all new Way. Goodbye to the spam mails. \n Thanks for registering. Have a nice day!!',
-         'linkTosite': 'www.google.com',
         }
         )
         if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
