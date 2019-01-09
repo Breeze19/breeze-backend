@@ -304,7 +304,7 @@ def forgotmail(request):
             html_message = loader.render_to_string(
                 os.getcwd()+'/Breeze/templates/forgot_pass.html',
                     {
-                    'link' : 'https://snu-breeze/forgotPassword/' + url_hash,
+                    'link' : 'https://breeze19.appspot.com/forgotPassword/' + url_hash,
                     'subject': 'Password reset email'
                 }
             )
