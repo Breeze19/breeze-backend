@@ -20,6 +20,7 @@ $(document).ready(function(){
     }
     console.log(data)
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
+      console.log(response)
       $("#loader").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
