@@ -8,7 +8,7 @@ $(document).ready(function(){
     }
   })
   $("#submit").on('click',function(){
-    $("#loader").removeAttr('hidden')
+    $("#loader1").removeAttr('hidden')
     const data = {
       sportsName: $("#sportsDropdown :selected").text(),
       noofplayers: $("#noofplayers").val(),
@@ -21,7 +21,7 @@ $(document).ready(function(){
     console.log(data)
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
       console.log(response)
-      $("#loader").attr('hidden')
+      $("#loader1").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
@@ -33,7 +33,7 @@ $(document).ready(function(){
     })
   })
   $("#submittkk").on('click',function(){
-    $("#loader").removeAttr('hidden')
+    $("#loader1").removeAttr('hidden')
     const data = {
       weightCatBoys: $("#weightCatBoys :selected").text(),
       weightCatGirls: $("#weightCatGirls :selected").text(),
@@ -45,7 +45,7 @@ $(document).ready(function(){
       req_acc:  $("#accomoDown :selected").text()
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkk",{data},function(response){
-      $("#loader").attr('hidden')
+      $("#loader1").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
@@ -57,7 +57,7 @@ $(document).ready(function(){
     })
   })
   $("#submittkp").on('click',function(){
-    $("#loader").removeAttr('hidden')
+    $("#loader1").removeAttr('hidden')
     const data = {
       category1: $("#category1 :selected").text(),
       category2:$("category2 :selected").text(),
@@ -70,7 +70,7 @@ $(document).ready(function(){
       req_acc:  $("#accomoDown :selected").text()
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkp",{data},function(response){
-      $("#loader").attr('hidden')
+      $("#loader1").attr('hidden')
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
