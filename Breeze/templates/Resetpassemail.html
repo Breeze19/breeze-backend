@@ -162,7 +162,7 @@
         'csrfmiddlewaretoken': '{{csrf_token}}',
         'email': $("#email").val()
       },function(response){
-        $("#loader1").attr('hidden')
+        $("#loader1").attr('hidden',true)
         if(response["message"] == "success"){
           $("#message").removeAttr('hidden')
           $("#message").text("An email has been sent to you.")  

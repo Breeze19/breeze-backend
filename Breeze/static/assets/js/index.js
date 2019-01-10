@@ -21,7 +21,7 @@ $(document).ready(function(){
     console.log(data)
     $.post("https://breeze19sports.herokuapp.com/register",{data},function(response){
       console.log(response)
-      $("#loader1").attr('hidden')
+      $("#loader1").attr('hidden',true)
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
@@ -45,7 +45,7 @@ $(document).ready(function(){
       req_acc:  $("#accomoDown :selected").text()
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkk",{data},function(response){
-      $("#loader1").attr('hidden')
+    $("#loader1").attr('hidden',true)
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")
@@ -70,7 +70,7 @@ $(document).ready(function(){
       req_acc:  $("#accomoDown :selected").text()
     }
     $.post("https://breeze19sports.herokuapp.com/register/tkp",{data},function(response){
-      $("#loader1").attr('hidden')
+      $("#loader1").attr('hidden',true)
       if(response.result == 'OK'){
         $("#message").removeAttr('hidden')
         $("#message").text("Registration successful")

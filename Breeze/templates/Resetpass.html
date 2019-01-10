@@ -164,7 +164,7 @@
         'password': $("#password").val(),
         'repassword': $("#password2").val()
       },function(response){
-        $("#loader1").attr('hidden')
+        $("#loader1").attr('hidden',true)
         if(response["message"] == "success"){
           $("#message").removeAttr('hidden')
           $("#messgae").text("Password reset")  
