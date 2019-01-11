@@ -39,7 +39,7 @@
     <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
     <style>
     #top{
-        background-image: linear-gradient(to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)), url("{% static 'assets/images/breeze/Theme Reveal-01.jpg' %}");
+        background-image: linear-gradient(to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)), url("{% static 'assets/images/breeze/Theme Revel 2.png' %}");
         background-repeat: no-repeat;
         background-size:cover;
         background-position:center;
@@ -85,7 +85,7 @@
 
             <div class="header-nav__content">
               {% if user.is_authenticated %}
-                  <h3 style="font-family:ADR;font-weight: bold;">Hi <span>{{name}}</span></h3>
+                  <h3 style="font-family:ADR;font-weight: bold;"><img src="{% static 'assets/images/breeze/user.png' %}" alt=""></h3>
               {% endif %}
 
                 <ul class="header-nav__list">
