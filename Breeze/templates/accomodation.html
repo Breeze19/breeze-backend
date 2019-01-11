@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <body>
 <head>
@@ -13,4 +13,312 @@
   <embed src="{% static 'assets/Breeze19 - Accommodation.pdf' %}" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"/>
 
 </body>
+</html>-->
+
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Breeze'19</title>
+    {% load static %}
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+    <!-- ---- Include the above in your HEAD tag ---------->
+
+   <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
+    <style>
+        #top{
+            background-image: linear-gradient(to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)), url("{% static 'assets/images/breeze/Theme Revel 2.png' %}");
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position:center;
+            background-attachment: fixed;
+            height: 100%;
+    }
+    @media only screen and (max-width: 500px) {
+        #dgs{
+        margin-left: -40% !important;
+        }
+        #acco{
+            margin-left: 5% !important;
+            text-align: justify;
+        }
+        #aa{
+            margin-left: -10% !important;
+        }
+        #bb{
+            margin-left: -10% !important;
+        }
+    }
+    .form-radio
+    {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: inline-block;
+        position: relative;
+        background-color: #f1f1f1;
+        color: #666;
+        top: 10px;
+        height: 30px;
+        width: 30px;
+        border: 0;
+        border-radius: 50px;
+        cursor: pointer;     
+        margin-right: 7px;
+        outline: none;
+    }
+    .form-radio:checked::before
+    {
+        position: absolute;
+        font: 13px/1 'Open Sans', sans-serif;
+        left: 11px;
+        top: 7px;
+        content: '\02143';
+        transform: rotate(40deg);
+    }
+    .form-radio:hover
+    {
+        background-color: #f7f7f7;
+    }
+    .form-radio:checked
+    {
+        background-color: #f1f1f1;
+    }
+    label
+    {
+        font: 300 16px/1.7 'Open Sans', sans-serif;
+        color: #666;
+        cursor: pointer;
+    } 
+
+    </style>
+    <style media="screen">
+    @font-face {
+        font-family: AR;
+        src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
+    }
+    @font-face {
+        font-family: ADR;
+        src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
+    }
+    @font-face {
+        font-family: PN;
+        src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
+    }
+    @font-face {
+        font-family: PNB;
+        src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
+    }
+    </style>
+
+</head>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="/">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
+            </a>
+        </div>
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+              {% if user.is_authenticated %}
+                  <h3 style="font-family:ADR;font-weight: bold;"><img src="{% static 'assets/images/breeze/user.png' %}" alt=""></h3>
+              {% endif %}
+
+                <ul class="header-nav__list">
+                        <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
+                  <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li><a href="/19/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
+                  <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
+                  <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
+                </ul>
+
+                <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
+
+                <ul class="header-nav__social">
+                  <li>
+                      <a href="https://www.facebook.com/snu.breeze/" target="_blank"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <!--<li>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>-->
+                  <li>
+                      <a href="https://www.instagram.com/breeze.snu/" target="_blank"><i class="fa fa-instagram"></i></a>
+                  </li>
+                    <!--<li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </li>-->
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav>  <!-- end header-nav -->
+
+        <a style="background-color: black;" class="header-menu-toggle" href="#0">
+            <span style="background-color:black; " class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+    <style media="screen">
+        @media only screen and (max-width: 500px) {#heading{padding-left: 0%!important;}}
+    </style>
+    <div class="row section-header" data-aos="fade-up">
+      <div class="col-full">
+        <h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:0%;padding-bottom:0;padding-left: 60%;margin-bottom:0;font-family:ADR;margin-left:5%;visibility: hidden;">Accomodation</h1>
+      </div>
+    </div>
+    <style>
+    </style>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="border:3px solid #46c1ac;border-radius: 25px 25px; margin:5% 10%;">
+            <h5 class="card-header text-center" style="background-color:#46c1ac;padding:1%;margin:0 0 0% 0;border-radius:20px 20px 0px 0px ;font-size:2rem;font-family:AR">Registration</h5>
+            <div class="card-body" style="background-color: black;border-radius:0px 0px 20px 20px;">
+              <p class="card-text text-center">
+                <div class="row">
+                    <div class="col-md-4 text-center" style="width:50%;display:inline;">
+                          <h2 style="color:white;margin-left:-50%;font-family:AR;">Sport*:</h2><select id="sportsDropdown" name="event" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="badmintonb" style="color:black;">Badminton (Boys)</option><option value="badmintong" style="color:black;">Badminton (Girls)</option><option value="ltb" style="color:black;">Lawn Tennis (Boys)</option><option value="ltg" style="color:black;">Lawn Tennis (Girls)</option><option value="ttb" style="color:black;">Table Tennis (Boys)</option><option value="ttg" style="color:black;">Table Tennis (Girls)</option><option value="vbb" style="color:black;">Volleyball (Boys)</option><option value="vbg" style="color:black;">Volleyball (Girls)</option><option value="bbb" style="color:black;">Basketball (Boys)</option><option value="bbg" style="color:black;">Basketball (Girls)</option><option value="fb" style="color:black;">Football</option><option value="ft" style="color:black;">Futsal (Girls)</option><option style="color:black;" value="cr">Cricket</option><option value="ch" style="color:black;">Chess (Mix)</option><option value="sq" style="color:black;">Squash</option><option value="tkk" style="color:black;">Taekwondo Sparring(Kyorugi)</option><option value="tkp" style="color:black;">Taekwondo Poomsae</option></select>
+                          <h2 id="dgs"style="color:white;margin-left:-50%;font-family:AR;">Number <br>of players*:</h2><input required id="noofplayers" type="text" placeholder="Number of players (including subs)" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+                          <h2 style="color:white;margin-left:-50%;font-family:AR;">Name*:</h2><input id="name" type="text" placeholder="Name" required style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+                          <h2 style="color:white;margin-left:-50%;font-family:AR;">Email*:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+                          <h2 style="color:white;margin-left:-50%;font-family:AR;">Phone <br>Number*:</h2><input id="phno" type="number" required placeholder="Phone Number" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+                          <h2 style="color:white;margin-left:-50%;font-family:AR;">College*:</h2><input id="collegeName" type="text" required placeholder="College" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
+                          <h2 id="acco" style="color:white;margin-left:-50%;font-family:AR;">Accommodation<br>required*:</h2><select id="accomoDown" name="event" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="yes" style="color:black;">Yes</option><option value="no" style="color:black;">No</option></select>
+                          <a href="/19/sportshandbook/" class="btn btn-primary" style="border-radius:25px;border:3px solid white;background-color:transparent;color:#46c1ac;font-family:AR; margin-top: 6%;font-weight: bolder;">Download PDF</a><br><br>
+                          <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
+                            <img hidden id="loader1" style="width:10%;" src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
+                          <a id="submit" class="btn btn-primary" style="border-radius:25px;border:3px solid white;background-color:transparent;color:#46c1ac;font-family:AR;font-weight:bolder">Submit</a>
+                          <!--<p style="padding-top:3%;font-size:1.5rem;font-family:PN;margin-bottom: 5%;"><span style="padding-left:3%;">Contact <span style="font-weight: bold;">Sports Directors</span> for info:</span> <span style="padding-left:1%;">Anmol Mahajan (<span style="color:#46c1ac">9560954626</span>), Sanjana Maurya (<span style="color:#46c1ac">9015378953</span>)</span></p>-->
+                    </div>
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            </div> <!-- end col-full -->
+        </div> <!-- end client-testimonials -->
+
+    </section> <!-- end s-clients -->
+
+
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="loader">
+        <div class="line-scale-pulse-out">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat" alt="">
+          <!--<div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>-->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script type="text/javascript">
+
+    $('#carouselExample').on('slide.bs.carousel', function (e) {
+
+
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 3;
+        var totalItems = $('.carousel-item').length;
+
+        if (idx >= totalItems-(itemsPerSlide-1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+            for (var i=0; i<it; i++) {
+                // append slides to end
+                if (e.direction=="left") {
+                    $('.carousel-item').eq(i).appendTo('.carousel-inner');
+                }
+                else {
+                    $('.carousel-item').eq(0).appendTo('.carousel-inner');
+                }
+            }
+        }
+    });
+
+
+
+
+
+      $(document).ready(function() {
+    /* show lightbox when clicking a thumbnail */
+        $('a.thumb').click(function(event){
+          event.preventDefault();
+          var content = $('.modal-body');
+          content.empty();
+            var title = $(this).attr("title");
+            $('.modal-title').html(title);
+            content.html($(this).html());
+            $(".modal-profile").modal({show:true});
+        });
+
+      });
+    </script>
+
+</body>
+
 </html>
