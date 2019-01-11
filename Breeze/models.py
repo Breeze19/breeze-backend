@@ -72,6 +72,7 @@ class AccPackage(models.Model):
 class Registration(models.Model):
     eventId = models.ForeignKey(Events, on_delete=models.CASCADE, null=False)
     userId = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    payable = models.DecimalField(decimal_places=2, max_digits=8, null=True)
     college = models.CharField(max_length=200, null=False, default='')
     registration_id = models.CharField(max_length=200, unique=True, default='')
     STATUS = (
