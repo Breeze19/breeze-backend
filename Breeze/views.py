@@ -47,11 +47,10 @@ def sports(request):
             fee = "Outside Participants: " + str(fee) + " | SNU Participants: " + transform(events[i].fee_snu)
         data_dict[events[i].id] = {
         "name": events[i].name,
-        "description": events[i].description,
         "rules": events[i].rules,
         "date": str(events[i].date),
-        "prize": transform(events[i].prize),
-        "fee": fee,
+        "prize": events[i].prizes,
+        "fee": fee + " Per team",
         "contact_name": events[i].contact_market
         }
     js_data = json.dumps(data_dict)
@@ -194,7 +193,6 @@ def register(request):
 
 def login1(request):
     if request.method == 'POST':
-         print(request.POST)
          user = authenticate(username=request.POST['username'], password = request.POST['password'])
          if not user or not user.is_active:
                  return JsonResponse({
@@ -257,7 +255,6 @@ def event_register2(request):
     if request.method == 'POST' and request.user.id is not None:
         e = int(request.POST['event'])
         event = Events.objects.get(id=e)
-        print(event.name)
         uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
         payable = 0
         try:
@@ -336,9 +333,6 @@ def accom_register(request):
             package = request.POST['package']
             days = int(request.POST['days'])
             food = request.POST['meal']
-            print(package)
-            print(days)
-            print(food)
             if food == 'Without Meals':
                 packageid = AccPackage.objects.get(name=package)   
             else:
@@ -390,16 +384,12 @@ def accom_register(request):
             })
 
 def forgotmail(request):
-    print(request.POST['email'], "\n\n")
     if request.method == "POST" :
         form=ForgotPassMailForm(request.POST)
-        print(form)
         if form.is_valid():    
-            print("Form Validation Successful")
             subject = "Reset Password | Breeze'18"
             message = "You can change your password here:-  "
             from_email = settings.DEFAULT_FROM_EMAIL
-            print(request.POST['email'])
             to_list = [request.POST['email']]
             url_hash= "".join(random.choice(string.ascii_letters + string.digits) for _ in range(64))
             try:

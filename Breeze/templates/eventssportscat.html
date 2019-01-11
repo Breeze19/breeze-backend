@@ -222,7 +222,7 @@
       <div class="row">
         <div class="col-md-2">
           <div class="card" style="border:3px solid #fafafa;border-radius: 25px 25px; margin:5% 10%;">
-            <h5 class="card-header text-center" style="background-color:#fafafa;border-radius:20px 20px 0px 0px ;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">{{ events.0.subCategoryName }}</h5>
+            <h5 class="card-header text-center" style="background-color:#fafafa;border-radius:20px 20px 0px 0px ;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">Sports</h5>
             <div class="card-body" style="padding-bottom: 5%;padding-top: 5%;text-align: center;">
               <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Event details and registration will be live soon<br><br>Help us notify you :</p>-->
               <!--<h2 style="color:white;margin-left:-60%;font-family:AR;">Email:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">-->
@@ -249,17 +249,11 @@
             <div class="container" style="text-align: center;">
                 <div id="tabs" >
                         <div class="tab">
-                                <button class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen" >Description</button>
                                 <button class="tablinks" onclick="openCity(event, 'Rules')" >Rules</button>
                                 <button class="tablinks" onclick="openCity(event, 'Prizes')" >Prizes</button>
                                 <button class="tablinks" onclick="openCity(event, 'reg')" >Reg. amount</button>
                                 <button class="tablinks" onclick="openCity(event, 'Date')" >Date & Time</button>
                                 <button class="tablinks" onclick="openCity(event, 'POC')" >Event POC</button>
-                            </div>
-            
-                            <div id="Description" class="tabcontent">
-                                <h3>Description</h3>
-                                <p id="description"></p>
                             </div>
                             
                             <div id="Rules" class="tabcontent">
@@ -318,7 +312,7 @@
                 {% if user.is_authenticated %}
                 <div class="container">
                         <label id="noplabel" for="nop"><b>Number of participants</b></label>
-                        <input type="number" placeholder="Enter no. of participants" name="nop" required style="width: 100%;">
+                        <input id="nop" type="number" placeholder="Enter no. of participants" name="nop" required style="width: 100%;">
                 </div>
                 <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
                 <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
@@ -373,7 +367,8 @@
       document.getElementById('tabs').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'
       $.post("/events/register/",{
         'csrfmiddlewaretoken': '{{csrf_token}}',
-        "event": id
+        "event": id,
+        "nop": $("#nop").val()
       },function(response){
         if(response["message"] == "success"){
           $("#message").removeAttr('hidden')
@@ -407,7 +402,6 @@
         register(id)
       })
       document.getElementById('id01').style.display='block'
-      $("#description").text(data[id+""]["description"])
       $("#rules").text(data[id]["rules"])
       $("#prizes").text(data[id]["prize"])
       $("#reg").text(data[id]["fee"])
