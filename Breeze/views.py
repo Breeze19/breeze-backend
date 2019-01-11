@@ -39,11 +39,27 @@ def cultural(request):
     return render(request, 'eventsculcat.html')
 
 def sports(request):
+    events = Events.objects.filter(category='sports')
+    data_dict = {}
+    for i in range(0,len(events)):
+        fee = transform(str(events[i].fee))
+        if(events[i].fee_snu != -1):
+            fee = "Outside Participants: " + transform(fee) + " | SNU Participants: " + transform(str(events[i].fee_snu))
+        data_dict[events[i].id] = {
+        "name": events[i].name,
+        "description": events[i].description,
+        "rules": events[i].rules,
+        "date": str(events[i].date),
+        "prize": transform(str(events[i].prize)),
+        "fee": fee,
+        "contact_name": events[i].contact_market
+        }
+    js_data = json.dumps(data_dict)
+    name = ""
     if(request.user.id is not None):
         name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'eventssportscat.html',context=context)
-    return render(request, 'eventssportscat.html')
+    context = {"js_data": js_data,"name": name}
+    return render(request, 'eventssportscat.html',context=context)
 
 def sportstkk(request):
     if(request.user.id is not None):
