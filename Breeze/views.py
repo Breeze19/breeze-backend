@@ -228,12 +228,14 @@ def event_register2(request):
         event = Events.objects.get(id=e)
         uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
         try:
+            print(event.fee_type)
             payable = 0
             if event.fee_type == 'team':
                 payable = event.fee 
             elif event.fee_type == 'head':
-                payable = event.fee * request.POST['no_of_participants']
+                payable = event.fee * int(request.POST['nop'])
             payable1 = transform(str(payable))
+            print(payable1)
         except Exception as exception:
             print(exception)
         if event.fee == 0:
