@@ -55,7 +55,6 @@ def sports(request):
         }
     js_data = json.dumps(data_dict)
     name = ""
-    print(events)
     if(request.user.id is not None):
         name = request.user.profile.name
     context = {"js_data": js_data,"name": name,"events": events}
@@ -271,9 +270,15 @@ def event_register2(request):
             transaction_status = 'p'
         else:
             transaction_status = 'u'
-        register = Registration(eventId=event, userId=request.user,
+        try:
+            register = Registration(eventId=event, userId=request.user,
                                 college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,
                                 payable=payable,nop=int(request.POST['nop']))       
+        except Exception as exception:
+            return JsonResponse({
+            "message": "Try again"
+            })
+            print(exception)
         try:
             register.save()
         except Exception as exception:
@@ -387,7 +392,7 @@ def forgotmail(request):
     if request.method == "POST" :
         form=ForgotPassMailForm(request.POST)
         if form.is_valid():    
-            subject = "Reset Password | Breeze'18"
+            subject = "Reset Password | Breeze'19"
             message = "You can change your password here:-  "
             from_email = settings.DEFAULT_FROM_EMAIL
             to_list = [request.POST['email']]
@@ -401,7 +406,6 @@ def forgotmail(request):
                 return JsonResponse({
                 "message": "Password reset error"
                 })
-            print(os.getcwd())
             html_message = loader.render_to_string(
                 os.getcwd()+'/Breeze/templates/forgot_pass.html',
                     {
@@ -427,12 +431,10 @@ def forgot(request,hashkey):
         if(password==confirm):
             try:
                 user = ForgetPass.objects.filter(token=hashkey)[0]
-                print(user)
                 user = user.user
                 user.set_password(password)
                 user.save()
                 ForgetPass.objects.filter(token=hashkey).delete()
-                print("Password Changed Successfully")
                 return JsonResponse({
                 "message": "success"
                 })
