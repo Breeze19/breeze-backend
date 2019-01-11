@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Breeze'19</title>
+    {% load static %}
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'assets/css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/modal.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/eventscul.js' %}"></script>
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+    <!-- ---- Include the above in your HEAD tag ---------->
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/pace.min.js' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
+    <style>
+        #top{
+            background-image: linear-gradient(to bottom right, rgba(215,6,170,.7), rgba(10,157,108,.1)), url("{% static 'assets/images/breeze/sports.png' %}");
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position:center;
+            background-attachment: fixed;
+            height: 100%;
+    }
+    .events-cul-list{
+        height: auto;
+    }
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        display: block;
+    }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0%;
+        transition: 0.3s;
+    }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+        background-color: #ddd;
+    }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+        background-color: #ccc;
+    }
+
+        /* Style the tab content */
+        .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+    .tablinks{
+        width: 33%;
+        color: black;
+        margin: 0;
+        font-weight: bold;
+        display: inline-block;
+    }
+    .cancelbtn{
+        font-weight: bold;
+        border-radius: 25px;
+    }
+    @media only screen and (max-width: 500px){
+        .tablinks{
+        width: 100%;
+        margin: 0;
+        color: black;
+        font-weight: bold;
+        display: inline-block;
+        }
+        #note{
+            font-size: 2.5rem !important;
+        }
+        #inst{
+            font-size: 1.5rem !important;
+        }
+        #qr{
+            width:100% !important;
+        }
+    }
+    </style>
+    <style media="screen">
+    @font-face {
+        font-family: AR;
+        src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
+    }
+    @font-face {
+        font-family: ADR;
+        src: url("{% static 'assets/fonts/Atami-Display-Regular.otf' %}");
+    }
+    @font-face {
+        font-family: PN;
+        src: url("{% static 'assets/fonts/ProximaNova-Regular.ttf' %}");
+    }
+    @font-face {
+        font-family: PNB;
+        src: url("{% static 'assets/fonts/ProximaNova-Bold.ttf' %}");
+    }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="/">
+                <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" alt="Homepage">
+            </a>
+        </div>
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+              {% if user.is_authenticated %}
+                  <h3 style="font-family:ADR;font-weight: bold;">Hi <span>{{name}}</span></h3>
+              {% endif %}
+
+                <ul class="header-nav__list">
+                        <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="/logout" title="works" style="font-family:PN">Sign out</a></li>
+                  {% else %}
+                  <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">Sign in</a></li>
+                  {% endif %}
+                  <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
+                  <li><a href="/19/Accomodation.pdf/" title="acco" style="font-family:PN">Accommodation</a></li>
+                  <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
+                  <li><a href="/19/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
+                  <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
+                  <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
+                </ul>
+                <script>
+                $(document).ready(function(){
+                  var prev = "?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                  $("#singin").attr("href","/signin/" + prev)
+                  $("#signup").attr("href","/signup/" + prev)
+                })
+                </script>
+
+                <!--<p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>-->
+
+                <ul class="header-nav__social">
+                  <li>
+                      <a href="https://www.facebook.com/snu.breeze/" target="_blank"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <!--<li>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>-->
+                  <li>
+                      <a href="https://www.instagram.com/breeze.snu/" target="_blank"><i class="fa fa-instagram"></i></a>
+                  </li>
+                    <!--<li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </li>-->
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav>  <!-- end header-nav -->
+
+        <a style="background-color: black;" class="header-menu-toggle" href="#0">
+            <span style="background-color:black; " class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+    <style media="screen">
+        @media only screen and (max-width: 500px) {#heading{padding-left: 0%!important;}}
+    </style>
+    <div class="row section-header" data-aos="fade-up">
+      <div class="col-full">
+        <h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:5%;padding-bottom:0;padding-left: 75%;margin-bottom:0;font-family:ADR">Events</h1>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="card" style="border:3px solid #fafafa;border-radius: 25px 25px; margin:5% 10%;">
+            <h5 class="card-header text-center" style="background-color:#fafafa;border-radius:20px 20px 0px 0px ;padding:1%;margin:0 0 2% 0;font-size:2.5rem;font-family:AR">{{ events.0.subCategoryName }}</h5>
+            <div class="card-body" style="padding-bottom: 5%;padding-top: 5%;text-align: center;">
+              <!--<p class="card-text text-center" style="font-size:2.5rem;font-family:PN;padding:1%">Event details and registration will be live soon<br><br>Help us notify you :</p>-->
+              <!--<h2 style="color:white;margin-left:-60%;font-family:AR;">Email:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">-->
+              <!--<a id="submit" class="btn btn-primary" id="register-culter"style="border:1px solid white;background-color:#111111;color:#e25c7f;font-family:AR" >Submit</a>-->
+              {% if events|length == 0 %}
+              <center>
+                <h1>TBA</h1>
+              </center>
+              {% endif %}
+              {% for event in events %}
+              <button id="btn" class="btn btn-primary events-cul-list" onclick="onClick('{{event.id}}')">{{ event.name }}</button>
+              {% endfor %}
+            </div>
+          </div>
+          <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none';" 
+        class="close" title="Close Modal">&times;</span>
+        
+            <!-- Modal Content -->
+            <div class="modal-content animate">
+            <div class="container" style="background-color:white;text-align: right;">
+                <i class="fa fa-close" style="font-size:36px" onclick="location.href=location.href"></i>
+            </div>
+            <div class="container" style="text-align: center;">
+                <div id="tabs" >
+                        <div class="tab">
+                                <button class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen" >Description</button>
+                                <button class="tablinks" onclick="openCity(event, 'Rules')" >Rules</button>
+                                <button class="tablinks" onclick="openCity(event, 'Prizes')" >Prizes</button>
+                                <button class="tablinks" onclick="openCity(event, 'reg')" >Reg. amount</button>
+                                <button class="tablinks" onclick="openCity(event, 'Date')" >Date & Time</button>
+                                <button class="tablinks" onclick="openCity(event, 'POC')" >Event POC</button>
+                            </div>
+            
+                            <div id="Description" class="tabcontent">
+                                <h3>Description</h3>
+                                <p id="description"></p>
+                            </div>
+                            
+                            <div id="Rules" class="tabcontent">
+                                <h3>Rules</h3>
+                                <p id="rules"></p> 
+                            </div>
+                            
+                            <div id="Prizes" class="tabcontent">
+                                <h3>Prizes</h3>
+                                <p id="prizes"></p>
+                            </div>
+                            <div id="reg" class="tabcontent">
+                                <h3>Registration amount</h3>
+                                <p id="reg"></p>
+                                <img src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" alt="">
+                            </div>
+                            <div id="Date" class="tabcontent">
+                                <h3>Date & Time</h3>
+                                <p id="date"></p>
+                            </div>
+                            <div id="POC" class="tabcontent">
+                                <h3>Event POC</h3>
+                                <p id="poc"></p>
+                            </div>
+                                
+                </div>
+
+
+                <!--
+                <h2>Description</h1>
+                <p id="description"></p>
+                <h2>Rules</h1>
+                <p id="rules"></p>
+                <h2>Prizes</h1>
+                <p id="prizes">dsfg</p>-->
+                <div id="fill-detail" style="display: none;">
+                        <!--<label for="eid"><b>Email ID</b></label>
+                        <input type="text" placeholder="Enter email id" name="uname" required>
+                        <label for="uname"><b>University Name</b></label>
+                        <input type="text" placeholder="Enter University name" name="uname" required>
+                        <img src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" alt="">
+                        <button type="submit-reg" style="margin-top: 0%;padding-top: 0;">Submit</button>-->
+                        <p><b id="note" style="font-weight: bold;color: black;font-size: 4.5rem;">NOTE</b> <br><br>
+
+                            <span id="inst" style="font-size: 2.5rem;">You will receive an automated email (check spam). You are requested to follow the mentioned steps to complete the registration and payment process<br><br>
+                            
+                            Scan the QR code displayed below and pay the amount. It is also attached to the automated mail.<br><a href="https://g.co/payinvite/p8qr15" target="_blank"><button type="button" class="cancelbtn" id="tez" style="margin-top: 5%;padding-top:0px;">Get <img src="{% static 'assets/images/breeze/google.png' %}" style="height: 50%;padding-top:10%;" alt="Google"> Pay</button></a></span><br><br>
+                            <img id="qr" src="{% static 'assets/images/breeze/Screenshot_20190106-140417.jpg' %}" style="width: 50%;" alt="">
+                            
+                            </p>
+                </div>
+            </div>
+        
+            <div class="container" style="background-color:white;text-align: center;">
+                <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
+                {% if user.is_authenticated %}
+                <div class="container">
+                        <label for="nop"><b>Number of participants</b></label>
+                        <input type="number" placeholder="Enter no. of participants" name="nop" required style="width: 100%;">
+                </div>
+                <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
+                <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
+                {% else %}
+                <button type="button" class="cancelbtn" id="signup-button" style="margin-top: 0%;padding-top: 0;">Sign in</button>
+                {% endif %}
+            </div>
+            <script>
+                $("#signup-button").on('click',function(){
+                    var prev = "/signin/?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                    window.location.href = window.location.origin + prev;
+                })
+            </script>
+            </form>
+        </div>
+        </div>
+      </div>
+    </div>
+
+            </div> <!-- end col-full -->
+        </div> <!-- end client-testimonials -->
+
+    </section> <!-- end s-clients -->
+
+
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="loader">
+        <div class="line-scale-pulse-out">
+          <img src="{% static 'assets/images/breeze/cat.gif' %}" id="cat"alt="">
+          <!--<div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>-->
+        </div>
+      </div>
+    </div>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script>
+    function register(id){
+      document.getElementById('tabs').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'
+      $.post("/events/register/",{
+        'csrfmiddlewaretoken': '{{csrf_token}}',
+        "event": id
+      },function(response){
+        if(response["message"] == "success"){
+          $("#message").removeAttr('hidden')
+          $("#message").text("Registration successful")
+        }
+        else{
+          $("#message").removeAttr('hidden')
+          $("#message").text("Already registered")
+        }
+      })
+    }
+        document.getElementById("defaultOpen").click();
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    <script type="text/javascript">
+    function onClick(id){
+      var data = {{js_data|safe}}
+      $("#cancelbtn").on('click',function(){
+        register(id)
+      })
+      document.getElementById('id01').style.display='block'
+      $("#description").text(data[id+""]["description"])
+      $("#rules").text(data[id]["rules"])
+      $("#prizes").text(data[id]["prize"])
+      $("#reg").text(data[id]["fee"])
+      $("#date").text(data[id]["date"])
+      $("#poc").text(data[id]["contact_name"])
+    }
+    
+    $('#carouselExample').on('slide.bs.carousel', function (e) {
+
+
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 3;
+        var totalItems = $('.carousel-item').length;
+
+        if (idx >= totalItems-(itemsPerSlide-1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+            for (var i=0; i<it; i++) {
+                // append slides to end
+                if (e.direction=="left") {
+                    $('.carousel-item').eq(i).appendTo('.carousel-inner');
+                }
+                else {
+                    $('.carousel-item').eq(0).appendTo('.carousel-inner');
+                }
+            }
+        }
+    });
+
+
+
+
+
+      $(document).ready(function() {
+    /* show lightbox when clicking a thumbnail */
+        $('a.thumb').click(function(event){
+          event.preventDefault();
+          var content = $('.modal-body');
+          content.empty();
+            var title = $(this).attr("title");
+            $('.modal-title').html(title);
+            content.html($(this).html());
+            $(".modal-profile").modal({show:true});
+        });
+
+      });
+    </script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+    </script>
+
+</body>
+
+</html>
