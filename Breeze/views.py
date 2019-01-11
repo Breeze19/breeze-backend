@@ -241,11 +241,15 @@ def event_register2(request):
     if request.method == 'POST' and request.user.id is not None:
         e = int(request.POST['event'])
         event = Events.objects.get(id=e)
+        print(event.name)
         uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
         payable = 0
         try:
             if event.fee_type == 'team':
                 payable = event.fee 
+                if(event.name == 'Aagaaz'):
+                    if int(request.POST['nop']) > 20:
+                        payable = event.fee + (100 * (int(request.POST['nop']) - 20))
             elif event.fee_type == 'head':
                 payable = event.fee * int(request.POST['nop'])
         except Exception as exception:
@@ -255,7 +259,8 @@ def event_register2(request):
         else:
             transaction_status = 'u'
         register = Registration(eventId=event, userId=request.user,
-                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,payable=payable)       
+                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,
+                                payable=payable,nop=int(request.POST['nop']))       
         try:
             register.save()
         except Exception as exception:
@@ -420,8 +425,6 @@ def dashboard(request):
             accreg = AccomRegistration.objects.filter(userId=request.user)
             context = {'profile':profile, 'accreg':accreg}
             return render(request,'dashboard.html',context=context)
-        else:
-            return HttpResponseRedirect('/#authreq2')
 
 def accomodation(request):
     return render(request, 'help/accomodation.html')
