@@ -53,7 +53,6 @@
     ================================================== -->
     <script src="{% static 'assets/js/modernizr.js' %}"></script>
     <script src="{% static 'assets/js/pace.min.js' %}"></script>
-    <script src="{% static 'assets/js/index.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
@@ -170,7 +169,7 @@
                 <ul class="header-nav__list">
                         <li ><a href="/" title="home" style="font-family:PN">Home</a></li>
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
-                  <li><a href="/19/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
+                  <li><a href="/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
                   <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
                   <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
@@ -225,17 +224,20 @@
               <p class="card-text text-center">
                 <div class="row">
                     <div class="col-md-4 text-center" style="width:50%;display:inline;">
+                      <form>
+                        {% csrf_token %}
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">Name*:</h2><input id="name" type="text" placeholder="Name" required style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">Email*:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">Phone <br>Number*:</h2><input id="phno" type="number" required placeholder="Phone Number" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">College*:</h2><input id="collegeName" type="text" required placeholder="College" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-                          <h2 id="package-acco" style="color:white;margin-left:-50%;font-family:AR;">Package*:</h2><select id="pack" name="package" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="perday" style="color:black;">Per day package</option><option value="threeday" style="color:black;">3 day package</option></select>
-                          <h2 id="nod" style="color:white;margin-left:-50%;font-family:AR;">Number of <br>days*:</h2><select id="days" name="days" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="1" style="color:black;">1</option><option value="2" style="color:black;">2</option><option value="3" style="color:black;">3</option></select>
-                          <h2 id="meal-acco" style="color:white;margin-left:-50%;font-family:AR;">Meal*:</h2><select id="meal" name="meal" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="withmeal" style="color:black;">With meals</option><option value="withoutmeal" style="color:black;">Without meals</option></select>
-                          <a href="/19/sportshandbook/" class="btn btn-primary" style="border-radius:25px;border:3px solid white;background-color:transparent;color:#46c1ac;font-family:AR; margin-top: 6%;font-weight: bolder;">Download PDF</a><br><br>
+                          <h2 id="package-acco" style="color:white;margin-left:-50%;font-family:AR;">Package*:</h2><select id="pack" name="package" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="Per Day Package" style="color:black;">Per Day Package</option><option value="3 Day Package" style="color:black;">3 Day Package</option></select>
+                          <h2  id="nod" style="color:white;margin-left:-50%;font-family:AR;">Number of <br>days*:</h2><select  id="days" name="days" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="1" style="color:black;">1</option><option value="2" style="color:black;">2</option></select>
+                          <h2 id="meal-acco" style="color:white;margin-left:-50%;font-family:AR;">Meal*:</h2><select id="meal" name="meal" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="With Meals" style="color:black;">With Meals</option><option value="Without Meals" style="color:black;">Without Meals</option></select>
+                          <a href="/19/accomodation/" class="btn btn-primary" style="border-radius:25px;border:3px solid white;background-color:transparent;color:#46c1ac;font-family:AR; margin-top: 6%;font-weight: bolder;">Download PDF</a><br><br>
                           <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
                             <img hidden id="loader1" style="width:10%;" src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
                           <a id="submit" class="btn btn-primary" style="border-radius:25px;border:3px solid white;background-color:transparent;color:#46c1ac;font-family:AR;font-weight:bolder">Submit</a>
+                        </form>
                           <!--<p style="padding-top:3%;font-size:1.5rem;font-family:PN;margin-bottom: 5%;"><span style="padding-left:3%;">Contact <span style="font-weight: bold;">Sports Directors</span> for info:</span> <span style="padding-left:1%;">Anmol Mahajan (<span style="color:#46c1ac">9560954626</span>), Sanjana Maurya (<span style="color:#46c1ac">9015378953</span>)</span></p>-->
                     </div>
                 </div>
@@ -277,7 +279,50 @@
     <script src="{% static 'assets/js/plugins.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript">
-
+    $(document).ready(function(){
+      $("#name").val('{{name}}')
+      $("#email").val('{{email}}')
+      $("#phno").val('{{phno}}')
+      $("#collegeName").val('{{college}}')
+    })
+    $("#pack").on('change',function(){
+      var val = $("#pack :selected").val()
+      console.log(val)
+      if(val == 'Per Day Package'){
+        $("#nod").removeAttr('hidden')
+        $("#days").removeAttr('hidden')
+      } 
+      else {
+        $("#nod").attr('hidden',true)
+        $("#days").attr('hidden',true)
+      }
+    })
+    $("#submit").on('click',function(){
+      $("#loader1").removeAttr('hidden')
+      var days = 0;
+      if($("#pack :selected").val() == 'Per day package'){
+        days = 3;
+      }
+      else{
+        days = $("#days :selected").val()
+      }
+      $.post("/accommodation/register/",{
+        'csrfmiddlewaretoken': '{{csrf_token}}',
+        "package": $("#pack :selected").val(),
+        "days": days,
+        "meal": $("#meal :selected").val()
+      },function(response){
+        $("#loader1").attr('hidden',true)
+        if(response['message'] == 'success'){
+          $("#message").removeAttr('hidden')
+          $("#message").text("Accomodation registration successful")
+        }
+        else{
+          $("#message").removeAttr('hidden')
+          $("#message").text("Already registered for accomodation")
+        }
+      })
+    })
     $('#carouselExample').on('slide.bs.carousel', function (e) {
 
 

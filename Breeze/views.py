@@ -104,14 +104,20 @@ def team(request):
     return render(request,'team.html')
 
 def dashboard(request):
-        if request.user.id is not None:
-            profile = Registration.objects.filter(userId=request.user)
-            #accreg = AccomRegistration.objects.filter(userId=request.user)
-            context = {'profiles':profile}
-            return render(request,'dashboard.html',context=context)
+    if request.user.id is not None:
+        profile = Registration.objects.filter(userId=request.user)
+        #accreg = AccomRegistration.objects.filter(userId=request.user)
+        context = {'profiles':profile}
+        return render(request,'dashboard.html',context=context)
 
 def accomodation_brochure(request):
-    return render(request,'accomodation.html')
+    return render(request,'acc_brochure.html')
+
+def accomodation(request):
+    context = {"name": "","email": "","phno": "","college": ""}
+    if(request.user.id is not None):
+        context = {"name":request.user.profile.name,"email": request.user.email,"phno": request.user.profile.contact,"college": request.user.profile.college}
+    return render(request,'accomodation.html',context=context)
 
 def sports_handbook(request):
     return render(request,'sportshandbook.html')
@@ -425,11 +431,6 @@ def updateremarks(request):
 def partners(request):
     return render(request, 'help/partners.html')
 
-#user profile and purchases
-
-def accomodation(request):
-    return render(request, 'help/accomodation.html')
-
 def transport(request):
     return render(request, 'help/transport.html')
 
@@ -449,82 +450,40 @@ def event_register(request):
         return HttpResponseRedirect('/#authrequired')
 
 def accom_register(request):
-    if request.user.id is not None:
-        packages = AccPackage.objects.all()
-        print(packages)
-        context = {
-            'packages' : packages
-        }
-        return render(request, 'help/accom_register.html', context=context)
-    else:
-        return HttpResponseRedirect('/#authrequired')
-
-def accom_register2(request):
-    next = ''
-    if request.GET:
-        next = request.GET['next']
-        #print("I am Here 2")
-
     if request.method == 'POST' and request.user.id is not None:
-        #print("I am Here")
-        n = int(request.POST['number'])
-        p = int(request.POST['package'])
-        days = int(request.POST['days'])
-        college = request.POST['college']
-        #print(college)
-        package = AccPackage.objects.get(id=p)
-        if p == 2 or p == 4:
-            payable = package.fee*n
-        
-        else:
-            payable = package.fee*n*days
-        uid = 'AC{:04}{:04}'.format(request.user.id, random.randint(1,9999))
-        #print(uid)
-        #id = ''.join(random.choice(string.ascii_uppercase) for _ in range(8))
-        register = AccomRegistration(packageId=package, userId=request.user,
-                                college=college, registration_id=uid, days=days, payable=payable, number=n)
-        #print("I m here")
         try:
-            register.save()
-        except:
-            return HttpResponseRedirect(next)
+            package = request.POST['package']
+            days = int(request.POST['days'])
+            food = request.POST['meal']
+            print(package)
+            print(days)
+            print(food)
+            if food == 'Without Meals':
+                packageid = AccPackage.objects.get(name=package)   
+            else:
+                packageid = AccPackage.objects.get(name=package + " (" + food + ")")   
+            fee = 0 
+            if(package == 'Per Day Package'):
+                fee = days * 300
+                if(food == 'With Meals'):
+                    fee += days * 150
+            else:
+                if(food == 'With Meals'):
+                    fee = 1250
+                else:
+                    fee = 800
+            uid = 'AC{:04}{:04}'.format(request.user.id, random.randint(1,9999))
+            register = AccomRegistration(packageId=packageid, userId=request.user,
+                                college=request.user.profile.college, registration_id=uid, days=days, payable=fee)
+            try:
+                register.save()
+            except:
+                return JsonResponse({
+                "message": "Try again"
+                })
 
-        subject = "Accommodation Registration Successful | Breeze'18"
-        message = "Accommodation Registration Successful."
-        from_email = settings.EMAIL_HOST_USER
-        to_list = [request.user.email]
-        html_message = loader.render_to_string(
-            os.getcwd() + '/Breeze/templates/mails/AccomodationRegistration.html',
-            {
-                'name': request.user.profile.name,
-                'email': request.user.email,
-                'reg_id': uid,
-                'package_name': package.name,
-                'payable': payable,
-                'number': n,
-                'days': days,
-                # 'user_name': username,
-                # 'subject': 'Thank you for registering with us '+username+' \n You will now be recieving Notifications for howabouts at SNU in an all new Way. Goodbye to the spam mails. \n Thanks for registering. Have a nice day!!',
-                # 'linkTosite': 'www.google.com',
-            }
-        )
-
-        try:
-            send_mail(subject, message, "Breeze'18 " + from_email,
-                      to_list, fail_silently=False, html_message=html_message)
-        except Exception as e:
-            print("Mail not sent")
-            print(e.message, e.args)
-
-        return HttpResponseRedirect('/me/#accsuccess')
-    else:
-        return HttpResponseRedirect('/')
-#
-# def login_view(request):
-#    redirect_to = request.REQUEST.get('next', '')
-#    if request.method=='POST':
-#       #create login form...
-#       if valid login credentials have been entered:
-#          return HttpResponseRedirect(redirect_to)
-#    #...
-#    return render_to_response('login.html', locals())
+            return JsonResponse({
+            "message": 'success'
+            })
+        except Exception as exception:
+            print(exception)
