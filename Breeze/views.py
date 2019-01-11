@@ -102,7 +102,14 @@ def team(request):
         context = {"name": name}
         return render(request, 'team.html',context=context)
     return render(request,'team.html')
-    
+
+def dashboard(request):
+        if request.user.id is not None:
+            profile = Registration.objects.filter(userId=request.user)
+            #accreg = AccomRegistration.objects.filter(userId=request.user)
+            context = {'profiles':profile}
+            return render(request,'dashboard.html',context=context)
+
 def accomodation_brochure(request):
     return render(request,'accomodation.html')
 
@@ -419,12 +426,6 @@ def partners(request):
     return render(request, 'help/partners.html')
 
 #user profile and purchases
-def dashboard(request):
-        if request.user.id is not None:
-            profile = Registration.objects.filter(userId=request.user)
-            accreg = AccomRegistration.objects.filter(userId=request.user)
-            context = {'profile':profile, 'accreg':accreg}
-            return render(request,'dashboard.html',context=context)
 
 def accomodation(request):
     return render(request, 'help/accomodation.html')
