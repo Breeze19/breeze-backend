@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^19/accomodation/$', views.accomodation_brochure, name='accomodation_brochure'),
     url(r'^19/sportshandbook/$',views.sports_handbook,name='sports_handbook'),
     url(r'^forgotpassmail',views.forgotpassmail,name='forgotpassmail'),
+    url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^partners/$', views.partners, name='partners'),
     url(r'^transport/$', views.transport, name='transport'),
     url(r'^accommodation/$', views.accomodation, name='accomodation'),
@@ -35,5 +36,4 @@ urlpatterns = [
     url(r'^forgotPassword/(?P<hashkey>\w+)', views.forgot, name='forgot'),
     url(r'^clubdashboard/', views.clubdashboard, name='clubdashboard'),
     url(r'^updateremarks/', views.updateremarks, name='updateremarks'),
-    url(r'^me/', views.profile, name='profile'),
 ]

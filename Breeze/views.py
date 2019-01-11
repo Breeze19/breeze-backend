@@ -417,12 +417,12 @@ def partners(request):
     return render(request, 'help/partners.html')
 
 #user profile and purchases
-def profile(request):
+def dashboard(request):
         if request.user.id is not None:
             profile = Registration.objects.filter(userId=request.user)
             accreg = AccomRegistration.objects.filter(userId=request.user)
             context = {'profile':profile, 'accreg':accreg}
-            return render(request,'user.html',context=context)
+            return render(request,'dashboard.html',context=context)
         else:
             return HttpResponseRedirect('/#authreq2')
 
