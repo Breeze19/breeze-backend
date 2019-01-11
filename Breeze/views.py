@@ -39,7 +39,7 @@ def cultural(request):
     return render(request, 'eventsculcat.html')
 
 def sports(request):
-    events = Events.objects.filter(category='sports')
+    events = Events.objects.filter(category='s')
     data_dict = {}
     for i in range(0,len(events)):
         fee = transform(events[i].fee)
@@ -56,9 +56,10 @@ def sports(request):
         }
     js_data = json.dumps(data_dict)
     name = ""
+    print(events)
     if(request.user.id is not None):
         name = request.user.profile.name
-    context = {"js_data": js_data,"name": name}
+    context = {"js_data": js_data,"name": name,"events": events}
     return render(request, 'eventssportscat.html',context=context)
 
 def sportstkk(request):
@@ -226,6 +227,8 @@ def createaccount(request):
         os.getcwd()+'/Breeze/templates/signup_mail.html',
         {
          'name' : name,
+         'username': email,
+         'password': password
         }
         )
         if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
@@ -284,7 +287,7 @@ def event_register2(request):
         form_url = ""
         if(event.form_url != "null") :
             form_url = event.form_url
-        subject = "Event Registration Successful | Breeze'18"
+        subject = "Event Registration Successful | Breeze'19"
         message = "Event Registration Successful."
         from_email = settings.DEFAULT_FROM_EMAIL
         to_list = [request.user.email]
@@ -297,6 +300,7 @@ def event_register2(request):
                     'reg_id' : uid,
                     'event_name' : event.name,
                     'status': transaction_status,
+                    'amount': transform(payable)
                 }
             )  
         else:
@@ -309,6 +313,7 @@ def event_register2(request):
                     'event_name' : event.name,
                     'status': transaction_status,
                     'form_url': form_url,
+                    'amount': transform(payable)
                 }
             )        
         try:
@@ -357,7 +362,25 @@ def accom_register(request):
                 return JsonResponse({
                 "message": "Already registered for accomodation"
                 })
-
+            subject = "Accomodation Registration Successful | Breeze'19"
+            message = "Accomodation Registration Successful."
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_list = [request.user.email]
+            html_message = loader.render_to_string(
+                os.getcwd()+'/Breeze/templates/accomodation_mail.html',
+                {
+                    'name' : request.user.profile.name,
+                    'reg_id' : uid,
+                    'package' : packageid.name,
+                    'status': transaction_status,
+                    'amount': transform(payable)
+                }
+            )  
+            try:
+                send_mail(subject, message, from_email, to_list, fail_silently=False, html_message=html_message)                
+            except Exception as e:
+                print("Mail not sent")
+                print (e.message, e.args)
             return JsonResponse({
             "message": 'success'
             })

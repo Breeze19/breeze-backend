@@ -300,8 +300,8 @@
     $("#submit").on('click',function(){
       $("#loader1").removeAttr('hidden')
       var days = 0;
-      if($("#pack :selected").val() == 'Per day package'){
-        days = 3;
+      if($("#pack :selected").val() != 'Per Day Package'){
+        days = 3
       }
       else{
         days = $("#days :selected").val()

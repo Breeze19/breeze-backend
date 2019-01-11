@@ -30,6 +30,7 @@ class Events(models.Model):
     subCategoryName = models.CharField(max_length=50, help_text='Proper name of subcategory. eg. Music, Business and Entrepreneurship', default='')
     parentClub = models.CharField(max_length=50, help_text='eg Snuphoria,TEDx,')
     prize = models.DecimalField(help_text='Prize Money for the event',decimal_places=2, max_digits=8, null=True)
+    prizes = models.CharField(max_length=150,help_text="prize text for sports",default='')
     fee = models.DecimalField(help_text='Registration fee for the event',decimal_places=2, max_digits=8, null=True)
     fee_snu = models.DecimalField(help_text='Registration fee for the event(SNU Students)',decimal_places=2,max_digits=8,null=True)
     FEE_TYPE = (
