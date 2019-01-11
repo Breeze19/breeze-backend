@@ -362,6 +362,11 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
     function register(id){
+      if($("#nop").val() < 0){
+        $("#message").removeAttr('hidden')
+        $("#message").val("Enter valid no. of players")
+      }
+      else{
       $("#nop").attr('hidden',true)
       $("#noplable").attr('hidden',true)
       document.getElementById('tabs').style.display='none';document.getElementById('nop-form').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'
@@ -379,6 +384,7 @@
           $("#message").text("Already registered")
         }
       })
+    }
     }
         document.getElementById("defaultOpen").click();
         function openCity(evt, cityName) {
