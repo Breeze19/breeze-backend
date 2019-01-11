@@ -151,7 +151,7 @@
         <div class="col-md-4">
           {% if profiles|length == 0 %}
           <center>
-            <h1>No registrations</h1>
+            <h1 style="color: white;">No registrations</h1>
           </center>
           {% else %}
           {% for profile in profiles %}
@@ -161,9 +161,9 @@
               <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Number of Participants :  </span><span>{{profile.nop}}</span></p>
               <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Total amount :  </span>Rs. <span>{{profile.payable}}</span></p>
               {% if profile.transaction_status != 'p' %}
-              <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">PAyment status :  </span> <span class="paid">Paid</span></p>
+              <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Payment status :  </span> <span class="unpaid">Unpaid</span></p>
               {% else %}
-              <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">PAyment status :  </span> <span class="unpaid">Unpaid</span></p>
+              <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Payment status :  </span> <span class="paid">Paid</span></p>
               {% endif %}
 
               <!--<a href="/events/cultural/"class="btn btn-primary" id="register-culter"style="border:1px solid white;background-color:#000000;color:white;font-family:AR;border-radius:25px;margin-top:2%;" >Unpaid</a>-->
