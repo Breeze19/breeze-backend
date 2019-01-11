@@ -241,12 +241,16 @@ def event_register2(request):
     if request.method == 'POST' and request.user.id is not None:
         e = int(request.POST['event'])
         event = Events.objects.get(id=e)
+        print(event.name)
         uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
         try:
             print(event.fee_type)
             payable = 0
             if event.fee_type == 'team':
                 payable = event.fee 
+                if(event.name == 'Aagaaz'):
+                    if int(request.POST['nop']) > 20:
+                        payable = event.fee + (100 * (int(request.POST['nop']) - 20))
             elif event.fee_type == 'head':
                 payable = event.fee * int(request.POST['nop'])
             payable1 = transform(payable)
