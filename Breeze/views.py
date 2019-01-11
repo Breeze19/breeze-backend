@@ -259,7 +259,8 @@ def event_register2(request):
         else:
             transaction_status = 'u'
         register = Registration(eventId=event, userId=request.user,
-                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,payable=payable)       
+                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,
+                                payable=payable,nop=int(request.POST['nop']))       
         try:
             register.save()
         except Exception as exception:
@@ -424,8 +425,6 @@ def dashboard(request):
             accreg = AccomRegistration.objects.filter(userId=request.user)
             context = {'profile':profile, 'accreg':accreg}
             return render(request,'dashboard.html',context=context)
-        else:
-            return HttpResponseRedirect('/#authreq2')
 
 def accomodation(request):
     return render(request, 'help/accomodation.html')

@@ -75,6 +75,7 @@ class Registration(models.Model):
     payable = models.DecimalField(decimal_places=2, max_digits=8, null=True)
     college = models.CharField(max_length=200, null=False, default='')
     registration_id = models.CharField(max_length=200, unique=True, default='')
+    nop = models.DecimalField(decimal_places=0,max_digits=3,null=False,default='-1')
     STATUS = (
         ('p', 'Paid'),
         ('u', 'Unpaid'),
