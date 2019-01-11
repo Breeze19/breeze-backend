@@ -91,7 +91,6 @@ class Registration(models.Model):
 class AccomRegistration(models.Model):
     packageId = models.ForeignKey(AccPackage, on_delete=models.CASCADE, null=False)
     userId = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    number = models.DecimalField(decimal_places=0, max_digits=3, null=True)
     days = models.DecimalField(decimal_places=0, max_digits=1, null=True)
     payable = models.DecimalField(decimal_places=2, max_digits=8, null=True)
     college = models.CharField(max_length=200, null=False, default='')
