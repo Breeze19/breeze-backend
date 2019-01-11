@@ -280,11 +280,17 @@ def event_register2(request):
         try:
             if event.fee_type == 'team':
                 payable = event.fee 
+                if event.fee_snu != -1:
+                    if(str(request.user.email).endswith('snu.edu.in')):
+                        payable = event.fee_snu
                 if(event.name == 'Aagaaz'):
                     if int(request.POST['nop']) > 20:
                         payable = event.fee + (100 * (int(request.POST['nop']) - 20))
             elif event.fee_type == 'head':
                 payable = event.fee * int(request.POST['nop'])
+                if event.fee_snu != -1:
+                    if(str(request.user.email).endswith('snu.edu.in')):
+                        payable = event.fee_snu * int(request.POST['nop'])
         except Exception as exception:
             print(exception)
         if event.fee == 0:
