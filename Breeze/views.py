@@ -42,8 +42,8 @@ def sports(request):
     if(request.user.id is not None):
         name = request.user.profile.name
         context = {"name": name}
-        return render(request, 'form.html',context=context)
-    return render(request, 'form.html')
+        return render(request, 'eventssportscat.html',context=context)
+    return render(request, 'eventssportscat.html')
 
 def sportstkk(request):
     if(request.user.id is not None):
