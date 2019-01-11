@@ -317,7 +317,7 @@
                 <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
                 {% if user.is_authenticated %}
                 <div class="container">
-                        <label for="nop"><b>Number of participants</b></label>
+                        <label id="noplabel" for="nop"><b>Number of participants</b></label>
                         <input type="number" placeholder="Enter no. of participants" name="nop" required style="width: 100%;">
                 </div>
                 <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
@@ -368,6 +368,8 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
     function register(id){
+      $("#nop").attr('hidden',true)
+      $("#noplable").attr('hidden',true)
       document.getElementById('tabs').style.display='none';document.getElementById('fill-detail').style.display='inline';document.getElementById('cancelbtn').style.display='none'
       $.post("/events/register/",{
         'csrfmiddlewaretoken': '{{csrf_token}}',

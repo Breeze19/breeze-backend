@@ -42,15 +42,15 @@ def sports(request):
     events = Events.objects.filter(category='sports')
     data_dict = {}
     for i in range(0,len(events)):
-        fee = transform(str(events[i].fee))
+        fee = transform(events[i].fee)
         if(events[i].fee_snu != -1):
-            fee = "Outside Participants: " + transform(fee) + " | SNU Participants: " + transform(str(events[i].fee_snu))
+            fee = "Outside Participants: " + str(fee) + " | SNU Participants: " + transform(events[i].fee_snu)
         data_dict[events[i].id] = {
         "name": events[i].name,
         "description": events[i].description,
         "rules": events[i].rules,
         "date": str(events[i].date),
-        "prize": transform(str(events[i].prize)),
+        "prize": transform(events[i].prize),
         "fee": fee,
         "contact_name": events[i].contact_market
         }
@@ -119,15 +119,15 @@ def specificEventView(request,category,subcategory):
     events = Events.objects.filter(category=category[0]).filter(subCategory=subcategory)
     data_dict = {}
     for i in range(0,len(events)):
-        fee = transform(str(events[i].fee))
+        fee = transform(events[i].fee)
         if(events[i].fee_snu != -1):
-            fee = "Outside Participants: " + transform(fee) + " | SNU Participants: " + transform(str(events[i].fee_snu))
+            fee = "Outside Participants: " + fee + " | SNU Participants: " + transform(events[i].fee_snu)
         data_dict[events[i].id] = {
         "name": events[i].name,
         "description": events[i].description,
         "rules": events[i].rules,
         "date": str(events[i].date),
-        "prize": transform(str(events[i].prize)),
+        "prize": transform(events[i].prize),
         "fee": fee,
         "contact_name": events[i].contact_market
         }
@@ -138,22 +138,21 @@ def specificEventView(request,category,subcategory):
 def transform(amount):
     t_amt = "Rs "
     try:
-        amt = float(amount)
+        amt = str(amount)
     except Exception as exception:
-        amt = 0
         print(exception)
     try:
-        if amt == 0:
+        if amount == 0:
             return "No Registration Fee"
-        if amt >= 100000:
-            t_amt += amount[0:1] + "," + amount[1:3] + "," + amount[3:]
-        elif amt >= 10000 and amt < 100000:
-            t_amt += amount[0:2] + "," + amount[2:]
-        elif amt >= 1000 and amt < 10000:
-            t_amt += amount[0:1] + "," + amount[1:]
-        elif amt >=100 and amt < 1000:
-            t_amt += amount
-        return t_amt[0:len(t_amt)-2]
+        if amount >= 100000:
+            t_amt += amt[0:1] + "," + amt[1:3] + "," + amt[3:]
+        elif amount >= 10000 and amount < 100000:
+            t_amt += amt[0:2] + "," + amt[2:]
+        elif amount >= 1000 and amount < 10000:
+            t_amt += amt[0:1] + "," + amt[1:]
+        elif amount >=1 and amount < 1000:
+            t_amt += amt
+        return t_amt[0:len(t_amt)-3]
     except Exception as exception:
         print(exception)
 
@@ -250,7 +249,7 @@ def event_register2(request):
                 payable = event.fee 
             elif event.fee_type == 'head':
                 payable = event.fee * int(request.POST['nop'])
-            payable1 = transform(str(payable))
+            payable1 = transform(payable)
             print(payable1)
         except Exception as exception:
             print(exception)
