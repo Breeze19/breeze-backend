@@ -236,8 +236,8 @@ def createaccount(request):
              login(request, user)
              try:
                  send_mail(subject, message, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
-             except Exception as e:
-                 print("error")
+             except Exception as exception:
+                 print(exception)
              return JsonResponse({
               "message": "success"
              })
@@ -477,15 +477,3 @@ def transport(request):
 
 def pronights(request):
     return render(request, 'events/pronights.html')
-
-def event_register(request):
-    if request.method == 'POST' and request.user.id is not None:
-        event = Events.objects.get(id=request.POST['event_id'])
-        profile = request.user
-        context = {
-        'user': profile,
-        'event' : event
-        }
-        return render(request, 'events/event_register.html',context=context)
-    else:
-        return HttpResponseRedirect('/#authrequired')
