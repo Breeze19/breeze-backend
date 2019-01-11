@@ -211,7 +211,7 @@
     </style>
     <div class="row section-header" data-aos="fade-up">
       <div class="col-full">
-        <h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:0%;padding-bottom:0;padding-left: 60%;margin-bottom:0;font-family:ADR;margin-left:5%;visibility: hidden;">Accomodation</h1>
+        <!--<h1 class="display-1 display-1--light text-center" id="heading" style="padding-top:0%;padding-bottom:0;padding-left: 60%;margin-bottom:0;font-family:ADR;margin-left:5%;visibility: hidden;">Accomodation</h1>-->
       </div>
     </div>
     <style>
@@ -220,18 +220,18 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="border:3px solid #46c1ac;border-radius: 25px 25px; margin:5% 10%;">
-            <h5 class="card-header text-center" style="background-color:#46c1ac;padding:1%;margin:0 0 0% 0;border-radius:20px 20px 0px 0px ;font-size:2rem;font-family:AR">Registration</h5>
+            <h5 class="card-header text-center" style="background-color:#46c1ac;padding:1%;margin:0 0 0% 0;border-radius:20px 20px 0px 0px ;font-size:2rem;font-family:AR">Accomodation</h5>
             <div class="card-body" style="background-color: black;border-radius:0px 0px 20px 20px;">
               <p class="card-text text-center">
                 <div class="row">
                     <div class="col-md-4 text-center" style="width:50%;display:inline;">
-                          <h2 style="color:white;margin-left:-50%;font-family:AR;">Sport*:</h2><select id="sportsDropdown" name="event" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="badmintonb" style="color:black;">Badminton (Boys)</option><option value="badmintong" style="color:black;">Badminton (Girls)</option><option value="ltb" style="color:black;">Lawn Tennis (Boys)</option><option value="ltg" style="color:black;">Lawn Tennis (Girls)</option><option value="ttb" style="color:black;">Table Tennis (Boys)</option><option value="ttg" style="color:black;">Table Tennis (Girls)</option><option value="vbb" style="color:black;">Volleyball (Boys)</option><option value="vbg" style="color:black;">Volleyball (Girls)</option><option value="bbb" style="color:black;">Basketball (Boys)</option><option value="bbg" style="color:black;">Basketball (Girls)</option><option value="fb" style="color:black;">Football</option><option value="ft" style="color:black;">Futsal (Girls)</option><option style="color:black;" value="cr">Cricket</option><option value="ch" style="color:black;">Chess (Mix)</option><option value="sq" style="color:black;">Squash</option><option value="tkk" style="color:black;">Taekwondo Sparring(Kyorugi)</option><option value="tkp" style="color:black;">Taekwondo Poomsae</option></select>
-                          <h2 id="dgs"style="color:white;margin-left:-50%;font-family:AR;">Number <br>of players*:</h2><input required id="noofplayers" type="text" placeholder="Number of players (including subs)" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">Name*:</h2><input id="name" type="text" placeholder="Name" required style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">Email*:</h2><input id="email" type="email" required placeholder="Email" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">Phone <br>Number*:</h2><input id="phno" type="number" required placeholder="Phone Number" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
                           <h2 style="color:white;margin-left:-50%;font-family:AR;">College*:</h2><input id="collegeName" type="text" required placeholder="College" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;">
-                          <h2 id="acco" style="color:white;margin-left:-50%;font-family:AR;">Accommodation<br>required*:</h2><select id="accomoDown" name="event" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="yes" style="color:black;">Yes</option><option value="no" style="color:black;">No</option></select>
+                          <h2 id="package-acco" style="color:white;margin-left:-50%;font-family:AR;">Package*:</h2><select id="pack" name="package" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="perday" style="color:black;">Per day package</option><option value="threeday" style="color:black;">3 day package</option></select>
+                          <h2 id="nod" style="color:white;margin-left:-50%;font-family:AR;">Number of <br>days*:</h2><select id="days" name="days" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="1" style="color:black;">1</option><option value="2" style="color:black;">2</option><option value="3" style="color:black;">3</option></select>
+                          <h2 id="meal-acco" style="color:white;margin-left:-50%;font-family:AR;">Meal*:</h2><select id="meal" name="meal" value="Select" style="border-bottom:1px solid white;color:white;margin-left:30%;width:60%;" required><option value="withmeal" style="color:black;">With meals</option><option value="withoutmeal" style="color:black;">Without meals</option></select>
                           <a href="/19/sportshandbook/" class="btn btn-primary" style="border-radius:25px;border:3px solid white;background-color:transparent;color:#46c1ac;font-family:AR; margin-top: 6%;font-weight: bolder;">Download PDF</a><br><br>
                           <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
                             <img hidden id="loader1" style="width:10%;" src="{% static 'assets/images/breeze/Spinner-1s-200px.gif' %}"><br>
