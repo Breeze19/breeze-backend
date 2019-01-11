@@ -106,8 +106,8 @@ def team(request):
 def dashboard(request):
     if request.user.id is not None:
         profile = Registration.objects.filter(userId=request.user)
-        #accreg = AccomRegistration.objects.filter(userId=request.user)
-        context = {'profiles':profile}
+        accreg = AccomRegistration.objects.filter(userId=request.user)
+        context = {'profiles':profile,"accomodations": accreg}
         return render(request,'dashboard.html',context=context)
 
 def accomodation_brochure(request):

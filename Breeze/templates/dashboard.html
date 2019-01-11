@@ -200,16 +200,16 @@
         <div class="col-md-4">
                 {% if profiles|length == 0 %}
                 <center>
-                  <h1 style="color: white;">No registrations</h1>
+                  <h1 style="color: white;">No accomodation registrations</h1>
                 </center>
                 {% else %}
-                {% for profile in profiles %}
+                {% for acco in accomodations %}
                 <div class="card" style="border:1px solid #e25c7f;border-radius: 25px 25px; margin:5% 10%;">
-                  <h5 class="card-header text-center" style="background-color:#e25c7f;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 0% 0;font-size:2.5rem;font-family:AR;font-weight: bold">{{profile.eventId.name}}</h5>
+                  <h5 class="card-header text-center" style="background-color:#e25c7f;border-radius:25px 25px 0px 0px ;padding:1%;margin:0 0 0% 0;font-size:2.5rem;font-family:AR;font-weight: bold">{{acco.packageId.name}}</h5>
                   <div class="card-body" style="background-color: #000000;border-radius:0px 0px 25px 25px;">
-                    <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Number of Participants :  </span><span>{{profile.nop}}</span></p>
-                    <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Total amount :  </span>Rs. <span>{{profile.payable}}</span></p>
-                    {% if profile.transaction_status != 'p' %}
+                    <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Number of Days :  </span><span>{{acco.days}}</span></p>
+                    <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Total amount :  </span>Rs. <span>{{acco.payable}}</span></p>
+                    {% if acco.transaction_status != 'p' %}
                     <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Payment status :  </span> <span class="unpaid">Unpaid</span></p>
                     {% else %}
                     <p class="card-text text-center" style="font-size:1.8rem;font-family:PN;padding:0.5%"><span style="font-weight: bold;">Payment status :  </span> <span class="paid">Paid</span></p>
