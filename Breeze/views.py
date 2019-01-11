@@ -168,6 +168,27 @@ def transform(amount):
     except Exception as exception:
         print(exception)
 
+def transform1(amount):
+    t_amt = "Rs "
+    try:
+        amt = str(amount)
+    except Exception as exception:
+        print(exception)
+    try:
+        if amount == 0:
+            return "No Registration Fee"
+        if amount >= 100000:
+            t_amt += amt[0:1] + "," + amt[1:3] + "," + amt[3:]
+        elif amount >= 10000 and amount < 100000:
+            t_amt += amt[0:2] + "," + amt[2:]
+        elif amount >= 1000 and amount < 10000:
+            t_amt += amt[0:1] + "," + amt[1:]
+        elif amount >=1 and amount < 1000:
+            t_amt += amt
+        return t_amt
+    except Exception as exception:
+        print(exception)
+
 def signin(request):
     name = ""
     if(request.user.id is not None):
@@ -342,7 +363,7 @@ def accom_register(request):
                 packageid = AccPackage.objects.get(name=package)   
             else:
                 packageid = AccPackage.objects.get(name=package + " (" + food + ")")   
-            fee = 0 
+            fee = 0
             if(package == 'Per Day Package'):
                 fee = days * 300
                 if(food == 'With Meals'):
@@ -365,21 +386,20 @@ def accom_register(request):
             message = "Accomodation Registration Successful."
             from_email = settings.DEFAULT_FROM_EMAIL
             to_list = [request.user.email]
-            html_message = loader.render_to_string(
-                os.getcwd()+'/Breeze/templates/accomodation_mail.html',
-                {
-                    'name' : request.user.profile.name,
-                    'reg_id' : uid,
-                    'package' : packageid.name,
-                    'status': transaction_status,
-                    'amount': transform(payable)
-                }
-            )  
             try:
+                html_message = loader.render_to_string(
+                    os.getcwd()+'/Breeze/templates/accomodation_mail.html',
+                    {
+                        'name' : request.user.profile.name,
+                        'reg_id' : uid,
+                        'package' : packageid.name,
+                        'amount': transform1(fee)
+                        }
+                        )  
                 send_mail(subject, message, from_email, to_list, fail_silently=False, html_message=html_message)                
-            except Exception as e:
-                print("Mail not sent")
-                print (e.message, e.args)
+                        
+            except Exception as exception:
+                print(exception)
             return JsonResponse({
             "message": 'success'
             })
