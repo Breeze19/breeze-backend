@@ -124,16 +124,22 @@ def transform(amount):
     try:
         amt = float(amount)
     except Exception as exception:
+        amt = 0
         print(exception)
-    if amt == 0:
-        return "No Registration Fee"
-    if amt >= 100000:
-        t_amt += amount[0:1] + "," + amount[1:3] + "," + amount[3:]
-    elif amt >= 10000 and amt < 100000:
-        t_amt += amount[0:2] + "," + amount[2:]
-    elif amt >= 1000 and amt < 10000:
-        t_amt += amount[0:1] + "," + amount[1:]
-    return t_amt[0:len(t_amt)-2]
+    try:
+        if amt == 0:
+            return "No Registration Fee"
+        if amt >= 100000:
+            t_amt += amount[0:1] + "," + amount[1:3] + "," + amount[3:]
+        elif amt >= 10000 and amt < 100000:
+            t_amt += amount[0:2] + "," + amount[2:]
+        elif amt >= 1000 and amt < 10000:
+            t_amt += amount[0:1] + "," + amount[1:]
+        elif amt >=100 and amt < 1000:
+            t_amt += amount
+        return t_amt[0:len(t_amt)-2]
+    except Exception as exception:
+        print(exception)
 
 def signin(request):
     name = ""
@@ -221,6 +227,15 @@ def event_register2(request):
         e = int(request.POST['event'])
         event = Events.objects.get(id=e)
         uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
+        try:
+            payable = 0
+            if event.fee_type == 'team':
+                payable = event.fee 
+            elif event.fee_type == 'head':
+                payable = event.fee * request.POST['no_of_participants']
+            payable1 = transform(str(payable))
+        except Exception as exception:
+            print(exception)
         if event.fee == 0:
             transaction_status = 'p'
         else:
