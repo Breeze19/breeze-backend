@@ -325,6 +325,47 @@ def event_register2(request):
         "message": "Please signin first."
         })
 
+def accom_register(request):
+    if request.method == 'POST':
+        if request.user.id is not None:
+            package = request.POST['package']
+            days = int(request.POST['days'])
+            food = request.POST['meal']
+            print(package)
+            print(days)
+            print(food)
+            if food == 'Without Meals':
+                packageid = AccPackage.objects.get(name=package)   
+            else:
+                packageid = AccPackage.objects.get(name=package + " (" + food + ")")   
+            fee = 0 
+            if(package == 'Per Day Package'):
+                fee = days * 300
+                if(food == 'With Meals'):
+                    fee += days * 150
+            else:
+                if(food == 'With Meals'):
+                    fee = 1250
+                else:
+                    fee = 800
+            uid = 'AC{:04}{:04}'.format(request.user.id, random.randint(1,9999))
+            register = AccomRegistration(packageId=packageid, userId=request.user,
+                                college=request.user.profile.college, registration_id=uid, days=days, payable=fee)
+            try:
+                register.save()
+            except:
+                return JsonResponse({
+                "message": "Already registered for accomodation"
+                })
+
+            return JsonResponse({
+            "message": 'success'
+            })
+        else:
+            return JsonResponse({
+            "message": "Please signin first"
+            })
+
 def forgotmail(request):
     print(request.POST['email'], "\n\n")
     if request.method == "POST" :
@@ -448,42 +489,3 @@ def event_register(request):
         return render(request, 'events/event_register.html',context=context)
     else:
         return HttpResponseRedirect('/#authrequired')
-
-def accom_register(request):
-    if request.method == 'POST' and request.user.id is not None:
-        try:
-            package = request.POST['package']
-            days = int(request.POST['days'])
-            food = request.POST['meal']
-            print(package)
-            print(days)
-            print(food)
-            if food == 'Without Meals':
-                packageid = AccPackage.objects.get(name=package)   
-            else:
-                packageid = AccPackage.objects.get(name=package + " (" + food + ")")   
-            fee = 0 
-            if(package == 'Per Day Package'):
-                fee = days * 300
-                if(food == 'With Meals'):
-                    fee += days * 150
-            else:
-                if(food == 'With Meals'):
-                    fee = 1250
-                else:
-                    fee = 800
-            uid = 'AC{:04}{:04}'.format(request.user.id, random.randint(1,9999))
-            register = AccomRegistration(packageId=packageid, userId=request.user,
-                                college=request.user.profile.college, registration_id=uid, days=days, payable=fee)
-            try:
-                register.save()
-            except:
-                return JsonResponse({
-                "message": "Try again"
-                })
-
-            return JsonResponse({
-            "message": 'success'
-            })
-        except Exception as exception:
-            print(exception)
