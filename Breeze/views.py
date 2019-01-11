@@ -242,15 +242,12 @@ def event_register2(request):
         e = int(request.POST['event'])
         event = Events.objects.get(id=e)
         uid = 'EV19{:02}{:04}'.format(event.id, request.user.id)
+        payable = 0
         try:
-            print(event.fee_type)
-            payable = 0
             if event.fee_type == 'team':
                 payable = event.fee 
             elif event.fee_type == 'head':
                 payable = event.fee * int(request.POST['nop'])
-            payable1 = transform(payable)
-            print(payable1)
         except Exception as exception:
             print(exception)
         if event.fee == 0:
@@ -258,7 +255,7 @@ def event_register2(request):
         else:
             transaction_status = 'u'
         register = Registration(eventId=event, userId=request.user,
-                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status)       
+                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,payable=payable)       
         try:
             register.save()
         except Exception as exception:
