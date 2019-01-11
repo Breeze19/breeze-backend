@@ -316,6 +316,10 @@
             <div class="container" style="background-color:white;text-align: center;">
                 <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="margin-top: 0%;padding-top: 0;">Pay Now</button>-->
                 {% if user.is_authenticated %}
+                <div class="container">
+                        <label for="nop"><b>Number of participants</b></label>
+                        <input type="number" placeholder="Enter no. of participants" name="nop" required style="width: 100%;">
+                </div>
                 <button type="button" class="cancelbtn" id="cancelbtn" style="margin-top: 0%;padding-top: 0;">Register</button>
                 <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
                 {% else %}
