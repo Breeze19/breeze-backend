@@ -163,18 +163,17 @@
                   {% if user.is_authenticated %}
                   <li><a href="/logout" title="works" style="font-family:PN">Sign out</a></li>
                   {% else %}
-                  <li><a id="singin" href="/signin/?prev=/events/" + {{category}} + "/" + {{events.0.subCategoryName}} title="works" style="font-family:PN">Sign in</a></li>
+                  <li><a id="singin" href="/signin/?prev=/events/sports/" title="works" style="font-family:PN">Sign in</a></li>
                   {% endif %}
                   <li class="current"><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>
-                  <li><a href="/19/Accomodation.pdf/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li ><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
-                  <li><a href="/19/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
+                  <li><a href="/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
                   <li class="current"><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
                   <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
                 </ul>
                 <script>
                 $(document).ready(function(){
-                  var prev = "?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                  var prev = "?prev=/events/sports/"
                   $("#singin").attr("href","/signin/" + prev)
                   $("#signup").attr("href","/signup/" + prev)
                 })
@@ -322,7 +321,7 @@
             </div>
             <script>
                 $("#signup-button").on('click',function(){
-                    var prev = "/signin/?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                    var prev = "/signin/?prev=/events/sports/"
                     window.location.href = window.location.origin + prev;
                 })
             </script>

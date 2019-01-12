@@ -50,7 +50,7 @@ def sports(request):
         "rules": events[i].rules,
         "date": str(events[i].date),
         "prize": events[i].prizes,
-        "fee": fee + " Per team",
+        "fee": fee + " Per head",
         "contact_name": events[i].contact_market
         }
     js_data = json.dumps(data_dict)
