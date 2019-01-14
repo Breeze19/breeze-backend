@@ -3,8 +3,8 @@ from .models import *
 # Register your models here.
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ('registration_id', 'transaction_status', 'get_reg_name', 'nop', 'payable', 'college', 'get_email_id', 'get_reg_contact','get_event_name')
-    search_fields = ('registration_id', 'transaction_status', 'userId__profile__name', 'eventId__name')
+    list_display = ('registration_id', 'transaction_status', 'get_reg_name', 'nop', 'payable', 'college', 'get_event_category','get_email_id', 'get_reg_contact','get_event_name')
+    search_fields = ('registration_id', 'transaction_status', 'userId__profile__name', 'eventId__name','eventId__category')
     readonly_fields = ('created_at', 'updated_at')
     def get_reg_name(self, obj):
         return obj.userId.profile.name
@@ -25,6 +25,16 @@ class RegistrationAdmin(admin.ModelAdmin):
         return obj.userId.email
     get_email_id.short_description = 'Email id'
     get_email_id.admin_order_field = 'userId'
+    
+    def get_event_category(self,obj):
+        if obj.eventId.category == 'c':
+            return 'cultural'
+        elif obj.eventId.category == 's':
+            return 'sports'
+        else:
+            return 'technical'
+    get_event_category.short_description = 'Category'
+    get_event_category.admin_order_field = 'eventId'
 
 class AccomRegistrationAdmin(admin.ModelAdmin):
     list_display = ('registration_id', 'payable', 'transaction_status', 'get_reg_name','get_reg_contact','get_package_name')
