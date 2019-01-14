@@ -3,7 +3,7 @@ from .models import *
 # Register your models here.
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ('registration_id', 'transaction_status', 'get_reg_name', 'get_reg_contact','get_event_name')
+    list_display = ('registration_id', 'transaction_status', 'get_reg_name', 'nop', 'payable', 'college', 'get_email_id', 'get_reg_contact','get_event_name')
     search_fields = ('registration_id', 'transaction_status', 'userId__profile__name', 'eventId__name')
     readonly_fields = ('created_at', 'updated_at')
     def get_reg_name(self, obj):
@@ -20,6 +20,11 @@ class RegistrationAdmin(admin.ModelAdmin):
         return obj.eventId.name
     get_event_name.short_description = 'Event Name'
     get_event_name.admin_order_field = 'eventId'
+    
+    def get_email_id(self,obj):
+        return obj.userId.email
+    get_email_id.short_description = 'Email id'
+    get_email_id.admin_order_field = 'userId'
 
 class AccomRegistrationAdmin(admin.ModelAdmin):
     list_display = ('registration_id', 'payable', 'transaction_status', 'get_reg_name','get_reg_contact','get_package_name')
