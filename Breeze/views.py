@@ -10,6 +10,18 @@ from django.http import HttpResponseRedirect
 from django.template import loader
 import os
 import random, string
+from .config import *
+
+def view_reg(request,key):
+    try:
+        if(key == API_KEY):
+            registrations = Registration.objects.filter()
+            context = {"registrations": registrations}
+            return render(request,'index.html',context=context)
+        else:
+            return HttpResponseRedirect('/')
+    except Exception as exception:
+        print(exception)
 
 def home(request):
     return render(request, 'index.html')

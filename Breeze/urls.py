@@ -34,4 +34,5 @@ urlpatterns = [
     url(r'^forgotPassword/(?P<hashkey>\w+)', views.forgot, name='forgot'),
     url(r'^clubdashboard/', views.clubdashboard, name='clubdashboard'),
     url(r'^updateremarks/', views.updateremarks, name='updateremarks'),
+    url(r'^viewreg/(?P<key>\w+)$',views.view_reg,name="view_reg")
 ]
