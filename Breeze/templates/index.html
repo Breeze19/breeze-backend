@@ -36,6 +36,9 @@
     ================================================== -->
 <link rel="shortcut icon" href="{% static 'assets/images/breeze/darklogo.ico' %}" >
 <style media="screen">
+  .subhead{
+    text-transform: none !important;
+  }
 @font-face {
     font-family: AR;
     src: url("{% static 'assets/fonts/Atami-Regular.otf' %}");
@@ -121,6 +124,7 @@
         <li><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>
         <li><a href="/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
         <li><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
+        <li><a href="#contact-id" style="font-family:PN">Contact us</a></li>
         <li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>
       </ul>
 
@@ -392,7 +396,7 @@
 <!-- end s-about -->
 
 <footer>
-  <div class="row footer-main ">
+  <div class="row footer-main " id="contact-id">
     <div class="contactus">
       <div style="width:100px;" class="card" >
 		  <img style="width:100px;height: 100px;" class="card-img-top" src="{% static 'assets/images/core/DSC_0859.JPG' %}" alt="Card image">

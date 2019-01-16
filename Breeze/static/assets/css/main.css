@@ -1307,7 +1307,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     font-family: "montserrat-bold", sans-serif;
     font-size: 1.7rem;
     line-height: 1.333;
-    text-transform: uppercase;
     letter-spacing: .25rem;
     color: #e25c7f;
     margin-top: 0;
