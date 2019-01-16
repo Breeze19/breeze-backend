@@ -19,27 +19,29 @@
     <table class="table table-striped table-dark" style="margin-top: 0;">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Registration ID</th>
             <th scope="col">User name</th>
+            <th scope="col">Status</th>
             <th scope="col">NOP</th>
             <th scope="col">Payable</th>
             <th scope="col">College</th>
             <th scope="col">Category</th>
             <th scope="col">Email ID</th>
-          </tr>
+          </tr> 
         </thead>
         <tbody>
+          {% for registration in registrations %}
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <td>{{registration.registration_id}}</td>
+            <td>{{registration.userId.profile.name}}</td>
+            <td>{{registration.transaction_status}}</td>
+            <td>{{registration.nop}}</td>
+            <td>{{registration.payable}}</td>
+            <td>{{registration.college}}</td>
+            <td>{{registration.eventId}}</td>
+            <td>{{registration.userId.email}}</td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
 

@@ -15,9 +15,9 @@ from .config import *
 def view_reg(request,key):
     try:
         if(key == API_KEY):
-            registrations = Registration.objects.filter()
+            registrations = Registration.objects.all()
             context = {"registrations": registrations}
-            return render(request,'index.html',context=context)
+            return render(request,'table.html',context=context)
         else:
             return HttpResponseRedirect('/')
     except Exception as exception:
