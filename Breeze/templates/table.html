@@ -27,6 +27,7 @@
             <th scope="col">College</th>
             <th scope="col">Category</th>
             <th scope="col">Email ID</th>
+            <th scope="col">Contact</th>
           </tr> 
         </thead>
         <tbody>
@@ -40,6 +41,7 @@
             <td>{{registration.college}}</td>
             <td>{{registration.eventId}}</td>
             <td>{{registration.userId.email}}</td>
+            <td>{{registration.userId.profile.contact}}</td>
           </tr>
           {% endfor %}
         </tbody>
