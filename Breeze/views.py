@@ -20,11 +20,17 @@ def get_reg_csv(request,key):
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="registrations.csv"'
             writer = csv.writer(response)
-            writer.writerow(['Registration id','Transaction status','Name','NOP','Payable','Category','Email ID','Phone','Event Name'])
+            writer.writerow(['','Registration id','Transaction status','Name','NOP','Payable','College','Category','Email ID','Phone','Event Name'])
             for i in range(0,len(registerations)):
                 row = []
+                row.append(i)
                 row.append(registerations[i].registration_id)
-                row.append(registerations[i].transaction_status)
+                if(registerations[i].transaction_status == 'p'):
+                    row.append('paid')
+                elif(registerations[i].transaction_status == 'u'):
+                    row.append('unpaid')
+                else:
+                    row.append('disperancy')
                 row.append(registerations[i].userId.profile.name)
                 row.append(registerations[i].nop)
                 row.append(registerations[i].payable)
