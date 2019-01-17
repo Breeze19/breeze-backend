@@ -6,11 +6,43 @@ from django.core.mail import send_mail
 import json
 from .models import *
 from .forms import *
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.template import loader
 import os
 import random, string
 from .config import *
+import csv
+
+def get_reg_csv(request,key):
+    try:
+        if(key == API_KEY):
+            registerations = Registration.objects.all()
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="registrations.csv"'
+            writer = csv.writer(response)
+            writer.writerow(['Registration id','Transaction status','Name','NOP','Payable','Category','Email ID','Phone','Event Name'])
+            for i in range(0,len(registerations)):
+                row = []
+                row.append(registerations[i].registration_id)
+                row.append(registerations[i].transaction_status)
+                row.append(registerations[i].userId.profile.name)
+                row.append(registerations[i].nop)
+                row.append(registerations[i].payable)
+                row.append(registerations[i].college)
+                if(registerations[i].eventId.category == 'c'):
+                    row.append('cultural')
+                elif(registerations[i].eventId.category == 's'):
+                    row.append('sports')
+                else:
+                    row.append('technical')
+                row.append(registerations[i].userId.email)
+                row.append(registerations[i].userId.profile.contact)
+                row.append(registerations[i].eventId.name)
+            return response
+        else:
+            return HttpResponseRedirect('/')
+    except Exception as exception:
+        print(exception)
 
 def view_reg(request,key):
     try:
