@@ -15,8 +15,34 @@ from .config import *
 def view_reg(request,key):
     try:
         if(key == API_KEY):
-            registrations = Registration.objects.all()
-            context = {"registrations": registrations}
+            registerations = Registration.objects.all()
+            context = {"registrations": registerations}
+            return render(request,'table.html',context=context)
+        else:
+            return HttpResponseRedirect('/')
+    except Exception as exception:
+        print(exception)
+
+def view_reg_club(request,key,clubname):
+    try:
+        if(key == API_KEY):
+            registerations = Registration.objects.all()
+            name = clubname
+            if name.lower == 'wordsink':
+                name = 'words.ink'
+            elif name.lower == 'designclub':
+                name = 'design club'
+            elif name.lower == 'gogreen':
+                name = 'go green'
+            elif name.lower == 'naturesentinel':
+                name = 'naturesentinel'
+            elif name.lower == 'treasurehunt':
+                name = 'treasure hunt'
+            regis_club = []
+            for i in range(0,len(registerations)):
+                if(registerations[i].eventId.parentClub.lower() == name.lower()):
+                    regis_club.append(registerations[i])
+            context = {"registrations": regis_club}
             return render(request,'table.html',context=context)
         else:
             return HttpResponseRedirect('/')
