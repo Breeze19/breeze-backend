@@ -38,6 +38,7 @@ def get_reg_csv(request,key):
                 row.append(registerations[i].userId.email)
                 row.append(registerations[i].userId.profile.contact)
                 row.append(registerations[i].eventId.name)
+                writer.writerow(row)
             return response
         else:
             return HttpResponseRedirect('/')
