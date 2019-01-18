@@ -3,9 +3,20 @@ from .models import *
 # Register your models here.
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ('registration_id', 'transaction_status', 'get_reg_name', 'nop', 'payable', 'college', 'get_event_category','get_email_id', 'get_reg_contact','get_event_name')
-    search_fields = ('registration_id', 'transaction_status', 'userId__profile__name', 'eventId__name','eventId__category')
+    list_display = ('registration_id', 'transaction_status', 'get_reg_name','nop', 'payable', 'college', 'get_event_category','get_email_id', 'get_reg_contact','get_event_name')
+    search_fields = ('registration_id', 'transaction_status', 'transaction_status','userId__profile__name', 'eventId__name','eventId__category')
     readonly_fields = ('created_at', 'updated_at')
+    
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+        
+    def get_list_display_links(self, request, list_display):
+        if request.user.username != 'pr@breeze':
+            return ('registration_id')
+        else:
+            return (None,)
+
     def get_reg_name(self, obj):
         return obj.userId.profile.name
     get_reg_name.short_description = 'User Name'
@@ -35,11 +46,22 @@ class RegistrationAdmin(admin.ModelAdmin):
             return 'technical'
     get_event_category.short_description = 'Category'
     get_event_category.admin_order_field = 'eventId'
+    
 
 class AccomRegistrationAdmin(admin.ModelAdmin):
     list_display = ('registration_id', 'payable', 'transaction_status', 'get_reg_name','get_reg_contact','get_package_name')
     search_fields = ('registration_id', 'payable', 'transaction_status', 'userId__profile__name', 'packageId__name')
     readonly_fields = ('created_at', 'updated_at')
+    
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+        
+    def get_list_display_links(self, request, list_display):
+        if request.user.username != 'pr@breeze':
+            return ('registration_id')
+        else:
+            return (None,)
     
     def get_reg_name(self, obj):
         return obj.userId.profile.name

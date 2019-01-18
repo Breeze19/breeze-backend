@@ -34,5 +34,7 @@ urlpatterns = [
     url(r'^forgotPassword/(?P<hashkey>\w+)', views.forgot, name='forgot'),
     url(r'^clubdashboard/', views.clubdashboard, name='clubdashboard'),
     url(r'^updateremarks/', views.updateremarks, name='updateremarks'),
-    url(r'^viewreg/(?P<key>\w+)$',views.view_reg,name="view_reg")
+    url(r'^viewcsv/(?P<key>\w+)$',views.get_reg_csv,name='get_reg_csv'),
+    url(r'^viewreg/(?P<key>\w+)/$',views.view_reg,name="view_reg"),
+    url(r'^viewreg/(?P<key>\w+)/(?P<clubname>\w+)$',views.view_reg_club,name="view_reg_club")
 ]
