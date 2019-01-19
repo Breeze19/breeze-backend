@@ -403,7 +403,7 @@ def event_register2(request):
         message = "Event Registration Successful."
         from_email = settings.DEFAULT_FROM_EMAIL
         to_list = [request.user.email]
-        if(form_url == "null"):
+        if(event.form_url == "null"):
             html_message = loader.render_to_string(
                 os.getcwd()+'/Breeze/templates/reg_mail.html',
                 {
