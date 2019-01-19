@@ -326,22 +326,28 @@ def createaccount(request):
          'password': password
         }
         )
-        if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
-             User.objects.create_user(username, email, password)
-             x = User.objects.last()
-             Profile_obj = Profile.objects.create(user=x, name=name, contact=contact,college=college)
-             user = authenticate(username=username, password=password)
-             login(request, user)
-             try:
-                 send_mail(subject, message, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
-             except Exception as exception:
-                 print(exception)
-             return JsonResponse({
-              "message": "success"
-             })
-        else:
+        try:
+            if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
+                User.objects.create_user(username, email, password)
+                x = User.objects.last()
+                Profile_obj = Profile.objects.create(user=x, name=name, contact=contact,college=college)
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                try:
+                    send_mail(subject, message, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
+                except Exception as exception:
+                    print(exception)
+                return JsonResponse({
+                "message": "success"
+                })
+            else:
+                return JsonResponse({
+                "message": "#userExists"
+                })
+        except Exception as exception:
+            print(exception)
             return JsonResponse({
-            "message": "#userExists"
+            "message": "Try Again"
             })
     else:
         return JsonResponse({

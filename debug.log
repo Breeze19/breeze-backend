@@ -1,0 +1,36 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/shashvatkedia/Desktop/breeze/breeze-backend/Breeze/views.py", line 92, in home
+    return null
+NameError: name 'null' is not defined
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/shashvatkedia/Desktop/breeze/breeze-backend/Breeze/views.py", line 92, in home
+    return null
+NameError: name 'null' is not defined
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/shashvatkedia/Desktop/breeze/breeze-backend/Breeze/views.py", line 92, in home
+    return null
+NameError: name 'null' is not defined
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/shashvatkedia/Desktop/breeze/breeze-backend/Breeze/views.py", line 92, in home
+    return null
+NameError: name 'null' is not defined
