@@ -167,6 +167,11 @@ def specificEventView(request,category,subcategory):
     data_dict = {}
     for i in range(0,len(events)):
         fee = transform(events[i].fee)
+        print(events[i].prizes)
+        if len(str(events[i].prizes).strip()) <= 1 or str(events[i].prize) == 'null':
+            prize = events[i].prizes
+        else:
+            prize = transform(events[i].prize)
         if(events[i].fee_snu != -1):
             fee = "Outside Participants: " + fee + " | SNU Participants: " + transform(events[i].fee_snu)
         data_dict[events[i].id] = {
@@ -174,7 +179,7 @@ def specificEventView(request,category,subcategory):
         "description": events[i].description,
         "rules": events[i].rules,
         "date": str(events[i].date),
-        "prize": transform(events[i].prize),
+        "prize": prize,
         "fee": fee,
         "contact_name": events[i].contact_market
         }
