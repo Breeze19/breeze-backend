@@ -34,3 +34,142 @@ Traceback (most recent call last):
   File "/Users/shashvatkedia/Desktop/breeze/breeze-backend/Breeze/views.py", line 92, in home
     return null
 NameError: name 'null' is not defined
+Internal Server Error: /admin/Breeze/registration/
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/options.py", line 580, in get_field
+    return self.fields_map[field_name]
+KeyError: 'get_reg_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/utils.py", line 273, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/utils.py", line 307, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/options.py", line 582, in get_field
+    raise FieldDoesNotExist('%s has no field named %r' % (self.object_name, field_name))
+django.core.exceptions.FieldDoesNotExist: Registration has no field named 'get_reg_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/fields/related_descriptors.py", line 333, in __get__
+    rel_obj = getattr(instance, self.cache_name)
+AttributeError: 'User' object has no attribute '_profile_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/cursors.py", line 255, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/cursors.py", line 252, in execute
+    res = self._query(query)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/cursors.py", line 378, in _query
+    db.query(q)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (2013, 'Lost connection to MySQL server during query')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/template/library.py", line 223, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/templatetags/admin_list.py", line 326, in result_list
+    'results': list(results(cl))}
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/templatetags/admin_list.py", line 302, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/templatetags/admin_list.py", line 293, in __init__
+    super(ResultList, self).__init__(*items)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/templatetags/admin_list.py", line 202, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/contrib/admin/utils.py", line 285, in lookup_field
+    value = attr(obj)
+  File "/Users/shashvatkedia/Desktop/breeze/breeze-backend/Breeze/admin.py", line 21, in get_reg_name
+    return obj.userId.profile.name
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/fields/related_descriptors.py", line 341, in __get__
+    rel_obj = self.get_queryset(instance=instance).get(**filter_args)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/query.py", line 381, in get
+    num = len(clone)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/cursors.py", line 255, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/cursors.py", line 252, in execute
+    res = self._query(query)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/cursors.py", line 378, in _query
+    db.query(q)
+  File "/Users/shashvatkedia/anaconda3/lib/python3.6/site-packages/MySQLdb/connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (2013, 'Lost connection to MySQL server during query')
