@@ -95,24 +95,12 @@ def nineteen(request):
     return redirect('/')
 
 def get_events(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'events.html',context=context)
     return render(request, 'events.html')
     
 def technical(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'eventstechcat.html',context=context)
     return render(request, 'eventstechcat.html')
 
 def cultural(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'eventsculcat.html',context=context)
     return render(request, 'eventsculcat.html')
 
 def sports(request):
@@ -131,52 +119,25 @@ def sports(request):
         "contact_name": events[i].contact_market
         }
     js_data = json.dumps(data_dict)
-    name = ""
-    if(request.user.id is not None):
-        name = request.user.profile.name
-    context = {"js_data": js_data,"name": name,"events": events}
+    context = {"js_data": js_data,"events": events}
     return render(request, 'eventssportscat.html',context=context)
 
 def sportstkk(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'formtkk.html',context=context)
     return render(request,'formtkk.html')
     
 def sportstkp(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'formtkp.html',context=context)
     return render(request,'formtkp.html')
     
 def gallery(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'gallery.html',context=context)
     return render(request,'gallery.html')
     
 def sponsors(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'sponsors.html',context=context)
     return render(request,'sponsors.html')
     
 def forgotpassmail(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'Resetpassemail.html',context=context)
     return render(request,'Resetpassemail.html')
     
 def team(request):
-    if(request.user.id is not None):
-        name = request.user.profile.name
-        context = {"name": name}
-        return render(request, 'team.html',context=context)
     return render(request,'team.html')
 
 def dashboard(request):
@@ -199,9 +160,6 @@ def sports_handbook(request):
     return render(request,'sportshandbook.html')
     
 def specificEventView(request,category,subcategory):
-    name = ""
-    if(request.user.id is not None):
-        name = request.user.profile.name
     color = "#e25c7f"
     if category == "technical":
         color = "#fafafa"
@@ -221,7 +179,7 @@ def specificEventView(request,category,subcategory):
         "contact_name": events[i].contact_market
         }
     js_data = json.dumps(data_dict)
-    context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data,"name": name}
+    context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data}
     return render(request, 'eventssubcat.html',context=context)
 
 def transform(amount):
@@ -267,25 +225,19 @@ def transform1(amount):
         print(exception)
 
 def signin(request):
-    name = ""
-    if(request.user.id is not None):
-        name = request.user.profile.name
     try:
         val = request.GET['prev']
     except Exception as exception:
         val = ""    
-    context = {'prev': val,"name": name}
+    context = {'prev': val}
     return render(request,'Signin.html',context=context)
     
 def register(request):
-    name = ""
-    if(request.user.id is not None):
-        name = request.user.profile.name
     try:
         val = requet.GET['prev']
     except Exception as exception:
         val = ""    
-    context = {'prev': val,"name": name}
+    context = {'prev': val}
     return render(request,'Signup.html',context=context)
 
 def login1(request):
@@ -331,6 +283,10 @@ def createaccount(request):
                 User.objects.create_user(username, email, password)
                 x = User.objects.last()
                 Profile_obj = Profile.objects.create(user=x, name=name, contact=contact,college=college)
+                try:
+                    Profile_obj.save()
+                except Exception as exp:
+                    print(exp)
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 try:
@@ -381,9 +337,15 @@ def event_register2(request):
         else:
             transaction_status = 'u'
         try:
-            register = Registration(eventId=event, userId=request.user,
-                                college=request.user.profile.college, registration_id=uid,transaction_status=transaction_status,
-                                payable=payable,nop=int(request.POST['nop']))       
+            usr_profile = Profile.objects.filter(user=request.user)
+            if len(usr_profile) > 0:
+                register = Registration(eventId=event, userId=request.user,
+                                    college=usr_profile.last().college, registration_id=uid,transaction_status=transaction_status,
+                                    payable=payable,nop=int(request.POST['nop']))               
+            else:
+                return JsonResponse({
+                "message": "Try again"
+                })
         except Exception as exception:
             return JsonResponse({
             "message": "Try again"
