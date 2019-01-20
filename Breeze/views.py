@@ -344,7 +344,7 @@ def event_register2(request):
                                     payable=payable,nop=int(request.POST['nop']))               
             else:
                 return JsonResponse({
-                "message": "Try again"
+                "message": "Error"
                 })
         except Exception as exception:
             return JsonResponse({

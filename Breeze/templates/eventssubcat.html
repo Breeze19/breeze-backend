@@ -384,6 +384,10 @@
           $("#message").removeAttr('hidden')
           $("#message").text("Registration successful")
         }
+        else if(response["message"] == "Error"){
+          $("#message").removeAttr('hidden')
+          $("#message").text("Error while recording registration. Please try again.")
+        }
         else{
           $("#message").removeAttr('hidden')
           $("#message").text("Already registered")
