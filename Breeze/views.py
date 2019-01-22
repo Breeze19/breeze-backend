@@ -266,6 +266,7 @@ def gen_id(request):
             college = request.POST['name']
             rollno = request.POST['rollno']
             email = request.POST['email']
+            yos = request.POST['yos']
             subject = "Breeze19 ID"
             from_email = settings.DEFAULT_FROM_EMAIL
             to_list = [email]
@@ -274,7 +275,9 @@ def gen_id(request):
             {
             "name": name,
             "college": college,
-            "rollno": rollno
+            "rollno": rollno,
+            "yos": yos,
+            "email": email
             })
             try:
                 send_mail(subject, subject, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
