@@ -121,12 +121,6 @@ def sports(request):
     js_data = json.dumps(data_dict)
     context = {"js_data": js_data,"events": events}
     return render(request, 'eventssportscat.html',context=context)
-
-def sportstkk(request):
-    return render(request,'formtkk.html')
-    
-def sportstkp(request):
-    return render(request,'formtkp.html')
     
 def gallery(request):
     return render(request,'gallery.html')
