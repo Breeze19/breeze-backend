@@ -102,6 +102,9 @@ def technical(request):
 
 def cultural(request):
     return render(request, 'eventsculcat.html')
+    
+def id(request):
+    return render(request,'breeze_id.html')        
 
 def sports(request):
     events = Events.objects.filter(category='s')
@@ -255,7 +258,37 @@ def login1(request):
          return JsonResponse({
          "message": "success"
          })
-    
+         
+def gen_id(request):
+    try:
+        if request.method == 'POST':
+            name = request.POST['name']
+            college = request.POST['name']
+            rollno = request.POST['rollno']
+            email = request.POST['email']
+            subject = "Breeze19 ID"
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_list = [email]
+            html_message = loader.render_to_string(
+            os.getcwd() + '/Breeze/templates/id_mail.html',
+            {
+            "name": name,
+            "college": college,
+            "rollno": rollno
+            })
+            try:
+                send_mail(subject, subject, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
+            except Exception as exception:
+                print(exception)
+                return JsonResponse({
+                "message": "ID creation failed. Try again."
+                })
+            return JsonResponse({
+            "message": "success"
+            })    
+    except Exception as exception:
+        priint(exception)
+            
 def createaccount(request):
     if request.method == 'POST':
         name = request.POST['name']
