@@ -104,7 +104,7 @@ def cultural(request):
     return render(request, 'eventsculcat.html')
     
 def id(request):
-    return render(request,'breeze_id.html')        
+    return render(request,'gen_id.html')        
 
 def sports(request):
     events = Events.objects.filter(category='s')
@@ -263,10 +263,12 @@ def gen_id(request):
     try:
         if request.method == 'POST':
             name = request.POST['name']
-            college = request.POST['name']
+            college = request.POST['college']
             rollno = request.POST['rollno']
             email = request.POST['email']
             yos = request.POST['yos']
+            number = request.POST['phno'],
+            participant = request.POST["participant"]
             subject = "Breeze19 ID"
             from_email = settings.DEFAULT_FROM_EMAIL
             to_list = [email]
@@ -277,7 +279,9 @@ def gen_id(request):
             "college": college,
             "rollno": rollno,
             "yos": yos,
-            "email": email
+            "email": email,
+            'participant': participant,
+            'phno': number
             })
             try:
                 send_mail(subject, subject, "Breeze'19 "+from_email, to_list, fail_silently=False, html_message=html_message)
