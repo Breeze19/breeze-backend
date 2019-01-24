@@ -294,7 +294,7 @@ def gen_id(request):
                 "message": "ID creation failed. Try again."
                 })
             return JsonResponse({
-            "message": "success"
+            "message": "Breeze ID has been emailed to you.\nPlease show the same along with your College ID to the Security Team to gain entry"
             })    
     except Exception as exception:
         priint(exception)

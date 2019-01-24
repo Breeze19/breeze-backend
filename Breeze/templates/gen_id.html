@@ -275,13 +275,9 @@
           'participant': $("#parti :selected").text()
         },function(response){
           $("#loader1").attr('hidden',true)
-          if(response["message"] == "success"){
+          if(response != null){
             $("#message").removeAttr('hidden')
-            $("#message").text("Id generated")
-          }
-          else{
-            $("#message").removeAttr('hidden')
-            $("#message").text("Try again")
+            $("#message").text(response["message"])  
           }
         })
       })
