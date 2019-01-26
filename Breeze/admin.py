@@ -4,7 +4,7 @@ from .models import *
 
 class RegistrationAdmin(admin.ModelAdmin):
     list_display = ('registration_id', 'transaction_status', 'get_reg_name','nop', 'payable', 'college', 'get_event_category','get_email_id', 'get_reg_contact','get_event_name')
-    search_fields = ('registration_id', 'transaction_status','userId__profile__name', 'eventId__name','eventId__category', 'college')
+    search_fields = ('registration_id', 'transaction_status','userId__profile__name', 'userId__profile__contact','eventId__name','eventId__category', 'college')
     readonly_fields = ('created_at', 'updated_at')
     
     def __init__(self, model, admin_site): 
