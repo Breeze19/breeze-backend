@@ -167,8 +167,7 @@ def specificEventView(request,category,subcategory):
     data_dict = {}
     for i in range(0,len(events)):
         fee = transform(events[i].fee)
-        print(events[i].prizes)
-        if len(str(events[i].prizes).strip()) <= 1 or str(events[i].prize) == 'null':
+        if len(str(events[i].prizes).strip()) > 1 or str(events[i].prize) == 'null':
             prize = events[i].prizes
         else:
             prize = transform(events[i].prize)
