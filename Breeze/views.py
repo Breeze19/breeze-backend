@@ -149,6 +149,9 @@ def dashboard(request):
 
 def accomodation_brochure(request):
     return render(request,'acc_brochure.html')
+    
+def transport(request):
+    return render(request,'transport.html')
 
 def accomodation(request):
     context = {"name": "","email": "","phno": "","college": ""}
@@ -602,9 +605,6 @@ def updateremarks(request):
 
 def partners(request):
     return render(request, 'help/partners.html')
-
-def transport(request):
-    return render(request, 'help/transport.html')
 
 def pronights(request):
     return render(request, 'events/pronights.html')
