@@ -422,7 +422,7 @@
     function onClick(id){
       var data = {{js_data|safe}}
       $("#cancelbtn").on('click',function(){
-        if(data["include"] == 1){
+        if(data[id]["include"] == 1){
           register(id)  
         }
       })

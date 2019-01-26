@@ -187,7 +187,7 @@ def specificEventView(request,category,subcategory):
         "prize": prize,
         "fee": fee,
         "contact_name": events[i].contact_market,
-        "include": include,
+        "include": include
         }
     js_data = json.dumps(data_dict)
     context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data}
