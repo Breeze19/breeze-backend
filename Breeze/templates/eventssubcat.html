@@ -325,13 +325,17 @@
                 <p hidden id="message" style="padding-top:3%;font-size:1.5rem;font-family:PN;"><span style="padding-left:3%;"></p>
                 {% else %}
                 <button type="button" class="cancelbtn" id="signup-button" style="margin-top: 0%;padding-top: 0;">Sign up</button>
-                <button type="button" class="cancelbtn" id="signup-button" style="margin-top: 0%;padding-top: 0;">Sign in</button>
+                <button type="button" class="cancelbtn" id="signin-button" style="margin-top: 0%;padding-top: 0;">Sign in</button>
                 {% endif %}
             </div>
             <script>
                 $("#signup-button").on('click',function(){
-                    var prev = "/signin/?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                    var prev = "/signup/?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
                     window.location.href = window.location.origin + prev;
+                })
+                $("#signin-button").on('click',function(){
+                  var prev = "/signin/?prev=/events/" + '{{category}}' + "/" + '{{subcategory}}'
+                  window.location.href = window.location.origin + prev;
                 })
             </script>
             </form>
@@ -417,9 +421,22 @@
     function onClick(id){
       var data = {{js_data|safe}}
       $("#cancelbtn").on('click',function(){
-        register(id)
+        if(data["include"] == 1){
+          register(id)  
+        }
       })
       document.getElementById('id01').style.display='block'
+      if(data[id]["include"] == 0){
+        $("#cancelbtn").attr('hidden',true)
+        $("#nop-form").attr('hidden',true)
+        $("#message").removeAttr('hidden')
+        $("#message").text("Registrations Closed.")
+      }
+      else{
+        $("#cancelbtn").removeAttr('hidden')
+        $("#nop-form").removeAttr('hidden')
+        $("#message").attr('hidden',true)
+      }
       $("#description").text(data[id+""]["description"])
       $("#rules").text(data[id]["rules"])
       $("#prizes").text(data[id]["prize"])
