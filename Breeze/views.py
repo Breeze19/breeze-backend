@@ -16,9 +16,43 @@ import csv
 def ga_tracking_id(request):
     return {'ga_tracking_id': GA_TRACKING_ID}
 
+def get_events_data(request,category,apikey):
+    try:
+        if apikey == API_KEY:
+            events = Events.objects.filter(category=category[0])
+            json_rep = {}
+            for i in range(0,len(events)):
+                fee = transform(events[i].fee)
+                if(events[i].fee_snu != -1):
+                    fee = "Outside Participants: " + str(fee) + " | SNU Participants: " + transform(events[i].fee_snu)
+                json_rep[events[i].id] = {
+                "name": events[i].name,
+                "rules": events[i].rules,
+                "date": str(events[i].date),
+                "prize": events[i].prizes,
+                "fee": fee + " Per head",
+                "contact_name": events[i].contact_market
+                }
+            return JsonResponse({
+            "status": 205,
+            "message": "success",
+            "data": json.dumps(json_rep)
+            })
+        else:
+            return JsonResponse({
+            "status": 303,
+            "message": "Not authorized"
+            })
+    except Exception as exception:
+        print(exception)
+        return JsonResponse({
+        "status": 500,
+        "message": "Internal server error"
+        })
+    
 def get_reg_csv(request,key):
     try:
-        if(key == API_KEY):
+        if(key == KEY):
             registerations = Registration.objects.all()
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="registrations.csv"'
@@ -56,7 +90,7 @@ def get_reg_csv(request,key):
 
 def view_reg(request,key):
     try:
-        if(key == API_KEY):
+        if(key == KEY):
             registerations = Registration.objects.all()
             context = {"registrations": registerations}
             return render(request,'table.html',context=context)
@@ -67,7 +101,7 @@ def view_reg(request,key):
 
 def view_reg_club(request,key,clubname):
     try:
-        if(key == API_KEY):
+        if(key == KEY):
             registerations = Registration.objects.all()
             name = clubname
             if name.lower == 'wordsink':
