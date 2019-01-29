@@ -16,6 +16,12 @@ import csv
 def ga_tracking_id(request):
     return {'ga_tracking_id': GA_TRACKING_ID}
 
+def get_events_data(request):
+    events_data = Events.objects.all()
+    json_rep = {}
+    for i in range(0,len(events_data)):
+        
+
 def get_reg_csv(request,key):
     try:
         if(key == API_KEY):
