@@ -22,15 +22,11 @@ def get_events_data(request,category,apikey):
             events = Events.objects.filter(category=category[0])
             json_rep = {}
             for i in range(0,len(events)):
-                fee = transform(events[i].fee)
-                if(events[i].fee_snu != -1):
-                    fee = "Outside Participants: " + str(fee) + " | SNU Participants: " + transform(events[i].fee_snu)
                 json_rep[events[i].id] = {
                 "name": events[i].name,
-                "rules": events[i].rules,
+                "description": events[i].description,
                 "date": str(events[i].date),
-                "prize": events[i].prizes,
-                "fee": fee + " Per head",
+                "venue": events[i].venue,
                 "contact_name": events[i].contact_market
                 }
             return JsonResponse({
