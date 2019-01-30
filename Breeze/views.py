@@ -47,22 +47,30 @@ def get_events_data(request,category,apikey):
         "message": "Internal server error"
         })
 
-def push_events_to_firebase(request,category,apikey):
+def push_events_to_firebase(request,apikey):
     try:
         if apikey == API_KEY:
-            events = Events.objects.filter(category=category[0])
+            events = Events.objects.all()
             json_rep = {}
             for i in range(0,len(events)):
+                category = ''
+                if(events[i].category == 'c'):
+                    category = 'cultural'
+                elif(events[i].category == 's'):
+                    category = 'sports'
+                else:
+                    category = 'technical'
                 json_rep[events[i].id] = {
                 "name": events[i].name,
                 "description": events[i].description,
                 "date": str(events[i].date),
                 "venue": events[i].venue,
-                "contact_name": events[i].contact_market
+                "contact_name": events[i].contact_market,
+                "category": category
                 }
             firebase = pyrebase.initialize_app(FIREBASE_CONFIG)
             db = firebase.database()
-            db.child("data").child("events").child(category[0]).set(json_rep)
+            db.child("data").child("events").set(json_rep)
             return JsonResponse({
             "status": 200,
             "message": "success"
