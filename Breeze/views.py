@@ -12,6 +12,7 @@ import os
 import random, string
 from .config import *
 import csv
+import pyrebase
 
 def ga_tracking_id(request):
     return {'ga_tracking_id': GA_TRACKING_ID}
@@ -33,6 +34,38 @@ def get_events_data(request,category,apikey):
             "status": 205,
             "message": "success",
             "data": json.dumps(json_rep)
+            })
+        else:
+            return JsonResponse({
+            "status": 303,
+            "message": "Not authorized"
+            })
+    except Exception as exception:
+        print(exception)
+        return JsonResponse({
+        "status": 500,
+        "message": "Internal server error"
+        })
+
+def push_events_to_firebase(request,category,apikey):
+    try:
+        if apikey == API_KEY:
+            events = Events.objects.filter(category=category[0])
+            json_rep = {}
+            for i in range(0,len(events)):
+                json_rep[events[i].id] = {
+                "name": events[i].name,
+                "description": events[i].description,
+                "date": str(events[i].date),
+                "venue": events[i].venue,
+                "contact_name": events[i].contact_market
+                }
+            firebase = pyrebase.initialize_app(FIREBASE_CONFIG)
+            db = firebase.database()
+            db.child("data").child("events").child(category[0]).set(json_rep)
+            return JsonResponse({
+            "status": 200,
+            "message": "success"
             })
         else:
             return JsonResponse({
