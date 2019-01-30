@@ -121,6 +121,35 @@ def get_acc_reg_csv(request,key):
         "status": 500,
         "message": "Internal Server Error"
         })
+
+def get_profiles_csv(request,key):
+    try:
+        if(key == KEY):
+            profile_data = Profile.objects.all()
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="profiles.csv"'
+            writer = csv.writer(response)
+            writer.writerow(['','Name','Email','Contact','College'])
+            for i in range(0,len(profile_data)):
+                row = []
+                row.append(i)
+                row.append(profile_data[i].name)
+                row.append(profile_data[i].user.email)
+                row.append(profile_data[i].contact)
+                row.append(profile_data[i].college)
+                writer.writerow(row)
+            return response
+        else:
+            return JsonResponse({
+            "status": 303,
+            "message": "Forbidden"
+            })
+    except Exception as exception:
+        print(exception)
+        return Jsonresponse({
+        "status": 500,
+        "message": "Internal Server Error"
+        })
     
 def get_reg_csv(request,key):
     try:
