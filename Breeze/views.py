@@ -61,12 +61,12 @@ def push_events_to_firebase(request,apikey):
                 else:
                     category = 'technical'
                 json_rep[events[i].id] = {
-                "name": events[i].name,
-                "description": events[i].description,
-                "date": str(events[i].date),
-                "venue": events[i].venue,
-                "contact_name": events[i].contact_market,
-                "category": category
+                "eventsName": events[i].name,
+                "eventsDetails": events[i].description,
+                "eventDate": str(events[i].date),
+                "eventVenue": events[i].venue,
+                "eventContact": events[i].contact_market,
+                "eventCategory": category
                 }
             firebase = pyrebase.initialize_app(FIREBASE_CONFIG)
             db = firebase.database()
