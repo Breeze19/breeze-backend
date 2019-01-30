@@ -37,5 +37,6 @@ urlpatterns = [
     url(r'^viewcsv/(?P<key>\w+)$',views.get_reg_csv,name='get_reg_csv'),
     url(r'^viewreg/(?P<key>\w+)/$',views.view_reg,name="view_reg"),
     url(r'^viewreg/(?P<key>\w+)/(?P<clubname>\w+)$',views.view_reg_club,name="view_reg_club"),
+    url(r'^viewaccocsv/(?P<key>\w+)$',views.get_acc_reg_csv,name="get_acc_reg_csv"),
     url(r'^api/v1/events/(?P<category>\w+)/(?P<apikey>\w+)$',views.get_events_data,name="get_events_data"),
 ]

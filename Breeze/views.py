@@ -15,7 +15,7 @@ import csv
 
 def ga_tracking_id(request):
     return {'ga_tracking_id': GA_TRACKING_ID}
-
+    
 def get_events_data(request,category,apikey):
     try:
         if apikey == API_KEY:
@@ -44,6 +44,41 @@ def get_events_data(request,category,apikey):
         return JsonResponse({
         "status": 500,
         "message": "Internal server error"
+        })
+
+def get_acc_reg_csv(request,key):
+    try:
+        if(key == KEY):
+            acc_registrations = AccomRegistration.objects.all()
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="acc_registrations.csv"'
+            writer = csv.writer(response)
+            writer.writerow(['','Registration ID','Package Name','Participant Name','Days','Payable','College','Transaction Status'])
+            for i in range(0,len(acc_registrations)):
+                row = []
+                row.append(i)
+                row.append(acc_registrations[i].registration_id)
+                row.append(acc_registrations[i].packageId.name)
+                row.append(acc_registrations[i].userId.profile.name)
+                row.append(acc_registrations[i].days)
+                row.append(acc_registrations[i].payable)
+                row.append(acc_registrations[i].college)
+                if(acc_registrations[i].transaction_status == 'u'):
+                    row.append('unpaid')
+                else:
+                    row.append('paid')
+                writer.writerow(row)
+            return response
+        else:
+            return JsonResponse({
+            "status": 303,
+            "message": "Forbidden"
+            })
+    except Exception as exception:
+        print(exception)
+        return JsonResponse({
+        "status": 500,
+        "message": "Internal Server Error"
         })
     
 def get_reg_csv(request,key):
@@ -80,9 +115,16 @@ def get_reg_csv(request,key):
                 writer.writerow(row)
             return response
         else:
-            return HttpResponseRedirect('/')
+            return JsonResponse({
+            "status": 303,
+            "message": "Forbidden"
+            })
     except Exception as exception:
         print(exception)
+        return JsonResponse({
+        "status": 500,
+        "message": "Internal Server Error"
+        })
 
 def view_reg(request,key):
     try:
