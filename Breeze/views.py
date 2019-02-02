@@ -140,7 +140,8 @@ def sports(request):
         "date": str(events[i].date),
         "prize": events[i].prizes,
         "fee": fee + " Per head",
-        "contact_name": events[i].contact_market
+        "contact_name": events[i].contact_market,
+        "include": int(events[i].include)
         }
     js_data = json.dumps(data_dict)
     context = {"js_data": js_data,"events": events}
