@@ -106,7 +106,6 @@ def specificEventView(request,category,subcategory):
     events = Events.objects.filter(category=category[0]).filter(subCategory=subcategory)
     data_dict = {}
     for i in range(0,len(events)):
-        include = 1
         fee = transform(events[i].fee)
         if len(str(events[i].prizes).strip()) > 1 or str(events[i].prize) == 'null':
             prize = events[i].prizes
@@ -122,7 +121,7 @@ def specificEventView(request,category,subcategory):
         "prize": prize,
         "fee": fee,
         "contact_name": events[i].contact_market,
-        "include": include
+        "include": int(events[i].include)
         }
     js_data = json.dumps(data_dict)
     context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data}

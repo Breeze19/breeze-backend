@@ -15,6 +15,7 @@ class Events(models.Model):
     Model representing an event.
     """
     name = models.CharField(max_length=200, null=False)
+    include = models.IntegerField(help_text="Set 1 to open registration and 0 to close",default=0)
     description = models.CharField(max_length=2000, null=False)
     rules = models.CharField(max_length=4000, null=True)
     venue = models.CharField(max_length=50, null=False, default='B315')
