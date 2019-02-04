@@ -449,44 +449,6 @@ def forgot(request,hashkey):
         if not forget_pass_object:
             return HttpResponseRedirect('/')
         return render(request, "Resetpass.html", {"hashkey" : hashkey})
-    
-def clubdashboard(request):
-    if request.method == 'GET':
-        events = Events.objects.all()
-        registrations = Registration.objects.all()
-        context = {
-            'events' : events,
-            'registrations': registrations
-        }
-        return render(request, 'clubdashboard.html', context=context)
-
-    if request.method == 'POST':
-        id = request.POST['event']
-        name = request.POST['event_name']
-        registrations = Registration.objects.filter(eventId=id)
-        events = Events.objects.all()
-        context = {
-            'registrations' : registrations,
-            'events' : events,
-            'event_name' : name
-        }
-        return render(request, 'clubdashboard.html', context=context)
-
-def updateremarks(request):
-    if request.method == 'POST' and request.user.username == 'priyanshrastogi' or request.user.username == 'breeze.events@snu.edu.in':
-        rid = request.POST['regId']
-        remarks = request.POST['remarks']
-
-        reg = Registration.objects.get(pk=rid)
-        reg.remarks = remarks
-        reg.save()
-        return HttpResponseRedirect('/clubdashboard')
-
-def partners(request):
-    return render(request, 'help/partners.html')
-
-def pronights(request):
-    return render(request, 'events/pronights.html')
 
 # Util functions
 
