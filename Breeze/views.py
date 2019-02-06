@@ -106,7 +106,6 @@ def specificEventView(request,category,subcategory):
     events = Events.objects.filter(category=category[0]).filter(subCategory=subcategory)
     data_dict = {}
     for i in range(0,len(events)):
-        include = 1
         fee = transform(events[i].fee)
         if len(str(events[i].prizes).strip()) > 1 or str(events[i].prize) == 'null':
             prize = events[i].prizes
@@ -122,7 +121,7 @@ def specificEventView(request,category,subcategory):
         "prize": prize,
         "fee": fee,
         "contact_name": events[i].contact_market,
-        "include": include
+        "include": int(events[i].include)
         }
     js_data = json.dumps(data_dict)
     context  = {'events': events, 'subcategory': subcategory,"color": color,'category': category,"js_data": js_data}
@@ -141,7 +140,8 @@ def sports(request):
         "date": str(events[i].date),
         "prize": events[i].prizes,
         "fee": fee + " Per head",
-        "contact_name": events[i].contact_market
+        "contact_name": events[i].contact_market,
+        "include": int(events[i].include)
         }
     js_data = json.dumps(data_dict)
     context = {"js_data": js_data,"events": events}
@@ -449,44 +449,6 @@ def forgot(request,hashkey):
         if not forget_pass_object:
             return HttpResponseRedirect('/')
         return render(request, "Resetpass.html", {"hashkey" : hashkey})
-    
-def clubdashboard(request):
-    if request.method == 'GET':
-        events = Events.objects.all()
-        registrations = Registration.objects.all()
-        context = {
-            'events' : events,
-            'registrations': registrations
-        }
-        return render(request, 'clubdashboard.html', context=context)
-
-    if request.method == 'POST':
-        id = request.POST['event']
-        name = request.POST['event_name']
-        registrations = Registration.objects.filter(eventId=id)
-        events = Events.objects.all()
-        context = {
-            'registrations' : registrations,
-            'events' : events,
-            'event_name' : name
-        }
-        return render(request, 'clubdashboard.html', context=context)
-
-def updateremarks(request):
-    if request.method == 'POST' and request.user.username == 'priyanshrastogi' or request.user.username == 'breeze.events@snu.edu.in':
-        rid = request.POST['regId']
-        remarks = request.POST['remarks']
-
-        reg = Registration.objects.get(pk=rid)
-        reg.remarks = remarks
-        reg.save()
-        return HttpResponseRedirect('/clubdashboard')
-
-def partners(request):
-    return render(request, 'help/partners.html')
-
-def pronights(request):
-    return render(request, 'events/pronights.html')
 
 # Util functions
 

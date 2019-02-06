@@ -408,9 +408,22 @@
     function onClick(id){
       var data = {{js_data|safe}}
       $("#cancelbtn").on('click',function(){
-        register(id)
+        if(data[id]["include"] == 1){
+          register(id)
+        }
       })
       document.getElementById('id01').style.display='block'
+      if(data[id]["include"] == 0){
+        $("#cancelbtn").attr('hidden',true)
+        $("#nop-form").attr('hidden',true)
+        $("#message").removeAttr('hidden')
+        $("#message").text("Registrations Closed.")
+      }
+      else{
+        $("#cancelbtn").removeAttr('hidden')
+        $("#nop-form").removeAttr('hidden')
+        $("#message").attr('hidden',true)
+      }
       $("#rules").text(data[id]["rules"])
       $("#prizes").text(data[id]["prize"])
       $("#reg").text(data[id]["fee"])
