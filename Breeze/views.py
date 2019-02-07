@@ -49,6 +49,9 @@ def accomodation_brochure(request):
     
 def transport(request):
     return render(request,'transport.html')
+    
+def schedule(request):
+    return render(request,'schedule.html')
 
 def sports_handbook(request):
     return render(request,'sportshandbook.html')
