@@ -150,6 +150,11 @@ def sports(request):
     context = {"js_data": js_data,"events": events}
     return render(request, 'eventssportscat.html',context=context)         
          
+def get_id(request):
+    ids = Id.objects.all()
+    print(id)
+    return HttpResponse("/");
+         
 def gen_id(request):
     try:
         if request.method == 'POST':
@@ -193,7 +198,7 @@ def gen_id(request):
             "message": "Breeze ID has been emailed to you.\nPlease show the same along with your College ID to the Security Team to gain entry"
             })    
     except Exception as exception:
-        priint(exception)
+        print(exception)
             
 def createaccount(request):
     if request.method == 'POST':

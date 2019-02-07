@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^accomodation/$', views.accomodation, name='accomodation_brochure'),
     url(r'^19/accomodation/$', views.accomodation_brochure, name='accomodation_brochure'),
     url(r'^19/sportshandbook/$',views.sports_handbook,name='sports_handbook'),
+    url(r'^19/listid/$',views.get_id,name='sports_handbook'),
     url(r'^19/transport/$',views.transport,name='transport_handbook'),
     url(r'^19/schedule/$',views.schedule,name='transport_handbook'),
     url(r'^forgotpassmail',views.forgotpassmail,name='forgotpassmail'),

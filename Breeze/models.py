@@ -117,7 +117,7 @@ class Id(models.Model):
     yearofstudy = models.CharField(max_length=10,null = False,default="null")
     parti = models.CharField(max_length = 20,null = False,default="null")
     def __str__(self):
-        return self.registration
+        return self.name
 
 class Formdata(models.Model):
     name= models.CharField(max_length = 32, null=False)
