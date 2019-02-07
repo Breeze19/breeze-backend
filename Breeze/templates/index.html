@@ -82,7 +82,7 @@
   background-repeat: no-repeat;
 }
 #h-logo-img{
-  margin-top: 9%;
+  margin-top: -50%;
 }
 #date-breeze{
   margin-top:-25% !important;
@@ -109,7 +109,7 @@
     ================================================== -->
 <header class="s-header">
   <div class="header-logo"> <a class="site-logo" href="/"> <img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" style="margin-top:5%;"alt="Homepage"> </a> </div>
-  <nav class="header-nav"> <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+  <!--<nav class="header-nav"> <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
     <div class="header-nav__content">
       {% if user.is_authenticated %}
           <h3 style="font-family:PN;font-weight: bold;"><a href="/dashboard/"><img src="{% static 'assets/images/breeze/user.png' %}" alt=""></a><br><br>Manage your purchases</h3>
@@ -122,40 +122,40 @@
         <li><a id="signin" href="/signin/?prev=/" title="works" style="font-family:PN">Sign in</a></li>
         {% endif %}
         <li><a href="/id/" title="clients" style="font-family:PN">Generate ID</a></li>
-        <!--<li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>-->
+      --><!--<li><a href="/events/" title="clients" style="font-family:PN">Events & Registration</a></li>-->
         <!--<li><a href="/gallery/" title="works" style="font-family:PN">Gallery</a></li>-->
-        <li><a href="/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
+        <!--<li><a href="/accomodation/" title="acco" style="font-family:PN">Accommodation</a></li>
         <li><a href="/19/transport/" title="transport" style="font-family:PN">Transport</a></l1>
         <li><a href="/sponsors/" title="clients" style="font-family:PN">Sponsors</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=snu.breeze.breeze19" title="clients" style="font-family:PN">Get App</a></li>
-        <!--<li><a href="#contact-id" style="font-family:PN">Contact us</a></li>-->
+        --><!--<li><a href="#contact-id" style="font-family:PN">Contact us</a></li>-->
         <!--<li><a href="/team/" title="acco" style="font-family:PN">Developers</a></li>-->
-      </ul>
+      <!--</ul>
 
       <p></p>
 
       <ul class="header-nav__social">
         <li> <a href="https://www.facebook.com/snu.breeze/" target="_blank"><i class="fa fa-facebook"></i></a> </li>
-        <!--<li>
+      --><!--<li>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                     </li>-->
-        <li> <a href="https://www.instagram.com/breeze.snu/" target="_blank"><i class="fa fa-instagram"></i></a> </li>
+        <!--<li> <a href="https://www.instagram.com/breeze.snu/" target="_blank"><i class="fa fa-instagram"></i></a> </li>
 		   <li> <a href="https://www.youtube.com/channel/UCq-fFlEMV4r1HPYZiQrrd7w/featured" target="_blank"><i class="fa fa-youtube" ></i></a> </li>
-        <!--<li>
+        --><!--<li>
 
                         <a href="#"><i class="fa fa-behance"></i></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-dribbble"></i></a>
                     </li>-->
-      </ul>
-    </div>
+      <!--</ul>
+    </div>-->
     <!-- end header-nav__content -->
 
-  </nav>
+  <!--</nav>-->
   <!-- end header-nav -->
 
-  <a class="header-menu-toggle" href="#0"> <span class="header-menu-text">Menu</span> <span class="header-menu-icon"></span> </a> </header>
+  <a class="header-menu-toggle" href="#0"><!-- <span class="header-menu-text">Menu</span> <span class="header-menu-icon"></span> --></a> </header>
 <!-- end s-header -->
 
 <!-- home
@@ -170,16 +170,20 @@
         Shiv Nadar University's <br>
         Cultural-Techno-Sports Fest </h1>-->
       <h1 style="text-align: center;" id="h-logo-img"><img src="{% static 'assets/images/breeze/WhiteLogo-02.png' %}" id="logo-gif" style="width: 60%;text-align: center;text-shadow: 200px 200px red;" class="img-fluid" alt="Responsive image"></h1>
-      <h1  id="date-breeze"style="text-align: center;margin-top:-15%;font-size: 2.5rem;font-family:AR;">8<sup>th</sup>, 9<sup>th</sup> &amp; 10<sup>th</sup> Feburary</h1>
+      <h1  id="date-breeze"style="text-align: center;margin-top:-20%;font-size: 2.5rem;font-family:AR;">8<sup>th</sup>, 9<sup>th</sup> &amp; 10<sup>th</sup> Feburary</h1>
       <div id="buttons-reg" style="text-align: left;">
+        <a href="/id/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" style="color:#46c1ac;font-family:AR;font-size:1.5rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Generate ID</span> </a> </div></a>
+        <a href=""><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" style="color:#46c1ac;font-family:AR;font-size:1.5rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Schedule</span> </a> </div></a><br>
         {% if user.is_authenticated %}
         <a><div class="home-content__buttons" ><a id="registerid" class="smoothscroll btn btn--stroke" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;margin-top: 5% !important;width: 50%;"> Register</span> </a> </div></a>
         <!--<a href="/logout"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="signoutbut" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Sign out</span> </a> </div></a>-->
         {% else %}
-        <a href="/signup/?prev=/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="register" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;margin-top: 5% !important;"> Sign Up</span> </a> </div></a>
+        <a href="/dashboard/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;margin-top: 5% !important;"> Dashboard</span> </a> </div></a>
         <a href="/signin/?prev=/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" id="signinbut" style="color:#46c1ac;font-family:AR;font-size:2rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Sign In</span> </a> </div></a>
         {% endif %}
-        <p style="color: white;padding-top: 10%;font-size: 3rem;font-family: ADR;font-weight: bolder;margin-left: -5%;">Last date to register : 5 Feb midnight<br><span style="margin-left: -3%;">All paid registrations are not refundable</span></p>
+        <br><br><a href="/19/transport/"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" style="color:#46c1ac;font-family:AR;font-size:1.5rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Transport</span> </a> </div></a>
+        <a href="https://play.google.com/store/apps/details?id=snu.breeze.breeze19"><div class="home-content__buttons" ><a class="smoothscroll btn btn--stroke" style="color:#46c1ac;font-family:AR;font-size:1.5rem;font-weight:bold;border-radius: 25px;background-color:rgba(0,0,0, .7) !important;"> Get App</span> </a> </div></a><br>
+        <p style="color: white;padding-top: 10%;font-size: 3rem;font-family: PN;font-weight: bolder;margin-left: -5%;">All paid registrations are not refundable</p>
       </div>
         <!--<a href="#contact" class="smoothscroll btn btn--stroke">
                         Start a Project

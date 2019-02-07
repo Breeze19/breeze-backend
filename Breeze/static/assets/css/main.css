@@ -1719,7 +1719,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .header-menu-toggle.opaque {
-    background-color: #231f20;
+   
 }
 
 .header-menu-toggle.opaque .header-menu-text {
@@ -1727,7 +1727,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .header-menu-toggle:hover, .header-menu-toggle:focus {
-    color: #FFFFFF;
+    /*color: #FFFFFF;*/
 }
 
 .header-menu-text {
@@ -1876,7 +1876,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-content__main {
-    padding-top: 10rem;
+    padding-top: 3rem;
     position: relative;
 }
 
@@ -2225,7 +2225,7 @@ html.no-csstransitions .home-content__main {
     .home-content__main {
         text-align: center;
         max-width: none;
-        padding-top: 15rem;
+        padding-top: 5rem;
         padding-right: 25px;
         width: 85%;
     }
