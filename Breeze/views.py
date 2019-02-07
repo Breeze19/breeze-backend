@@ -163,6 +163,14 @@ def gen_id(request):
             subject = "Breeze19 ID"
             from_email = settings.DEFAULT_FROM_EMAIL
             to_list = [email]
+            id_obj = Id(name=name, rollno=rollno, email=email,phno=number,college=college,yearofstudy=yos,parti=participant)
+            try:
+                id_obj.save();
+            except Exception as exception:
+                print(exception)
+                return JsonResponse({
+                "message": "ID creation failed. Try again."
+                })
             html_message = loader.render_to_string(
             os.getcwd() + '/Breeze/templates/id_mail.html',
             {

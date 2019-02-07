@@ -108,6 +108,17 @@ class AccomRegistration(models.Model):
     def __str__(self):
     	return '%s %s' % (self.registration_id, self.payable)
 
+class Id(models.Model):
+    name= models.CharField(max_length = 50, null=False,default="null")
+    rollno = models.IntegerField(max_length = 11,null = False,default=11)
+    email = models.CharField(max_length = 50,null = False,default="null")
+    phno = models.CharField(max_length=20, null=False,default="null")
+    college = models.CharField(max_length = 50,null = False,default="null")
+    yearofstudy = models.CharField(max_length=10,null = False,default="null")
+    parti = models.CharField(max_length = 20,null = False,default="null")
+    def __str__(self):
+        return self.registration
+
 class Formdata(models.Model):
     name= models.CharField(max_length = 32, null=False)
     age= models.IntegerField(default=0, null=True)
