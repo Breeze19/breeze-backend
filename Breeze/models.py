@@ -110,7 +110,7 @@ class AccomRegistration(models.Model):
 
 class Id(models.Model):
     name= models.CharField(max_length = 50, null=False,default="null")
-    rollno = models.IntegerField(max_length = 11,null = False,default=11)
+    rollno = models.CharField(max_length = 50,null = False,default=11)
     email = models.CharField(max_length = 50,null = False,default="null")
     phno = models.CharField(max_length=20, null=False,default="null")
     college = models.CharField(max_length = 50,null = False,default="null")
