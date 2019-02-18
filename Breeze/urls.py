@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^viewreg/(?P<key>\w+)/(?P<clubname>\w+)$',views.view_reg_club,name="view_reg_club"),
     url(r'^viewaccocsv/(?P<key>\w+)$',views.get_acc_reg_csv,name="get_acc_reg_csv"),
     url(r'^viewprofilecsv/(?P<key>\w+)$',views.get_profiles_csv,name="get_profiles_csv"),
-    url(r'^viewcsvid/(?P<key>\w+)$',view.get_id_csv,name="get_id_csv"),
+    url(r'^viewcsvid/(?P<key>\w+)$',views.get_id_csv,name="get_id_csv"),
     url(r'^api/v1/firebase/(?P<apikey>\w+)$',views.push_events_to_firebase,name="push_events_to_firebase"),
     url(r'^api/v1/events/(?P<category>\w+)/(?P<apikey>\w+)$',views.get_events_data,name="get_events_data"),
 ]

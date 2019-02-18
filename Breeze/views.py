@@ -702,10 +702,10 @@ def get_id_csv(request,key):
             response['Content-Disposition'] = 'attachment; filename="footfall.csv"'
             writer = csv.writer(response)
             writer.writerow(['','Name','Roll no','Email','Ph no','College','University','Year Of Study','Participant'])
-            for(i in range(0,len(ids))):
+            for i in range(0,len(ids)):
                 row = []
                 row.append(i)
-                row.apppend(ids[i].name)
+                row.append(ids[i].name)
                 row.append(ids[i].rollno)
                 row.append(ids[i].email)
                 row.append(ids[i].phno)
