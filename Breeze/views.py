@@ -694,6 +694,38 @@ def get_reg_csv(request,key):
         "message": "Internal Server Error"
         })
 
+def get_id_csv(request,key):
+    try:
+        if(key == KEY):
+            ids = Id.objects.all()
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="footfall.csv"'
+            writer = csv.writer(response)
+            writer.writerow(['','Name','Roll no','Email','Ph no','College','University','Year Of Study','Participant'])
+            for(i in range(0,len(ids))):
+                row = []
+                row.append(i)
+                row.apppend(ids[i].name)
+                row.append(ids[i].rollno)
+                row.append(ids[i].email)
+                row.append(ids[i].phno)
+                row.append(ids[i].college)
+                row.append(ids[i].yearofstudy)
+                row.append(ids[i].parti)
+                writer.writerow(row)
+            return response
+        else:
+            return JsonResponse({
+            "status": 303,
+            "message": "Forbidden"
+            })
+    except Exception as exception:
+        print(exception)
+        return JsonResponse({
+        "status": 500,
+        "message": "Internal Server Error"
+        })
+        
 def view_reg(request,key):
     try:
         if(key == KEY):
