@@ -13,6 +13,8 @@ import random, string
 from .config import *
 import csv
 import pyrebase
+import email
+import imaplib
     
 def home(request):
     return render(request, 'index.html')
@@ -714,6 +716,37 @@ def get_id_csv(request,key):
                 row.append(ids[i].parti)
                 writer.writerow(row)
             return response
+        else:
+            return JsonResponse({
+            "status": 303,
+            "message": "Forbidden"
+            })
+    except Exception as exception:
+        print(exception)
+        return JsonResponse({
+        "status": 500,
+        "message": "Internal Server Error"
+        })
+        
+def get_id_csv_d0(request,key):
+    try:
+        if(key == KEY):
+            mail = imaplib.IMAP4_SSL('imap.gmail.com')
+            mail.login(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
+            mail.list()
+            mail.select('inbox',readonly=True)
+            type,data = mail.search(None,'ALL')
+            mail_ids = data[0]
+            id_list = mail_ids.split()
+            for i in range(int(id_list[-1]),int(id_list[0]),-1):
+                type,data = mail.fetch(i,'(RFC822)')
+                for response in data:
+                    message = email.message_from_string(response[1])
+                    print(message['subject'])
+            return JsonResponse({
+            "status": 200,
+            "message": "success"
+            })
         else:
             return JsonResponse({
             "status": 303,
