@@ -1,5 +1,3 @@
-app.yaml
-cors-file.json
 Breeze18/settings.py
 Breeze/config.py
 *.pyc

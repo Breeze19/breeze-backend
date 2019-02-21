@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["https://breeze19.appspot.com","http://127.0.0.1:8000"],
+      "responseHeader": ["Content-Type","Access-Control-Allow-Origin"],
+      "method": ["GET", "HEAD", "DELETE", "POST"],
+      "maxAgeSeconds": 3600
+    }
+]

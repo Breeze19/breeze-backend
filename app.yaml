@@ -1,0 +1,28 @@
+runtime: python
+
+entrypoint: gunicorn -b :$PORT Breeze18.wsgi 
+env: flex
+
+env_variables:
+
+  SECRET_KEY: SECRET_KEY
+  DEBUG: 'False' 
+
+  DB_HOST: DB_HOST
+  DB_PORT: DB_PORT 
+  DB_NAME: DB_NAME
+  DB_USER: DB_USER 
+  DB_PASSWORD: DB_PASSWORD
+  
+  STATIC_URL: STATIC_URL 
+  
+handlers:
+- url: /static
+  static_dir: static
+
+beta_settings:
+  
+  cloud_sql_instances: CLOUD_SQL_INSTANCES 
+
+runtime_config:
+  python_version: 3
