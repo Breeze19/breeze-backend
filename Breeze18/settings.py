@@ -15,11 +15,11 @@ from .email_info import *
 from django.core.mail.backends.smtp import EmailBackend
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = EMAIL_HOST
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'breeze.events@snu.edu.in'
+EMAIL_HOST_PASSWORD = '2019forthewin'
 EMAIL_PORT = 587
-SERVER_EMAIL = SERVER_EMAIL
+SERVER_EMAIL = 'sk261@snu.edu.in'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 ADMINS = (('shashvatkedia','sk261@snu.edu.in'),)
@@ -32,7 +32,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY
+SECRET_KEY = '!lct&871ornh%2x-8s%5!3yi=2d54mo94d)d1quft@pr*nu8$l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -123,12 +123,12 @@ WSGI_APPLICATION = 'Breeze18.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
-        'HOST': '',
-        'PORT': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': ''
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '/cloudsql/breeze19:asia-southeast1:breeze19-db',#127.0.0.1
+        'PORT': '3306',
+        'NAME': 'breeze19_data',
+        'USER': 'admiin',
+        'PASSWORD': 'dontdie@Breeze19@Admin'
     }
 }
 
@@ -169,8 +169,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = STATIC_URL
-STATIC_ROOT = STATIC_ROOT
+STATIC_URL = 'https://breeze19-static.storage.googleapis.com/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'breeze19-static')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 

@@ -5,16 +5,16 @@ env: flex
 
 env_variables:
 
-  SECRET_KEY: SECRET_KEY
+  SECRET_KEY: '!lct&871ornh%2x-8s%5!3yi=2d54mo94d)d1quft@pr*nu8$l'
   DEBUG: 'False' 
 
-  DB_HOST: DB_HOST
-  DB_PORT: DB_PORT 
-  DB_NAME: DB_NAME
-  DB_USER: DB_USER 
-  DB_PASSWORD: DB_PASSWORD
+  DB_HOST: '/cloudsql/breeze19:asia-southeast1:breeze19-db'
+  DB_PORT: '5432' 
+  DB_NAME: 'breeze19_data'
+  DB_USER: 'admiin' 
+  DB_PASSWORD: 'dontdie@Breeze19@Admin'
   
-  STATIC_URL: STATIC_URL 
+  STATIC_URL: 'https://storage.googleapis.com/breeze19-static/static/' 
   
 handlers:
 - url: /static
@@ -22,7 +22,7 @@ handlers:
 
 beta_settings:
   
-  cloud_sql_instances: CLOUD_SQL_INSTANCES 
+  cloud_sql_instances: breeze19:asia-southeast1:breeze19-db 
 
 runtime_config:
   python_version: 3
